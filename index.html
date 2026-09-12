@@ -3,15 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TechStore - Al estilo PC Factory</title>
+  <title>Fixionary | Soluciones y Modelos Tecnológicos</title>
   <style>
     :root {
-      --pcf-blue: #0b2545;
-      --pcf-blue-light: #134074;
-      --pcf-red: #e63946;
-      --pcf-gray-bg: #f4f5f7;
-      --pcf-border: #e2e8f0;
+      /* Paleta exacta de Fixionary */
+      --fix-purple-start: #7b2cbf;
+      --fix-purple-mid: #5a189a;
+      --fix-purple-dark: #240046;
+      --fix-gradient: linear-gradient(135deg, #7b2cbf 0%, #5a189a 45%, #240046 100%);
+      
+      --fix-blue-btn: #0066ff;
+      --fix-blue-hover: #0052cc;
+      --fix-cyan-accent: #00d4ff;
+      --fix-red-badge: #e63946;
+      
+      /* Fondos y textos */
+      --bg-page: #f6f7fb;
+      --card-bg: #ffffff;
+      --border-color: #e2e8f0;
       --text-dark: #1e293b;
+      --text-muted: #64748b;
     }
 
     * {
@@ -22,326 +33,490 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background-color: var(--pcf-gray-bg);
+      background-color: var(--bg-page);
       color: var(--text-dark);
+      font-size: 13.5px; /* Tipografía reducida y legible */
+      line-height: 1.5;
     }
 
-    /* Top Header */
+    /* Barra Superior / Header */
     header {
-      background-color: var(--pcf-blue);
+      background: var(--fix-purple-dark);
       color: #ffffff;
-      padding: 12px 20px;
+      padding: 10px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    .logo {
-      font-size: 1.5rem;
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 1.3rem;
       font-weight: 800;
       letter-spacing: -0.5px;
-      color: #ffffff;
-      text-decoration: none;
     }
 
-    .logo span {
-      color: var(--pcf-red);
+    .logo-icon {
+      background: #ffffff;
+      color: var(--fix-purple-dark);
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.2rem;
     }
 
-    .search-bar {
+    .search-box {
       flex: 1;
-      max-width: 600px;
+      max-width: 550px;
       display: flex;
     }
 
-    .search-bar input {
+    .search-box input {
       width: 100%;
-      padding: 10px 14px;
+      padding: 8px 14px;
       border: none;
       border-radius: 4px 0 0 4px;
+      font-size: 0.85rem;
       outline: none;
-      font-size: 0.95rem;
     }
 
-    .search-bar button {
-      background-color: var(--pcf-red);
+    .search-box button {
+      background: var(--fix-blue-btn);
+      color: #ffffff;
       border: none;
-      color: #fff;
       padding: 0 18px;
+      font-size: 0.85rem;
+      font-weight: 600;
       border-radius: 0 4px 4px 0;
       cursor: pointer;
-      font-weight: 600;
+      transition: background 0.2s;
     }
 
-    .user-actions {
+    .search-box button:hover {
+      background: var(--fix-blue-hover);
+    }
+
+    .header-links {
       display: flex;
-      gap: 16px;
-      font-size: 0.9rem;
+      gap: 18px;
+      font-size: 0.82rem;
     }
 
-    /* Navigation */
+    .header-links a {
+      color: #ffffff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Barra de Navegación de Categorías */
     nav {
-      background-color: var(--pcf-blue-light);
+      background: #190033;
+      padding: 8px 24px;
       display: flex;
-      gap: 20px;
-      padding: 10px 20px;
-      color: #fff;
-      font-size: 0.9rem;
-      font-weight: 600;
+      gap: 22px;
       overflow-x: auto;
     }
 
     nav a {
-      color: #ffffff;
+      color: #cbd5e1;
       text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
       white-space: nowrap;
     }
 
     nav a:hover {
-      color: #fca5a5;
+      color: var(--fix-cyan-accent);
     }
 
+    /* Hero Banner estilo Fixionary */
+    .hero-banner {
+      background: var(--fix-gradient);
+      color: #ffffff;
+      padding: 50px 24px;
+      text-align: center;
+    }
+
+    .hero-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .hero-inner h1 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .hero-inner p {
+      font-size: 0.95rem;
+      color: #e9d5ff;
+      margin-bottom: 24px;
+      font-weight: 400;
+    }
+
+    .btn-contact {
+      display: inline-block;
+      background: var(--fix-blue-btn);
+      color: #ffffff;
+      padding: 10px 28px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.88rem;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-contact:hover {
+      background: var(--fix-blue-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Contenedor Principal */
     .container {
       max-width: 1200px;
-      margin: 20px auto;
-      padding: 0 15px;
+      margin: 24px auto;
+      padding: 0 16px;
     }
 
-    /* Banner Promocional */
-    .hero-banner {
-      background: linear-gradient(135deg, #0b2545 0%, #1e3a8a 100%);
-      color: #ffffff;
-      padding: 30px;
+    /* Sección Empresa / Información institucional */
+    .company-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
       border-radius: 8px;
+      padding: 22px 26px;
       margin-bottom: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
     }
 
-    .hero-banner h2 {
-      font-size: 1.8rem;
+    .company-card h2 {
+      font-size: 1.18rem;
+      color: var(--fix-purple-mid);
       margin-bottom: 8px;
-    }
-
-    .hero-banner p {
-      color: #cbd5e1;
-    }
-
-    /* Grid de Productos */
-    .section-title {
-      font-size: 1.3rem;
-      margin-bottom: 16px;
-      font-weight: 700;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .section-title::before {
+    .company-card h2::before {
       content: "";
-      display: inline-block;
-      width: 5px;
-      height: 20px;
-      background: var(--pcf-red);
+      width: 4px;
+      height: 16px;
+      background: var(--fix-purple-mid);
       border-radius: 2px;
+      display: inline-block;
     }
 
+    .company-card p {
+      color: var(--text-muted);
+      font-size: 0.86rem;
+      line-height: 1.6;
+    }
+
+    /* Encabezado del Catálogo */
+    .catalog-header {
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .catalog-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .catalog-title::before {
+      content: "";
+      width: 4px;
+      height: 16px;
+      background: var(--fix-purple-mid);
+      border-radius: 2px;
+      display: inline-block;
+    }
+
+    /* Grid de Fichas estilo PC Factory */
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 14px;
     }
 
     .card {
-      background: #ffffff;
-      border: 1px solid var(--pcf-border);
-      border-radius: 8px;
-      padding: 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 14px;
       display: flex;
       flex-direction: column;
       position: relative;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: box-shadow 0.2s, transform 0.2s;
     }
 
     .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+      box-shadow: 0 6px 16px rgba(90, 24, 154, 0.1);
+      transform: translateY(-2px);
     }
 
-    .badge-discount {
+    .badge-promo {
       position: absolute;
       top: 10px;
       left: 10px;
-      background-color: var(--pcf-red);
-      color: #fff;
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 4px;
+      background: var(--fix-red-badge);
+      color: #ffffff;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 3px;
     }
 
-    .product-img {
+    .product-img-box {
       width: 100%;
-      height: 180px;
-      object-fit: contain;
-      margin-bottom: 12px;
-      background-color: #fff;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fafafa;
+      border-radius: 4px;
+      margin-bottom: 10px;
     }
 
-    .product-category {
-      font-size: 0.75rem;
-      color: #64748b;
-      text-transform: uppercase;
-      font-weight: 600;
+    .product-img-box img {
+      max-width: 85%;
+      max-height: 85%;
+      object-fit: contain;
+    }
+
+    .sku-stock {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.68rem;
+      color: var(--text-muted);
       margin-bottom: 4px;
     }
 
-    .product-name {
-      font-size: 0.95rem;
+    .stock-tag {
+      color: #16a34a;
+      font-weight: 700;
+    }
+
+    .item-category {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--fix-purple-mid);
+      margin-bottom: 4px;
+    }
+
+    .item-name {
+      font-size: 0.83rem;
       font-weight: 600;
       color: var(--text-dark);
-      line-height: 1.3;
-      margin-bottom: 12px;
-      flex-grow: 1;
+      line-height: 1.35;
+      margin-bottom: 10px;
+      min-height: 36px;
     }
 
-    .pricing {
+    /* Caja de Precios PC Factory */
+    .price-box {
       margin-top: auto;
-      border-top: 1px solid var(--pcf-border);
-      padding-top: 10px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 8px;
     }
 
-    .normal-price {
-      font-size: 0.8rem;
-      color: #94a3b8;
+    .price-normal {
+      font-size: 0.72rem;
+      color: var(--text-muted);
       text-decoration: line-through;
     }
 
-    .cash-price {
-      font-size: 1.25rem;
+    .price-cash {
+      font-size: 1.2rem;
       font-weight: 800;
-      color: var(--pcf-blue);
+      color: var(--fix-purple-dark);
+      line-height: 1.1;
     }
 
-    .cash-label {
-      font-size: 0.7rem;
-      color: #64748b;
+    .price-cash-sub {
+      font-size: 0.67rem;
+      color: var(--text-muted);
       display: block;
+      margin-top: 2px;
     }
 
-    .btn-add {
+    .btn-action {
       width: 100%;
-      margin-top: 12px;
-      background-color: var(--pcf-blue);
-      color: white;
+      margin-top: 10px;
+      background-color: var(--fix-purple-mid);
+      color: #ffffff;
       border: none;
-      padding: 8px;
-      border-radius: 6px;
+      padding: 7px 10px;
+      border-radius: 4px;
+      font-size: 0.8rem;
       font-weight: 600;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background-color 0.2s;
     }
 
-    .btn-add:hover {
-      background-color: var(--pcf-red);
+    .btn-action:hover {
+      background-color: var(--fix-purple-dark);
     }
   </style>
 </head>
 <body>
 
-  <!-- Barra superior -->
+  <!-- Barra Superior -->
   <header>
-    <a href="#" class="logo">TECH<span>FACTORY</span></a>
-    <div class="search-bar">
-      <input type="text" placeholder="¿Qué estás buscando? Ej: Notebook, Tarjeta de video...">
+    <a href="#" class="brand-logo">
+      <div class="logo-icon">F</div>
+      <span>Fixionary</span>
+    </a>
+    
+    <div class="search-box">
+      <input type="text" placeholder="Buscar soluciones, modelos o servicios...">
       <button>Buscar</button>
     </div>
-    <div class="user-actions">
-      <span>👤 Mi Cuenta</span>
-      <span>🛒 Carrito (0)</span>
+
+    <div class="header-links">
+      <a href="#empresa">🏢 Empresa</a>
+      <a href="#modelos">💼 Modelos</a>
+      <a href="#contacto">📞 Contacto</a>
     </div>
   </header>
 
-  <!-- Navegación de categorías -->
+  <!-- Navegación de Categorías -->
   <nav>
-    <a href="#">Computadores & Tablets</a>
-    <a href="#">Partes & Piezas</a>
-    <a href="#">Accesorios</a>
-    <a href="#">Monitores</a>
-    <a href="#">Zona Gamer</a>
-    <a href="#">Ofertas</a>
+    <a href="#modelos">Todos los Modelos</a>
+    <a href="#modelos">Desarrollo Web & Software</a>
+    <a href="#modelos">Soluciones Móviles</a>
+    <a href="#modelos">Equipos & Servidores</a>
+    <a href="#modelos">Soporte Continuo</a>
   </nav>
 
+  <!-- Hero Banner con el degradado púrpura de Fixionary -->
+  <section class="hero-banner">
+    <div class="hero-inner">
+      <h1>¡Innovamos junto a ti!</h1>
+      <p>Transformamos ideas en soluciones reales para tu empresa</p>
+      <a href="#contacto" class="btn-contact">Contactanos!</a>
+    </div>
+  </section>
+
   <div class="container">
-    <!-- Banner estilo tienda tech -->
-    <div class="hero-banner">
-      <div>
-        <h2>SUPER OFERTAS TECH</h2>
-        <p>Componentes, periféricos y equipos con hasta 40% de descuento en efectivo.</p>
-      </div>
+
+    <!-- Sección Institucional de la Empresa -->
+    <section id="empresa" class="company-card">
+      <h2>Sobre Fixionary</h2>
+      <p>
+        En <strong>Fixionary</strong> nos especializamos en transformar ideas en herramientas tecnológicas funcionales y escalables. Combinamos desarrollo digital avanzado, integración de sistemas y soporte integral para llevar a tu empresa al siguiente nivel operativo.
+      </p>
+    </section>
+
+    <!-- Catálogo de Modelos (Estilo PC Factory) -->
+    <div class="catalog-header">
+      <h3 id="modelos" class="catalog-title">Modelos y Soluciones Disponibles</h3>
     </div>
 
-    <!-- Sección de Productos -->
-    <h3 class="section-title">Destacados de la semana</h3>
-
     <div class="product-grid">
-      <!-- Producto 1 -->
+
+      <!-- Ficha 1 -->
       <div class="card">
-        <span class="badge-discount">-25%</span>
-        <img class="product-img" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&q=80" alt="Notebook">
-        <span class="product-category">Notebooks</span>
-        <h4 class="product-name">Notebook Gamer Pro 15.6" i7 16GB 1TB SSD</h4>
-        <div class="pricing">
-          <span class="normal-price">$1.199.990</span>
-          <span class="cash-price">$899.990</span>
-          <span class="cash-label">Efectivo / Transferencia</span>
+        <span class="badge-promo">-20%</span>
+        <div class="product-img-box">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=350&q=80" alt="Plataforma Web">
         </div>
-        <button class="btn-add">Agregar al carro</button>
+        <div class="sku-stock">
+          <span>SKU: FIX-MOD01</span>
+          <span class="stock-tag">● Disponible</span>
+        </div>
+        <span class="item-category">Desarrollo Web</span>
+        <h4 class="item-name">Plataforma Web Corporativa con Panel de Control</h4>
+        <div class="price-box">
+          <span class="price-normal">$850.000</span>
+          <div class="price-cash">$680.000</div>
+          <span class="price-cash-sub">Pago contado / transferencia</span>
+        </div>
+        <button class="btn-action">Cotizar modelo</button>
       </div>
 
-      <!-- Producto 2 -->
+      <!-- Ficha 2 -->
       <div class="card">
-        <span class="badge-discount">-18%</span>
-        <img class="product-img" src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&q=80" alt="Mouse">
-        <span class="product-category">Periféricos</span>
-        <h4 class="product-name">Mouse Inalámbrico RGB Ultraliviano Sensor Óptico</h4>
-        <div class="pricing">
-          <span class="normal-price">$49.990</span>
-          <span class="cash-price">$39.990</span>
-          <span class="cash-label">Efectivo / Transferencia</span>
+        <span class="badge-promo">DESTACADO</span>
+        <div class="product-img-box">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=350&q=80" alt="App Movil">
         </div>
-        <button class="btn-add">Agregar al carro</button>
+        <div class="sku-stock">
+          <span>SKU: FIX-MOD02</span>
+          <span class="stock-tag">● Disponible</span>
+        </div>
+        <span class="item-category">Aplicaciones</span>
+        <h4 class="item-name">App Móvil para Clientes Multiplataforma (iOS & Android)</h4>
+        <div class="price-box">
+          <span class="price-normal">$1.200.000</span>
+          <div class="price-cash">$990.000</div>
+          <span class="price-cash-sub">Pago contado / transferencia</span>
+        </div>
+        <button class="btn-action">Cotizar modelo</button>
       </div>
 
-      <!-- Producto 3 -->
+      <!-- Ficha 3 -->
       <div class="card">
-        <span class="badge-discount">-30%</span>
-        <img class="product-img" src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&q=80" alt="Teclado">
-        <span class="product-category">Teclados</span>
-        <h4 class="product-name">Teclado Mecánico Switch Red Español Iluminado</h4>
-        <div class="pricing">
-          <span class="normal-price">$79.990</span>
-          <span class="cash-price">$54.990</span>
-          <span class="cash-label">Efectivo / Transferencia</span>
+        <div class="product-img-box">
+          <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=350&q=80" alt="Workstation">
         </div>
-        <button class="btn-add">Agregar al carro</button>
+        <div class="sku-stock">
+          <span>SKU: FIX-EQ401</span>
+          <span class="stock-tag">● 4 en bodega</span>
+        </div>
+        <span class="item-category">Equipamiento TI</span>
+        <h4 class="item-name">Estación de Trabajo Corporativa i7 16GB / 1TB SSD</h4>
+        <div class="price-box">
+          <span class="price-normal">$649.990</span>
+          <div class="price-cash">$599.990</div>
+          <span class="price-cash-sub">Efectivo / Transferencia</span>
+        </div>
+        <button class="btn-action">Agregar al pedido</button>
       </div>
 
-      <!-- Producto 4 -->
+      <!-- Ficha 4 -->
       <div class="card">
-        <span class="badge-discount">-15%</span>
-        <img class="product-img" src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&q=80" alt="Monitor">
-        <span class="product-category">Monitores</span>
-        <h4 class="product-name">Monitor Gamer 27" IPS 165Hz 1ms FreeSync</h4>
-        <div class="pricing">
-          <span class="normal-price">$229.990</span>
-          <span class="cash-price">$189.990</span>
-          <span class="cash-label">Efectivo / Transferencia</span>
+        <span class="badge-promo">-15%</span>
+        <div class="product-img-box">
+          <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=350&q=80" alt="Soporte">
         </div>
-        <button class="btn-add">Agregar al carro</button>
+        <div class="sku-stock">
+          <span>SKU: FIX-SRV10</span>
+          <span class="stock-tag">● Planes activos</span>
+        </div>
+        <span class="item-category">Soporte Técnico</span>
+        <h4 class="item-name">Plan Mensual de Mantenimiento y Continuidad TI</h4>
+        <div class="price-box">
+          <span class="price-normal">$90.000/mes</span>
+          <div class="price-cash">$75.000/mes</div>
+          <span class="price-cash-sub">Facturación mensual</span>
+        </div>
+        <button class="btn-action">Contratar plan</button>
       </div>
+
     </div>
   </div>
 
