@@ -251,39 +251,54 @@
     }
 
     /* ========================================================
-       CARRUSEL DE PRODUCTOS / LINEAS DESPLAZABLES (SLIDER)
+       CARRUSELES CON FONDO DE COLOR (MORADO FIXIONARY)
        ======================================================== */
-    .slider-section {
-      margin-bottom: 36px;
+    .slider-section-colored {
+      background-color: var(--fix-purple-start); /* Fondo morado idéntico al botón */
+      border-radius: 12px;
+      padding: 20px 24px 24px;
+      margin-bottom: 32px;
       position: relative;
+      box-shadow: 0 8px 24px rgba(106, 0, 244, 0.18);
     }
 
-    .slider-header {
-      margin-bottom: 14px;
+    /* Variante en degradado suave o púrpura profundo si quieres diferenciarlo */
+    .slider-section-colored.secondary-theme {
+      background: linear-gradient(135deg, #5100d8 0%, #3a00a5 100%);
+    }
+
+    .slider-header-colored {
+      margin-bottom: 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .slider-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--text-dark);
+    .slider-title-colored {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #ffffff; /* Texto blanco sobre el fondo morado */
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
-    .slider-title::before {
+    .slider-title-colored::before {
       content: "";
-      width: 4px;
-      height: 16px;
-      background: var(--fix-purple-start);
-      border-radius: 2px;
+      width: 5px;
+      height: 18px;
+      background: #00d4ff; /* Acento cian */
+      border-radius: 3px;
       display: inline-block;
     }
 
-    /* Contenedor relativo para las flechas y la fila */
+    .slider-subtitle-colored {
+      color: #e5dbff;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Wrapper relativo para las flechas y la fila */
     .slider-wrapper {
       position: relative;
       display: flex;
@@ -296,69 +311,70 @@
       gap: 16px;
       overflow-x: auto;
       scroll-behavior: smooth;
-      padding: 8px 4px 12px;
+      padding: 6px 4px 10px;
       width: 100%;
-      scrollbar-width: none; /* Firefox */
+      scrollbar-width: none;
     }
 
     .product-track::-webkit-scrollbar {
-      display: none; /* Chrome, Safari */
+      display: none;
     }
 
-    /* Botones circulares de flechas < y > */
+    /* Botones de navegación < y > */
     .slider-arrow {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       background: #ffffff;
-      border: 1px solid var(--border-color);
+      border: none;
       border-radius: 50%;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
       cursor: pointer;
       z-index: 10;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-weight: 800;
-      color: var(--text-dark);
+      color: var(--fix-purple-start);
       transition: background 0.2s, transform 0.15s, color 0.2s;
     }
 
     .slider-arrow:hover {
-      background: var(--fix-purple-start);
+      background: var(--top-dark-bar);
       color: #ffffff;
-      transform: translateY(-50%) scale(1.05);
+      transform: translateY(-50%) scale(1.08);
     }
 
     .slider-arrow.prev {
-      left: -16px;
+      left: -14px;
     }
 
     .slider-arrow.next {
-      right: -16px;
+      right: -14px;
     }
 
-    /* Tarjeta de producto compacta estilo PC Factory */
+    /* Tarjetas de Producto en Fondo Blanco */
     .card {
       min-width: 220px;
       max-width: 220px;
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
+      background: #ffffff;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
       padding: 14px;
       display: flex;
       flex-direction: column;
       position: relative;
       flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       transition: box-shadow 0.2s, transform 0.2s;
     }
 
     .card:hover {
-      box-shadow: 0 6px 16px rgba(106, 0, 244, 0.1);
-      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+      transform: translateY(-4px);
     }
 
     .badge-promo {
@@ -380,7 +396,7 @@
       align-items: center;
       justify-content: center;
       background-color: #fafafa;
-      border-radius: 4px;
+      border-radius: 6px;
       margin-bottom: 10px;
     }
 
@@ -802,11 +818,14 @@
     </section>
 
     <!-- ==============================================
-         LÍNEA 1: PRODUCTOS DESTACADOS (DESPLAZABLE)
+         LÍNEA 1: PRODUCTOS DESTACADOS (FONDO MORADO FIXIONARY)
          ============================================== -->
-    <section id="destacados" class="slider-section">
-      <div class="slider-header">
-        <h3 class="slider-title">Los más destacados</h3>
+    <section id="destacados" class="slider-section-colored">
+      <div class="slider-header-colored">
+        <div>
+          <h3 class="slider-title-colored">Los más destacados</h3>
+          <span class="slider-subtitle-colored">Soluciones y equipos recomendados para tu empresa</span>
+        </div>
       </div>
 
       <div class="slider-wrapper">
@@ -921,11 +940,14 @@
     </section>
 
     <!-- ==============================================
-         LÍNEA 2: LOS MÁS COMPRADOS (DESPLAZABLE)
+         LÍNEA 2: LOS MÁS COMPRADOS (FONDO MORADO FIXIONARY SECUNDARIO)
          ============================================== -->
-    <section id="mas-comprados" class="slider-section">
-      <div class="slider-header">
-        <h3 class="slider-title">Los más comprados</h3>
+    <section id="mas-comprados" class="slider-section-colored secondary-theme">
+      <div class="slider-header-colored">
+        <div>
+          <h3 class="slider-title-colored">Los más comprados</h3>
+          <span class="slider-subtitle-colored">Componentes, energía y periféricos con mayor demanda</span>
+        </div>
       </div>
 
       <div class="slider-wrapper">
@@ -1043,7 +1065,6 @@
 
   <!-- SCRIPTS -->
   <script>
-    // Abrir y cerrar el menú lateral
     function toggleMenu() {
       const drawer = document.getElementById('sidebarDrawer');
       const overlay = document.getElementById('menuOverlay');
@@ -1051,13 +1072,11 @@
       overlay.classList.toggle('active');
     }
 
-    // Desplegar subcategorías en el drawer
     function toggleCategory(btn) {
       const item = btn.parentElement;
       item.classList.toggle('open');
     }
 
-    // Desplazar las filas con las flechas < y >
     function scrollSlider(trackId, amount) {
       const track = document.getElementById(trackId);
       track.scrollBy({ left: amount, behavior: 'smooth' });
