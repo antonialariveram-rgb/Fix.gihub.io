@@ -3,26 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fixionary | Soluciones y Modelos Tecnológicos</title>
+  <title>Fixionary | Innovamos junto a ti</title>
   <style>
     :root {
-      /* Paleta exacta de Fixionary */
-      --fix-purple-start: #7b2cbf;
-      --fix-purple-mid: #5a189a;
-      --fix-purple-dark: #240046;
-      --fix-gradient: linear-gradient(135deg, #7b2cbf 0%, #5a189a 45%, #240046 100%);
+      /* Paleta degradada Fixionary */
+      --fix-purple: #6a00f4;
+      --fix-blue: #0044ff;
+      --fix-gradient: linear-gradient(135deg, #7b00ff 0%, #4f00e8 45%, #0d00a4 100%);
       
-      --fix-blue-btn: #0066ff;
-      --fix-blue-hover: #0052cc;
-      --fix-cyan-accent: #00d4ff;
-      --fix-red-badge: #e63946;
+      --fix-dark-bar: #16003b;
+      --fix-sub-bar: #0f002b;
+      --btn-blue: #0059ff;
+      --btn-blue-hover: #0045c7;
       
-      /* Fondos y textos */
-      --bg-page: #f6f7fb;
+      --bg-page: #f5f6fa;
       --card-bg: #ffffff;
-      --border-color: #e2e8f0;
-      --text-dark: #1e293b;
-      --text-muted: #64748b;
+      --border-color: #e5e7eb;
+      --text-dark: #111827;
+      --text-muted: #6b7280;
     }
 
     * {
@@ -35,57 +33,84 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
       background-color: var(--bg-page);
       color: var(--text-dark);
-      font-size: 13.5px; /* Tipografía reducida y legible */
+      font-size: 13.5px;
       line-height: 1.5;
     }
 
-    /* Barra Superior / Header */
+    /* Barra Superior */
     header {
-      background: var(--fix-purple-dark);
+      background: var(--fix-dark-bar);
       color: #ffffff;
-      padding: 10px 24px;
+      padding: 10px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 90;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    /* Botón Hamburguesa 3 líneas */
+    .menu-btn {
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 1.4rem;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 6px;
+    }
+
+    .menu-btn span {
+      display: block;
+      width: 22px;
+      height: 2.5px;
+      background: #ffffff;
+      border-radius: 2px;
     }
 
     .brand-logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       text-decoration: none;
       color: #ffffff;
       font-size: 1.3rem;
       font-weight: 800;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.4px;
     }
 
-    .logo-icon {
+    .brand-icon {
       background: #ffffff;
-      color: var(--fix-purple-dark);
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
+      color: var(--fix-purple);
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 900;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
     }
 
     .search-box {
       flex: 1;
-      max-width: 550px;
+      max-width: 520px;
       display: flex;
     }
 
     .search-box input {
       width: 100%;
-      padding: 8px 14px;
+      padding: 8px 12px;
       border: none;
       border-radius: 4px 0 0 4px;
       font-size: 0.85rem;
@@ -93,45 +118,47 @@
     }
 
     .search-box button {
-      background: var(--fix-blue-btn);
-      color: #ffffff;
+      background: var(--btn-blue);
+      color: #fff;
       border: none;
-      padding: 0 18px;
+      padding: 0 16px;
       font-size: 0.85rem;
       font-weight: 600;
       border-radius: 0 4px 4px 0;
       cursor: pointer;
-      transition: background 0.2s;
     }
 
     .search-box button:hover {
-      background: var(--fix-blue-hover);
+      background: var(--btn-blue-hover);
     }
 
-    .header-links {
+    .top-links {
       display: flex;
-      gap: 18px;
-      font-size: 0.82rem;
+      gap: 20px;
+      align-items: center;
     }
 
-    .header-links a {
+    .top-links a {
       color: #ffffff;
       text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
     }
 
-    /* Barra de Navegación de Categorías */
-    nav {
-      background: #190033;
+    .top-links a:hover {
+      color: #cbd5e1;
+    }
+
+    /* Subbarra horizontal */
+    nav.sub-nav {
+      background: var(--fix-sub-bar);
       padding: 8px 24px;
       display: flex;
       gap: 22px;
       overflow-x: auto;
     }
 
-    nav a {
+    nav.sub-nav a {
       color: #cbd5e1;
       text-decoration: none;
       font-size: 0.8rem;
@@ -139,15 +166,15 @@
       white-space: nowrap;
     }
 
-    nav a:hover {
-      color: var(--fix-cyan-accent);
+    nav.sub-nav a:hover {
+      color: #ffffff;
     }
 
-    /* Hero Banner estilo Fixionary */
+    /* HERO BANNER con degradado Fixionary */
     .hero-banner {
       background: var(--fix-gradient);
       color: #ffffff;
-      padding: 50px 24px;
+      padding: 55px 24px;
       text-align: center;
     }
 
@@ -159,54 +186,50 @@
     .hero-inner h1 {
       font-size: 2.3rem;
       font-weight: 800;
-      line-height: 1.15;
       margin-bottom: 12px;
     }
 
     .hero-inner p {
-      font-size: 0.95rem;
-      color: #e9d5ff;
+      font-size: 1rem;
+      color: #e5dbff;
       margin-bottom: 24px;
-      font-weight: 400;
     }
 
-    .btn-contact {
+    .btn-hero {
       display: inline-block;
-      background: var(--fix-blue-btn);
+      background: var(--btn-blue);
       color: #ffffff;
       padding: 10px 28px;
       border-radius: 6px;
       text-decoration: none;
       font-weight: 700;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       transition: background 0.2s, transform 0.1s;
     }
 
-    .btn-contact:hover {
-      background: var(--fix-blue-hover);
+    .btn-hero:hover {
+      background: var(--btn-blue-hover);
       transform: translateY(-1px);
     }
 
-    /* Contenedor Principal */
     .container {
       max-width: 1200px;
       margin: 24px auto;
       padding: 0 16px;
     }
 
-    /* Sección Empresa / Información institucional */
+    /* Sección Empresa */
     .company-card {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 8px;
       padding: 22px 26px;
       margin-bottom: 24px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
     }
 
     .company-card h2 {
-      font-size: 1.18rem;
-      color: var(--fix-purple-mid);
+      font-size: 1.15rem;
+      color: var(--fix-purple);
       margin-bottom: 8px;
       display: flex;
       align-items: center;
@@ -217,18 +240,18 @@
       content: "";
       width: 4px;
       height: 16px;
-      background: var(--fix-purple-mid);
+      background: var(--fix-purple);
       border-radius: 2px;
       display: inline-block;
     }
 
     .company-card p {
       color: var(--text-muted);
-      font-size: 0.86rem;
+      font-size: 0.88rem;
       line-height: 1.6;
     }
 
-    /* Encabezado del Catálogo */
+    /* Catálogo de Modelos */
     .catalog-header {
       margin-bottom: 14px;
       display: flex;
@@ -249,12 +272,11 @@
       content: "";
       width: 4px;
       height: 16px;
-      background: var(--fix-purple-mid);
+      background: var(--fix-purple);
       border-radius: 2px;
       display: inline-block;
     }
 
-    /* Grid de Fichas estilo PC Factory */
     .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
@@ -273,7 +295,7 @@
     }
 
     .card:hover {
-      box-shadow: 0 6px 16px rgba(90, 24, 154, 0.1);
+      box-shadow: 0 6px 16px rgba(106, 0, 244, 0.1);
       transform: translateY(-2px);
     }
 
@@ -281,7 +303,7 @@
       position: absolute;
       top: 10px;
       left: 10px;
-      background: var(--fix-red-badge);
+      background: #e63946;
       color: #ffffff;
       font-size: 0.68rem;
       font-weight: 800;
@@ -323,7 +345,7 @@
       font-size: 0.7rem;
       text-transform: uppercase;
       font-weight: 700;
-      color: var(--fix-purple-mid);
+      color: var(--fix-purple);
       margin-bottom: 4px;
     }
 
@@ -336,7 +358,6 @@
       min-height: 36px;
     }
 
-    /* Caja de Precios PC Factory */
     .price-box {
       margin-top: auto;
       border-top: 1px solid var(--border-color);
@@ -352,7 +373,7 @@
     .price-cash {
       font-size: 1.2rem;
       font-weight: 800;
-      color: var(--fix-purple-dark);
+      color: var(--fix-dark-bar);
       line-height: 1.1;
     }
 
@@ -366,7 +387,7 @@
     .btn-action {
       width: 100%;
       margin-top: 10px;
-      background-color: var(--fix-purple-mid);
+      background-color: var(--fix-purple);
       color: #ffffff;
       border: none;
       padding: 7px 10px;
@@ -378,56 +399,354 @@
     }
 
     .btn-action:hover {
-      background-color: var(--fix-purple-dark);
+      background-color: var(--fix-dark-bar);
+    }
+
+    /* ========================================================
+       MENÚ LATERAL DESPLEGABLE (DRAWER) - ESTILO PC FACTORY
+       ======================================================== */
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 998;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .menu-overlay.active {
+      display: block;
+      opacity: 1;
+    }
+
+    .sidebar-drawer {
+      position: fixed;
+      top: 0;
+      left: -360px;
+      width: 340px;
+      height: 100%;
+      background: #ffffff;
+      z-index: 999;
+      box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+      transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .sidebar-drawer.active {
+      left: 0;
+    }
+
+    /* Top del Drawer */
+    .drawer-header {
+      padding: 20px;
+      border-bottom: 1px solid var(--border-color);
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .drawer-user {
+      margin-bottom: 16px;
+    }
+
+    .drawer-user h4 {
+      font-size: 1rem;
+      color: var(--text-dark);
+      margin-bottom: 2px;
+    }
+
+    .drawer-user p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .btn-drawer-login {
+      display: block;
+      width: 100%;
+      background: var(--btn-blue);
+      color: #ffffff;
+      text-align: center;
+      padding: 10px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    /* Lista de Categorías */
+    .drawer-section-title {
+      padding: 14px 20px 8px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .drawer-section-title span {
+      color: var(--btn-blue);
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .category-list {
+      list-style: none;
+    }
+
+    .category-item {
+      border-bottom: 1px solid #f1f3f5;
+    }
+
+    .category-btn {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 12px 20px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: #334155;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .category-btn:hover {
+      background-color: #f8fafc;
+      color: var(--fix-purple);
+    }
+
+    .category-btn .arrow {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      transition: transform 0.2s;
+    }
+
+    .category-item.open .arrow {
+      transform: rotate(90deg);
+      color: var(--fix-purple);
+    }
+
+    .subcategory-list {
+      display: none;
+      list-style: none;
+      background-color: #fafbfc;
+      padding: 6px 0 10px 24px;
+    }
+
+    .category-item.open .subcategory-list {
+      display: block;
+    }
+
+    .subcategory-list li a {
+      display: block;
+      padding: 6px 16px;
+      font-size: 0.78rem;
+      color: #475569;
+      text-decoration: none;
+    }
+
+    .subcategory-list li a:hover {
+      color: var(--fix-purple);
+      font-weight: 600;
     }
   </style>
 </head>
 <body>
 
-  <!-- Barra Superior -->
+  <!-- Overlay para cerrar el menú al hacer clic fuera -->
+  <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+
+  <!-- MENU LATERAL / DRAWER ESTILO PC FACTORY -->
+  <aside class="sidebar-drawer" id="sidebarDrawer">
+    <div class="drawer-header">
+      <button class="close-btn" onclick="toggleMenu()">✕</button>
+      <div class="drawer-user">
+        <h4>¡Hola!</h4>
+        <p>Ingresa a tu cuenta para cotizar y comprar</p>
+      </div>
+      <a href="#" class="btn-drawer-login">Inicia sesión</a>
+    </div>
+
+    <div class="drawer-section-title">
+      Categorías
+      <span>Ver todas</span>
+    </div>
+
+    <ul class="category-list">
+
+      <!-- 1. Computadores -->
+      <li class="category-item">
+        <button class="category-btn" onclick="toggleCategory(this)">
+          Computadores
+          <span class="arrow">›</span>
+        </button>
+        <ul class="subcategory-list">
+          <li><a href="#">Lenovo</a></li>
+          <li><a href="#">Dell</a></li>
+          <li><a href="#">Asus</a></li>
+          <li><a href="#">Mac</a></li>
+          <li><a href="#">HP</a></li>
+        </ul>
+      </li>
+
+      <!-- 2. Accesorios y periféricos -->
+      <li class="category-item">
+        <button class="category-btn" onclick="toggleCategory(this)">
+          Accesorios y periféricos
+          <span class="arrow">›</span>
+        </button>
+        <ul class="subcategory-list">
+          <li><a href="#">Mouses y Teclados</a></li>
+          <li><a href="#">Accesorios computadores</a></li>
+          <li><a href="#">Accesorios celulares</a></li>
+          <li><a href="#">Accesorios cámaras</a></li>
+          <li><a href="#">Adaptadores y conversores</a></li>
+          <li><a href="#">Cables y adaptadores</a></li>
+          <li><a href="#">Mantención y limpieza</a></li>
+          <li><a href="#">Accesorios de monitores</a></li>
+        </ul>
+      </li>
+
+      <!-- 3. Energía -->
+      <li class="category-item">
+        <button class="category-btn" onclick="toggleCategory(this)">
+          Energía
+          <span class="arrow">›</span>
+        </button>
+        <ul class="subcategory-list">
+          <li><a href="#">Power Bank</a></li>
+          <li><a href="#">Baterías</a></li>
+          <li><a href="#">Cargadores Notebooks</a></li>
+        </ul>
+      </li>
+
+      <!-- 4. Monitores -->
+      <li class="category-item">
+        <button class="category-btn" onclick="toggleCategory(this)">
+          Monitores
+          <span class="arrow">›</span>
+        </button>
+        <ul class="subcategory-list">
+          <li><a href="#">Accesorios monitores</a></li>
+        </ul>
+      </li>
+
+      <!-- 5. Almacenamiento y Discos Duros -->
+      <li class="category-item">
+        <button class="category-btn" onclick="toggleCategory(this)">
+          Almacenamiento y Discos Duros
+          <span class="arrow">›</span>
+        </button>
+        <ul class="subcategory-list">
+          <li><a href="#">Discos internos SSD</a></li>
+          <li><a href="#">Discos internos HDD</a></li>
+          <li><a href="#">Discos Externos HDD</a></li>
+          <li><a href="#">Memorias Flash</a></li>
+          <li><a href="#">Pendrives</a></li>
+          <li><a href="#">Enclosure (Cofres)</a></li>
+        </ul>
+      </li>
+
+      <!-- 6. Impresoras -->
+      <li class="category-item">
+        <button class="category-btn" onclick="toggleCategory(this)">
+          Impresoras
+          <span class="arrow">›</span>
+        </button>
+        <ul class="subcategory-list">
+          <li><a href="#">Suministros</a></li>
+        </ul>
+      </li>
+
+      <!-- 7. Audio -->
+      <li class="category-item">
+        <button class="category-btn" onclick="toggleCategory(this)">
+          Audio
+          <span class="arrow">›</span>
+        </button>
+        <ul class="subcategory-list">
+          <li><a href="#">Audífonos</a></li>
+          <li><a href="#">Parlantes</a></li>
+          <li><a href="#">Accesorios de audio</a></li>
+        </ul>
+      </li>
+
+    </ul>
+  </aside>
+
+  <!-- BARRA PRINCIPAL -->
   <header>
-    <a href="#" class="brand-logo">
-      <div class="logo-icon">F</div>
-      <span>Fixionary</span>
-    </a>
+    <div class="header-left">
+      <!-- Botón 3 líneas -->
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Abrir categorías">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <a href="#" class="brand-logo">
+        <div class="brand-icon">F</div>
+        <span>Fixionary</span>
+      </a>
+    </div>
     
     <div class="search-box">
-      <input type="text" placeholder="Buscar soluciones, modelos o servicios...">
+      <input type="text" placeholder="Busca aquí la tecnología para ti...">
       <button>Buscar</button>
     </div>
 
-    <div class="header-links">
-      <a href="#empresa">🏢 Empresa</a>
-      <a href="#modelos">💼 Modelos</a>
-      <a href="#contacto">📞 Contacto</a>
+    <!-- Enlaces superiores sin emojis -->
+    <div class="top-links">
+      <a href="#empresa">Empresa</a>
+      <a href="#modelos">Modelos</a>
+      <a href="#contacto">Contacto</a>
     </div>
   </header>
 
-  <!-- Navegación de Categorías -->
-  <nav>
+  <!-- Subbarra horizontal -->
+  <nav class="sub-nav">
     <a href="#modelos">Todos los Modelos</a>
     <a href="#modelos">Desarrollo Web & Software</a>
     <a href="#modelos">Soluciones Móviles</a>
-    <a href="#modelos">Equipos & Servidores</a>
+    <a href="#modelos">Equipos y Servidores</a>
     <a href="#modelos">Soporte Continuo</a>
   </nav>
 
-  <!-- Hero Banner con el degradado púrpura de Fixionary -->
+  <!-- Hero Banner con degradado Fixionary -->
   <section class="hero-banner">
     <div class="hero-inner">
       <h1>¡Innovamos junto a ti!</h1>
       <p>Transformamos ideas en soluciones reales para tu empresa</p>
-      <a href="#contacto" class="btn-contact">Contactanos!</a>
+      <a href="#contacto" class="btn-hero">Contactanos!</a>
     </div>
   </section>
 
   <div class="container">
 
-    <!-- Sección Institucional de la Empresa -->
+    <!-- Sección Institucional con la frase solicitada -->
     <section id="empresa" class="company-card">
       <h2>Sobre Fixionary</h2>
       <p>
-        En <strong>Fixionary</strong> nos especializamos en transformar ideas en herramientas tecnológicas funcionales y escalables. Combinamos desarrollo digital avanzado, integración de sistemas y soporte integral para llevar a tu empresa al siguiente nivel operativo.
+        Nos especializamos en brindar soluciones de calidad, ofreciendo soporte técnico, desarrollo de software y consultoría adaptada a las necesidades de cada cliente.
       </p>
     </section>
 
@@ -519,6 +838,21 @@
 
     </div>
   </div>
+
+  <!-- Script interactivo del menú desplegable -->
+  <script>
+    function toggleMenu() {
+      const drawer = document.getElementById('sidebarDrawer');
+      const overlay = document.getElementById('menuOverlay');
+      drawer.classList.toggle('active');
+      overlay.classList.toggle('active');
+    }
+
+    function toggleCategory(button) {
+      const item = button.parentElement;
+      item.classList.toggle('open');
+    }
+  </script>
 
 </body>
 </html>
