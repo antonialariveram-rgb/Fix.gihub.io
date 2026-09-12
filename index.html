@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fixionary | Innovamos junto a ti</title>
+  <title>Fixionary | Soluciones y Tecnología</title>
   <style>
     :root {
-      /* Paleta degradada Fixionary */
-      --fix-purple: #6a00f4;
-      --fix-blue: #0044ff;
-      --fix-gradient: linear-gradient(135deg, #7b00ff 0%, #4f00e8 45%, #0d00a4 100%);
+      /* Colores Fixionary */
+      --fix-purple-start: #6a00f4;
+      --fix-purple-mid: #5100d8;
+      --fix-blue-end: #09009f;
+      --fix-gradient: linear-gradient(135deg, #7b00ff 0%, #4c00e6 50%, #0d00a4 100%);
       
-      --fix-dark-bar: #16003b;
-      --fix-sub-bar: #0f002b;
-      --btn-blue: #0059ff;
-      --btn-blue-hover: #0045c7;
+      --top-dark-bar: #140033;
+      --sub-dark-bar: #0c0022;
+      --btn-blue: #0066ff;
+      --btn-blue-hover: #004edb;
+      --accent-red: #e63946;
       
       --bg-page: #f5f6fa;
       --card-bg: #ffffff;
@@ -37,9 +39,9 @@
       line-height: 1.5;
     }
 
-    /* Barra Superior */
+    /* BARRA SUPERIOR (HEADER) */
     header {
-      background: var(--fix-dark-bar);
+      background: var(--top-dark-bar);
       color: #ffffff;
       padding: 10px 20px;
       display: flex;
@@ -57,16 +59,14 @@
       gap: 14px;
     }
 
-    /* Botón Hamburguesa 3 líneas */
+    /* Botón de 3 líneas estilo PC Factory */
     .menu-btn {
       background: none;
       border: none;
-      color: #ffffff;
-      font-size: 1.4rem;
       cursor: pointer;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 4.5px;
       padding: 6px;
     }
 
@@ -91,7 +91,7 @@
 
     .brand-icon {
       background: #ffffff;
-      color: var(--fix-purple);
+      color: var(--fix-purple-start);
       width: 30px;
       height: 30px;
       border-radius: 6px;
@@ -132,6 +132,7 @@
       background: var(--btn-blue-hover);
     }
 
+    /* Enlaces superiores SIN EMOJIS */
     .top-links {
       display: flex;
       gap: 20px;
@@ -149,9 +150,9 @@
       color: #cbd5e1;
     }
 
-    /* Subbarra horizontal */
+    /* SUBBARRA HORIZONTAL */
     nav.sub-nav {
-      background: var(--fix-sub-bar);
+      background: var(--sub-dark-bar);
       padding: 8px 24px;
       display: flex;
       gap: 22px;
@@ -170,7 +171,7 @@
       color: #ffffff;
     }
 
-    /* HERO BANNER con degradado Fixionary */
+    /* HERO BANNER CON DEGRADADO PURPURA A AZUL */
     .hero-banner {
       background: var(--fix-gradient);
       color: #ffffff;
@@ -218,7 +219,7 @@
       padding: 0 16px;
     }
 
-    /* Sección Empresa */
+    /* SECCION EMPRESA CON EL TEXTO EXACTO */
     .company-card {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
@@ -229,7 +230,7 @@
 
     .company-card h2 {
       font-size: 1.15rem;
-      color: var(--fix-purple);
+      color: var(--fix-purple-start);
       margin-bottom: 8px;
       display: flex;
       align-items: center;
@@ -240,7 +241,7 @@
       content: "";
       width: 4px;
       height: 16px;
-      background: var(--fix-purple);
+      background: var(--fix-purple-start);
       border-radius: 2px;
       display: inline-block;
     }
@@ -251,7 +252,7 @@
       line-height: 1.6;
     }
 
-    /* Catálogo de Modelos */
+    /* CATALOGO ESTILO PC FACTORY */
     .catalog-header {
       margin-bottom: 14px;
       display: flex;
@@ -272,7 +273,7 @@
       content: "";
       width: 4px;
       height: 16px;
-      background: var(--fix-purple);
+      background: var(--fix-purple-start);
       border-radius: 2px;
       display: inline-block;
     }
@@ -303,7 +304,7 @@
       position: absolute;
       top: 10px;
       left: 10px;
-      background: #e63946;
+      background: var(--accent-red);
       color: #ffffff;
       font-size: 0.68rem;
       font-weight: 800;
@@ -345,7 +346,7 @@
       font-size: 0.7rem;
       text-transform: uppercase;
       font-weight: 700;
-      color: var(--fix-purple);
+      color: var(--fix-purple-start);
       margin-bottom: 4px;
     }
 
@@ -373,7 +374,7 @@
     .price-cash {
       font-size: 1.2rem;
       font-weight: 800;
-      color: var(--fix-dark-bar);
+      color: var(--top-dark-bar);
       line-height: 1.1;
     }
 
@@ -387,7 +388,7 @@
     .btn-action {
       width: 100%;
       margin-top: 10px;
-      background-color: var(--fix-purple);
+      background-color: var(--fix-purple-start);
       color: #ffffff;
       border: none;
       padding: 7px 10px;
@@ -399,11 +400,11 @@
     }
 
     .btn-action:hover {
-      background-color: var(--fix-dark-bar);
+      background-color: var(--top-dark-bar);
     }
 
     /* ========================================================
-       MENÚ LATERAL DESPLEGABLE (DRAWER) - ESTILO PC FACTORY
+       MENÚ LATERAL DESPLEGABLE (DRAWER) ESTILO PC FACTORY
        ======================================================== */
     .menu-overlay {
       position: fixed;
@@ -414,13 +415,10 @@
       background: rgba(0, 0, 0, 0.5);
       z-index: 998;
       display: none;
-      opacity: 0;
-      transition: opacity 0.3s ease;
     }
 
     .menu-overlay.active {
       display: block;
-      opacity: 1;
     }
 
     .sidebar-drawer {
@@ -442,7 +440,6 @@
       left: 0;
     }
 
-    /* Top del Drawer */
     .drawer-header {
       padding: 20px;
       border-bottom: 1px solid var(--border-color);
@@ -488,7 +485,6 @@
       font-size: 0.85rem;
     }
 
-    /* Lista de Categorías */
     .drawer-section-title {
       padding: 14px 20px 8px;
       font-size: 0.82rem;
@@ -531,7 +527,7 @@
 
     .category-btn:hover {
       background-color: #f8fafc;
-      color: var(--fix-purple);
+      color: var(--fix-purple-start);
     }
 
     .category-btn .arrow {
@@ -542,7 +538,7 @@
 
     .category-item.open .arrow {
       transform: rotate(90deg);
-      color: var(--fix-purple);
+      color: var(--fix-purple-start);
     }
 
     .subcategory-list {
@@ -565,17 +561,17 @@
     }
 
     .subcategory-list li a:hover {
-      color: var(--fix-purple);
+      color: var(--fix-purple-start);
       font-weight: 600;
     }
   </style>
 </head>
 <body>
 
-  <!-- Overlay para cerrar el menú al hacer clic fuera -->
+  <!-- Overlay para cerrar el menú lateral -->
   <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
 
-  <!-- MENU LATERAL / DRAWER ESTILO PC FACTORY -->
+  <!-- MENU LATERAL DESPLEGABLE CON TUS CATEGORÍAS -->
   <aside class="sidebar-drawer" id="sidebarDrawer">
     <div class="drawer-header">
       <button class="close-btn" onclick="toggleMenu()">✕</button>
@@ -731,7 +727,7 @@
     <a href="#modelos">Soporte Continuo</a>
   </nav>
 
-  <!-- Hero Banner con degradado Fixionary -->
+  <!-- Hero Banner con degradado púrpura a azul -->
   <section class="hero-banner">
     <div class="hero-inner">
       <h1>¡Innovamos junto a ti!</h1>
@@ -742,7 +738,7 @@
 
   <div class="container">
 
-    <!-- Sección Institucional con la frase solicitada -->
+    <!-- Sección Institucional con la frase exacta -->
     <section id="empresa" class="company-card">
       <h2>Sobre Fixionary</h2>
       <p>
@@ -839,7 +835,7 @@
     </div>
   </div>
 
-  <!-- Script interactivo del menú desplegable -->
+  <!-- Lógica para abrir y cerrar el menú de tres líneas y categorías -->
   <script>
     function toggleMenu() {
       const drawer = document.getElementById('sidebarDrawer');
@@ -848,8 +844,8 @@
       overlay.classList.toggle('active');
     }
 
-    function toggleCategory(button) {
-      const item = button.parentElement;
+    function toggleCategory(btn) {
+      const item = btn.parentElement;
       item.classList.toggle('open');
     }
   </script>
