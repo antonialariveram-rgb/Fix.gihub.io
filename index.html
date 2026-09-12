@@ -169,7 +169,7 @@
       color: #ffffff;
     }
 
-    /* HERO BANNER (PROTAGONISTA) */
+    /* HERO BANNER */
     .hero-banner {
       background: var(--fix-gradient);
       color: #ffffff;
@@ -251,22 +251,16 @@
     }
 
     /* ========================================================
-       CARRUSELES CON FONDO MORADO TRANSLÚCIDO / SUTIL
+       CARRUSELES CON EL MISMO MORADO TRANSLÚCIDO
        ======================================================== */
     .slider-section-colored {
-      /* Tinte suave y translúcido de morado (6% de opacidad) */
+      /* Mismo morado transparente para ambas secciones */
       background: rgba(106, 0, 244, 0.06);
       border: 1px solid rgba(106, 0, 244, 0.15);
       border-radius: 12px;
       padding: 20px 22px 24px;
       margin-bottom: 32px;
       position: relative;
-    }
-
-    /* Variante para la segunda sección: tinte azul-morado suave */
-    .slider-section-colored.secondary-theme {
-      background: rgba(0, 68, 255, 0.05);
-      border: 1px solid rgba(0, 68, 255, 0.14);
     }
 
     .slider-header-colored {
@@ -279,7 +273,7 @@
     .slider-title-colored {
       font-size: 1.2rem;
       font-weight: 800;
-      color: var(--text-dark); /* Color oscuro para lectura limpia */
+      color: var(--text-dark);
       display: flex;
       align-items: center;
       gap: 10px;
@@ -302,14 +296,12 @@
       margin-top: 2px;
     }
 
-    /* Wrapper relativo para las flechas y la fila */
     .slider-wrapper {
       position: relative;
       display: flex;
       align-items: center;
     }
 
-    /* Fila deslizante */
     .product-track {
       display: flex;
       gap: 16px;
@@ -324,7 +316,6 @@
       display: none;
     }
 
-    /* Botones de navegación < y > */
     .slider-arrow {
       position: absolute;
       top: 50%;
@@ -822,7 +813,7 @@
     </section>
 
     <!-- ==============================================
-         LÍNEA 1: PRODUCTOS DESTACADOS (FONDO MORADO TRANSLÚCIDO)
+         LÍNEA 1: PRODUCTOS DESTACADOS (MORADO TRANSLÚCIDO)
          ============================================== -->
     <section id="destacados" class="slider-section-colored">
       <div class="slider-header-colored">
@@ -944,9 +935,9 @@
     </section>
 
     <!-- ==============================================
-         LÍNEA 2: LOS MÁS COMPRADOS (FONDO AZUL-MORADO TRANSLÚCIDO)
+         LÍNEA 2: LOS MÁS COMPRADOS (MISMO MORADO TRANSLÚCIDO)
          ============================================== -->
-    <section id="mas-comprados" class="slider-section-colored secondary-theme">
+    <section id="mas-comprados" class="slider-section-colored">
       <div class="slider-header-colored">
         <div>
           <h3 class="slider-title-colored">Los más comprados</h3>
