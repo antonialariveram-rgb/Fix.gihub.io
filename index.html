@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechStore - Al estilo PC Factory</title>
+  <style>
+    :root {
+      --pcf-blue: #0b2545;
+      --pcf-blue-light: #134074;
+      --pcf-red: #e63946;
+      --pcf-gray-bg: #f4f5f7;
+      --pcf-border: #e2e8f0;
+      --text-dark: #1e293b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background-color: var(--pcf-gray-bg);
+      color: var(--text-dark);
+    }
+
+    /* Top Header */
+    header {
+      background-color: var(--pcf-blue);
+      color: #ffffff;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--pcf-red);
+    }
+
+    .search-bar {
+      flex: 1;
+      max-width: 600px;
+      display: flex;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 10px 14px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      outline: none;
+      font-size: 0.95rem;
+    }
+
+    .search-bar button {
+      background-color: var(--pcf-red);
+      border: none;
+      color: #fff;
+      padding: 0 18px;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .user-actions {
+      display: flex;
+      gap: 16px;
+      font-size: 0.9rem;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: var(--pcf-blue-light);
+      display: flex;
+      gap: 20px;
+      padding: 10px 20px;
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      overflow-x: auto;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    nav a:hover {
+      color: #fca5a5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    /* Banner Promocional */
+    .hero-banner {
+      background: linear-gradient(135deg, #0b2545 0%, #1e3a8a 100%);
+      color: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .hero-banner h2 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .hero-banner p {
+      color: #cbd5e1;
+    }
+
+    /* Grid de Productos */
+    .section-title {
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title::before {
+      content: "";
+      display: inline-block;
+      width: 5px;
+      height: 20px;
+      background: var(--pcf-red);
+      border-radius: 2px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid var(--pcf-border);
+      border-radius: 8px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    }
+
+    .badge-discount {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: var(--pcf-red);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .product-img {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      margin-bottom: 12px;
+      background-color: #fff;
+    }
+
+    .product-category {
+      font-size: 0.75rem;
+      color: #64748b;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .product-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      line-height: 1.3;
+      margin-bottom: 12px;
+      flex-grow: 1;
+    }
+
+    .pricing {
+      margin-top: auto;
+      border-top: 1px solid var(--pcf-border);
+      padding-top: 10px;
+    }
+
+    .normal-price {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      text-decoration: line-through;
+    }
+
+    .cash-price {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--pcf-blue);
+    }
+
+    .cash-label {
+      font-size: 0.7rem;
+      color: #64748b;
+      display: block;
+    }
+
+    .btn-add {
+      width: 100%;
+      margin-top: 12px;
+      background-color: var(--pcf-blue);
+      color: white;
+      border: none;
+      padding: 8px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-add:hover {
+      background-color: var(--pcf-red);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra superior -->
+  <header>
+    <a href="#" class="logo">TECH<span>FACTORY</span></a>
+    <div class="search-bar">
+      <input type="text" placeholder="¿Qué estás buscando? Ej: Notebook, Tarjeta de video...">
+      <button>Buscar</button>
+    </div>
+    <div class="user-actions">
+      <span>👤 Mi Cuenta</span>
+      <span>🛒 Carrito (0)</span>
+    </div>
+  </header>
+
+  <!-- Navegación de categorías -->
+  <nav>
+    <a href="#">Computadores & Tablets</a>
+    <a href="#">Partes & Piezas</a>
+    <a href="#">Accesorios</a>
+    <a href="#">Monitores</a>
+    <a href="#">Zona Gamer</a>
+    <a href="#">Ofertas</a>
+  </nav>
+
+  <div class="container">
+    <!-- Banner estilo tienda tech -->
+    <div class="hero-banner">
+      <div>
+        <h2>SUPER OFERTAS TECH</h2>
+        <p>Componentes, periféricos y equipos con hasta 40% de descuento en efectivo.</p>
+      </div>
+    </div>
+
+    <!-- Sección de Productos -->
+    <h3 class="section-title">Destacados de la semana</h3>
+
+    <div class="product-grid">
+      <!-- Producto 1 -->
+      <div class="card">
+        <span class="badge-discount">-25%</span>
+        <img class="product-img" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&q=80" alt="Notebook">
+        <span class="product-category">Notebooks</span>
+        <h4 class="product-name">Notebook Gamer Pro 15.6" i7 16GB 1TB SSD</h4>
+        <div class="pricing">
+          <span class="normal-price">$1.199.990</span>
+          <span class="cash-price">$899.990</span>
+          <span class="cash-label">Efectivo / Transferencia</span>
+        </div>
+        <button class="btn-add">Agregar al carro</button>
+      </div>
+
+      <!-- Producto 2 -->
+      <div class="card">
+        <span class="badge-discount">-18%</span>
+        <img class="product-img" src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&q=80" alt="Mouse">
+        <span class="product-category">Periféricos</span>
+        <h4 class="product-name">Mouse Inalámbrico RGB Ultraliviano Sensor Óptico</h4>
+        <div class="pricing">
+          <span class="normal-price">$49.990</span>
+          <span class="cash-price">$39.990</span>
+          <span class="cash-label">Efectivo / Transferencia</span>
+        </div>
+        <button class="btn-add">Agregar al carro</button>
+      </div>
+
+      <!-- Producto 3 -->
+      <div class="card">
+        <span class="badge-discount">-30%</span>
+        <img class="product-img" src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&q=80" alt="Teclado">
+        <span class="product-category">Teclados</span>
+        <h4 class="product-name">Teclado Mecánico Switch Red Español Iluminado</h4>
+        <div class="pricing">
+          <span class="normal-price">$79.990</span>
+          <span class="cash-price">$54.990</span>
+          <span class="cash-label">Efectivo / Transferencia</span>
+        </div>
+        <button class="btn-add">Agregar al carro</button>
+      </div>
+
+      <!-- Producto 4 -->
+      <div class="card">
+        <span class="badge-discount">-15%</span>
+        <img class="product-img" src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&q=80" alt="Monitor">
+        <span class="product-category">Monitores</span>
+        <h4 class="product-name">Monitor Gamer 27" IPS 165Hz 1ms FreeSync</h4>
+        <div class="pricing">
+          <span class="normal-price">$229.990</span>
+          <span class="cash-price">$189.990</span>
+          <span class="cash-label">Efectivo / Transferencia</span>
+        </div>
+        <button class="btn-add">Agregar al carro</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
