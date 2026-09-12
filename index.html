@@ -39,7 +39,7 @@
       line-height: 1.5;
     }
 
-    /* BARRA SUPERIOR (HEADER) */
+    /* BARRA SUPERIOR */
     header {
       background: var(--top-dark-bar);
       color: #ffffff;
@@ -59,7 +59,6 @@
       gap: 14px;
     }
 
-    /* Botón de 3 líneas estilo PC Factory */
     .menu-btn {
       background: none;
       border: none;
@@ -132,7 +131,6 @@
       background: var(--btn-blue-hover);
     }
 
-    /* Enlaces superiores SIN EMOJIS */
     .top-links {
       display: flex;
       gap: 20px;
@@ -171,7 +169,7 @@
       color: #ffffff;
     }
 
-    /* HERO BANNER CON DEGRADADO PURPURA A AZUL */
+    /* HERO BANNER */
     .hero-banner {
       background: var(--fix-gradient);
       color: #ffffff;
@@ -219,13 +217,13 @@
       padding: 0 16px;
     }
 
-    /* SECCION EMPRESA CON EL TEXTO EXACTO */
+    /* SECCION EMPRESA */
     .company-card {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 8px;
       padding: 22px 26px;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
     .company-card h2 {
@@ -252,15 +250,22 @@
       line-height: 1.6;
     }
 
-    /* CATALOGO ESTILO PC FACTORY */
-    .catalog-header {
+    /* ========================================================
+       CARRUSEL DE PRODUCTOS / LINEAS DESPLAZABLES (SLIDER)
+       ======================================================== */
+    .slider-section {
+      margin-bottom: 36px;
+      position: relative;
+    }
+
+    .slider-header {
       margin-bottom: 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .catalog-title {
+    .slider-title {
       font-size: 1.15rem;
       font-weight: 700;
       color: var(--text-dark);
@@ -269,7 +274,7 @@
       gap: 8px;
     }
 
-    .catalog-title::before {
+    .slider-title::before {
       content: "";
       width: 4px;
       height: 16px;
@@ -278,13 +283,68 @@
       display: inline-block;
     }
 
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-      gap: 14px;
+    /* Contenedor relativo para las flechas y la fila */
+    .slider-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
     }
 
+    /* Fila deslizante */
+    .product-track {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 8px 4px 12px;
+      width: 100%;
+      scrollbar-width: none; /* Firefox */
+    }
+
+    .product-track::-webkit-scrollbar {
+      display: none; /* Chrome, Safari */
+    }
+
+    /* Botones circulares de flechas < y > */
+    .slider-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 38px;
+      height: 38px;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      transition: background 0.2s, transform 0.15s, color 0.2s;
+    }
+
+    .slider-arrow:hover {
+      background: var(--fix-purple-start);
+      color: #ffffff;
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    .slider-arrow.prev {
+      left: -16px;
+    }
+
+    .slider-arrow.next {
+      right: -16px;
+    }
+
+    /* Tarjeta de producto compacta estilo PC Factory */
     .card {
+      min-width: 220px;
+      max-width: 220px;
       background: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 6px;
@@ -292,6 +352,7 @@
       display: flex;
       flex-direction: column;
       position: relative;
+      flex-shrink: 0;
       transition: box-shadow 0.2s, transform 0.2s;
     }
 
@@ -314,7 +375,7 @@
 
     .product-img-box {
       width: 100%;
-      height: 150px;
+      height: 140px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -372,7 +433,7 @@
     }
 
     .price-cash {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 800;
       color: var(--top-dark-bar);
       line-height: 1.1;
@@ -403,9 +464,7 @@
       background-color: var(--top-dark-bar);
     }
 
-    /* ========================================================
-       MENÚ LATERAL DESPLEGABLE (DRAWER) ESTILO PC FACTORY
-       ======================================================== */
+    /* DRAWER LATERAL */
     .menu-overlay {
       position: fixed;
       top: 0;
@@ -571,7 +630,7 @@
   <!-- Overlay para cerrar el menú lateral -->
   <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
 
-  <!-- MENU LATERAL DESPLEGABLE CON TUS CATEGORÍAS -->
+  <!-- MENU LATERAL DESPLEGABLE CON CATEGORÍAS -->
   <aside class="sidebar-drawer" id="sidebarDrawer">
     <div class="drawer-header">
       <button class="close-btn" onclick="toggleMenu()">✕</button>
@@ -588,7 +647,6 @@
     </div>
 
     <ul class="category-list">
-
       <!-- 1. Computadores -->
       <li class="category-item">
         <button class="category-btn" onclick="toggleCategory(this)">
@@ -685,14 +743,12 @@
           <li><a href="#">Accesorios de audio</a></li>
         </ul>
       </li>
-
     </ul>
   </aside>
 
   <!-- BARRA PRINCIPAL -->
   <header>
     <div class="header-left">
-      <!-- Botón 3 líneas -->
       <button class="menu-btn" onclick="toggleMenu()" aria-label="Abrir categorías">
         <span></span>
         <span></span>
@@ -710,24 +766,23 @@
       <button>Buscar</button>
     </div>
 
-    <!-- Enlaces superiores sin emojis -->
     <div class="top-links">
       <a href="#empresa">Empresa</a>
-      <a href="#modelos">Modelos</a>
+      <a href="#destacados">Modelos</a>
       <a href="#contacto">Contacto</a>
     </div>
   </header>
 
   <!-- Subbarra horizontal -->
   <nav class="sub-nav">
-    <a href="#modelos">Todos los Modelos</a>
-    <a href="#modelos">Desarrollo Web & Software</a>
-    <a href="#modelos">Soluciones Móviles</a>
-    <a href="#modelos">Equipos y Servidores</a>
-    <a href="#modelos">Soporte Continuo</a>
+    <a href="#destacados">Destacados</a>
+    <a href="#mas-comprados">Más Comprados</a>
+    <a href="#destacados">Desarrollo Web & Software</a>
+    <a href="#destacados">Equipos Corporativos</a>
+    <a href="#destacados">Soporte Continuo</a>
   </nav>
 
-  <!-- Hero Banner con degradado púrpura a azul -->
+  <!-- Hero Banner -->
   <section class="hero-banner">
     <div class="hero-inner">
       <h1>¡Innovamos junto a ti!</h1>
@@ -738,7 +793,7 @@
 
   <div class="container">
 
-    <!-- Sección Institucional con la frase exacta -->
+    <!-- Sección Institucional -->
     <section id="empresa" class="company-card">
       <h2>Sobre Fixionary</h2>
       <p>
@@ -746,97 +801,249 @@
       </p>
     </section>
 
-    <!-- Catálogo de Modelos (Estilo PC Factory) -->
-    <div class="catalog-header">
-      <h3 id="modelos" class="catalog-title">Modelos y Soluciones Disponibles</h3>
-    </div>
-
-    <div class="product-grid">
-
-      <!-- Ficha 1 -->
-      <div class="card">
-        <span class="badge-promo">-20%</span>
-        <div class="product-img-box">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=350&q=80" alt="Plataforma Web">
-        </div>
-        <div class="sku-stock">
-          <span>SKU: FIX-MOD01</span>
-          <span class="stock-tag">● Disponible</span>
-        </div>
-        <span class="item-category">Desarrollo Web</span>
-        <h4 class="item-name">Plataforma Web Corporativa con Panel de Control</h4>
-        <div class="price-box">
-          <span class="price-normal">$850.000</span>
-          <div class="price-cash">$680.000</div>
-          <span class="price-cash-sub">Pago contado / transferencia</span>
-        </div>
-        <button class="btn-action">Cotizar modelo</button>
+    <!-- ==============================================
+         LÍNEA 1: PRODUCTOS DESTACADOS (DESPLAZABLE)
+         ============================================== -->
+    <section id="destacados" class="slider-section">
+      <div class="slider-header">
+        <h3 class="slider-title">Los más destacados</h3>
       </div>
 
-      <!-- Ficha 2 -->
-      <div class="card">
-        <span class="badge-promo">DESTACADO</span>
-        <div class="product-img-box">
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=350&q=80" alt="App Movil">
+      <div class="slider-wrapper">
+        <button class="slider-arrow prev" onclick="scrollSlider('track-destacados', -240)" aria-label="Anterior">‹</button>
+        
+        <div class="product-track" id="track-destacados">
+          
+          <!-- Item 1 -->
+          <div class="card">
+            <span class="badge-promo">-20%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=350&q=80" alt="Plataforma Web">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: FIX-MOD01</span>
+              <span class="stock-tag">● Disponible</span>
+            </div>
+            <span class="item-category">Desarrollo Web</span>
+            <h4 class="item-name">Plataforma Web Corporativa con Panel de Control</h4>
+            <div class="price-box">
+              <span class="price-normal">$850.000</span>
+              <div class="price-cash">$680.000</div>
+              <span class="price-cash-sub">Pago contado / transferencia</span>
+            </div>
+            <button class="btn-action">Cotizar modelo</button>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="card">
+            <span class="badge-promo">-15%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=350&q=80" alt="App Movil">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: FIX-MOD02</span>
+              <span class="stock-tag">● Disponible</span>
+            </div>
+            <span class="item-category">Aplicaciones</span>
+            <h4 class="item-name">App Móvil para Clientes Multiplataforma (iOS & Android)</h4>
+            <div class="price-box">
+              <span class="price-normal">$1.200.000</span>
+              <div class="price-cash">$990.000</div>
+              <span class="price-cash-sub">Pago contado / transferencia</span>
+            </div>
+            <button class="btn-action">Cotizar modelo</button>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="card">
+            <span class="badge-promo">-25%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=350&q=80" alt="Workstation">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: FIX-EQ401</span>
+              <span class="stock-tag">● 4 en bodega</span>
+            </div>
+            <span class="item-category">Equipamiento TI</span>
+            <h4 class="item-name">Estación de Trabajo Corporativa i7 16GB / 1TB SSD</h4>
+            <div class="price-box">
+              <span class="price-normal">$799.990</span>
+              <div class="price-cash">$599.990</div>
+              <span class="price-cash-sub">Efectivo / Transferencia</span>
+            </div>
+            <button class="btn-action">Agregar al pedido</button>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="card">
+            <span class="badge-promo">-18%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=350&q=80" alt="Monitor">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: FIX-MON01</span>
+              <span class="stock-tag">● Stock alto</span>
+            </div>
+            <span class="item-category">Monitores</span>
+            <h4 class="item-name">Monitor Profesional 27" IPS QHD Color Accurate</h4>
+            <div class="price-box">
+              <span class="price-normal">$289.990</span>
+              <div class="price-cash">$239.990</div>
+              <span class="price-cash-sub">Efectivo / Transferencia</span>
+            </div>
+            <button class="btn-action">Agregar al pedido</button>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="card">
+            <span class="badge-promo">-30%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=350&q=80" alt="Soporte">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: FIX-SRV10</span>
+              <span class="stock-tag">● Planes activos</span>
+            </div>
+            <span class="item-category">Soporte Técnico</span>
+            <h4 class="item-name">Plan Mensual de Mantenimiento y Continuidad TI</h4>
+            <div class="price-box">
+              <span class="price-normal">$90.000/mes</span>
+              <div class="price-cash">$75.000/mes</div>
+              <span class="price-cash-sub">Facturación mensual</span>
+            </div>
+            <button class="btn-action">Contratar plan</button>
+          </div>
+
         </div>
-        <div class="sku-stock">
-          <span>SKU: FIX-MOD02</span>
-          <span class="stock-tag">● Disponible</span>
-        </div>
-        <span class="item-category">Aplicaciones</span>
-        <h4 class="item-name">App Móvil para Clientes Multiplataforma (iOS & Android)</h4>
-        <div class="price-box">
-          <span class="price-normal">$1.200.000</span>
-          <div class="price-cash">$990.000</div>
-          <span class="price-cash-sub">Pago contado / transferencia</span>
-        </div>
-        <button class="btn-action">Cotizar modelo</button>
+
+        <button class="slider-arrow next" onclick="scrollSlider('track-destacados', 240)" aria-label="Siguiente">›</button>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         LÍNEA 2: LOS MÁS COMPRADOS (DESPLAZABLE)
+         ============================================== -->
+    <section id="mas-comprados" class="slider-section">
+      <div class="slider-header">
+        <h3 class="slider-title">Los más comprados</h3>
       </div>
 
-      <!-- Ficha 3 -->
-      <div class="card">
-        <div class="product-img-box">
-          <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=350&q=80" alt="Workstation">
-        </div>
-        <div class="sku-stock">
-          <span>SKU: FIX-EQ401</span>
-          <span class="stock-tag">● 4 en bodega</span>
-        </div>
-        <span class="item-category">Equipamiento TI</span>
-        <h4 class="item-name">Estación de Trabajo Corporativa i7 16GB / 1TB SSD</h4>
-        <div class="price-box">
-          <span class="price-normal">$649.990</span>
-          <div class="price-cash">$599.990</div>
-          <span class="price-cash-sub">Efectivo / Transferencia</span>
-        </div>
-        <button class="btn-action">Agregar al pedido</button>
-      </div>
+      <div class="slider-wrapper">
+        <button class="slider-arrow prev" onclick="scrollSlider('track-comprados', -240)" aria-label="Anterior">‹</button>
+        
+        <div class="product-track" id="track-comprados">
+          
+          <!-- Item 1 -->
+          <div class="card">
+            <span class="badge-promo">-33%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1609592424368-f9b8b2612a83?w=350&q=80" alt="Power Bank">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: FIX-ENG01</span>
+              <span class="stock-tag">● +50 Unid.</span>
+            </div>
+            <span class="item-category">Energía</span>
+            <h4 class="item-name">Power Bank 20.000 mAh Carga Rápida USB-C 22.5W</h4>
+            <div class="price-box">
+              <span class="price-normal">$29.990</span>
+              <div class="price-cash">$19.990</div>
+              <span class="price-cash-sub">Efectivo / Transferencia</span>
+            </div>
+            <button class="btn-action">Agregar al pedido</button>
+          </div>
 
-      <!-- Ficha 4 -->
-      <div class="card">
-        <span class="badge-promo">-15%</span>
-        <div class="product-img-box">
-          <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=350&q=80" alt="Soporte">
-        </div>
-        <div class="sku-stock">
-          <span>SKU: FIX-SRV10</span>
-          <span class="stock-tag">● Planes activos</span>
-        </div>
-        <span class="item-category">Soporte Técnico</span>
-        <h4 class="item-name">Plan Mensual de Mantenimiento y Continuidad TI</h4>
-        <div class="price-box">
-          <span class="price-normal">$90.000/mes</span>
-          <div class="price-cash">$75.000/mes</div>
-          <span class="price-cash-sub">Facturación mensual</span>
-        </div>
-        <button class="btn-action">Contratar plan</button>
-      </div>
+          <!-- Item 2 -->
+          <div class="card">
+            <span class="badge-promo">-40%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1588508065123-287b28e013da?w=350&q=80" alt="SSD">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: FIX-SSD01</span>
+              <span class="stock-tag">● +100 Unid.</span>
+            </div>
+            <span class="item-category">Almacenamiento</span>
+            <h4 class="item-name">Disco Interno SSD NVMe M.2 1TB Gen4 Ultra Speed</h4>
+            <div class="price-box">
+              <span class="price-normal">$89.990</span>
+              <div class="price-cash">$54.990</div>
+              <span class="price-cash-sub">Efectivo / Transferencia</span>
+            </div>
+            <button class="btn-action">Agregar al pedido</button>
+          </div>
 
-    </div>
+          <!-- Item 3 -->
+          <div class="card">
+            <span class="badge-promo">-15%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=350&q=80" alt="Mouse">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: FIX-PER02</span>
+              <span class="stock-tag">● 25 Unid.</span>
+            </div>
+            <span class="item-category">Periféricos</span>
+            <h4 class="item-name">Mouse Ergonómico Inalámbrico Silencioso Multi-Device</h4>
+            <div class="price-box">
+              <span class="price-normal">$24.990</span>
+              <div class="price-cash">$18.990</div>
+              <span class="price-cash-sub">Efectivo / Transferencia</span>
+            </div>
+            <button class="btn-action">Agregar al pedido</button>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="card">
+            <span class="badge-promo">-25%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=350&q=80" alt="Audífonos">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: FIX-AUD05</span>
+              <span class="stock-tag">● +30 Unid.</span>
+            </div>
+            <span class="item-category">Audio</span>
+            <h4 class="item-name">Audífonos Bluetooth con Cancelación de Ruido Activa</h4>
+            <div class="price-box">
+              <span class="price-normal">$69.990</span>
+              <div class="price-cash">$49.990</div>
+              <span class="price-cash-sub">Efectivo / Transferencia</span>
+            </div>
+            <button class="btn-action">Agregar al pedido</button>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="card">
+            <span class="badge-promo">-50%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=350&q=80" alt="Cables">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: FIX-CAB01</span>
+              <span class="stock-tag">● +100 Unid.</span>
+            </div>
+            <span class="item-category">Accesorios</span>
+            <h4 class="item-name">Cable Trenzado Reforzado USB-C a USB-C 100W 2m</h4>
+            <div class="price-box">
+              <span class="price-normal">$12.990</span>
+              <div class="price-cash">$6.490</div>
+              <span class="price-cash-sub">Efectivo / Transferencia</span>
+            </div>
+            <button class="btn-action">Agregar al pedido</button>
+          </div>
+
+        </div>
+
+        <button class="slider-arrow next" onclick="scrollSlider('track-comprados', 240)" aria-label="Siguiente">›</button>
+      </div>
+    </section>
+
   </div>
 
-  <!-- Lógica para abrir y cerrar el menú de tres líneas y categorías -->
+  <!-- SCRIPTS -->
   <script>
+    // Abrir y cerrar el menú lateral
     function toggleMenu() {
       const drawer = document.getElementById('sidebarDrawer');
       const overlay = document.getElementById('menuOverlay');
@@ -844,9 +1051,16 @@
       overlay.classList.toggle('active');
     }
 
+    // Desplegar subcategorías en el drawer
     function toggleCategory(btn) {
       const item = btn.parentElement;
       item.classList.toggle('open');
+    }
+
+    // Desplazar las filas con las flechas < y >
+    function scrollSlider(trackId, amount) {
+      const track = document.getElementById(trackId);
+      track.scrollBy({ left: amount, behavior: 'smooth' });
     }
   </script>
 
