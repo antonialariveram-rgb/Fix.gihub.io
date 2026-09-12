@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -169,7 +169,7 @@
       color: #ffffff;
     }
 
-    /* HERO BANNER */
+    /* HERO BANNER (PROTAGONISTA) */
     .hero-banner {
       background: var(--fix-gradient);
       color: #ffffff;
@@ -251,20 +251,22 @@
     }
 
     /* ========================================================
-       CARRUSELES CON FONDO DE COLOR (MORADO FIXIONARY)
+       CARRUSELES CON FONDO MORADO TRANSLÚCIDO / SUTIL
        ======================================================== */
     .slider-section-colored {
-      background-color: var(--fix-purple-start); /* Fondo morado idéntico al botón */
+      /* Tinte suave y translúcido de morado (6% de opacidad) */
+      background: rgba(106, 0, 244, 0.06);
+      border: 1px solid rgba(106, 0, 244, 0.15);
       border-radius: 12px;
-      padding: 20px 24px 24px;
+      padding: 20px 22px 24px;
       margin-bottom: 32px;
       position: relative;
-      box-shadow: 0 8px 24px rgba(106, 0, 244, 0.18);
     }
 
-    /* Variante en degradado suave o púrpura profundo si quieres diferenciarlo */
+    /* Variante para la segunda sección: tinte azul-morado suave */
     .slider-section-colored.secondary-theme {
-      background: linear-gradient(135deg, #5100d8 0%, #3a00a5 100%);
+      background: rgba(0, 68, 255, 0.05);
+      border: 1px solid rgba(0, 68, 255, 0.14);
     }
 
     .slider-header-colored {
@@ -277,7 +279,7 @@
     .slider-title-colored {
       font-size: 1.2rem;
       font-weight: 800;
-      color: #ffffff; /* Texto blanco sobre el fondo morado */
+      color: var(--text-dark); /* Color oscuro para lectura limpia */
       display: flex;
       align-items: center;
       gap: 10px;
@@ -287,15 +289,17 @@
       content: "";
       width: 5px;
       height: 18px;
-      background: #00d4ff; /* Acento cian */
+      background: var(--fix-purple-start);
       border-radius: 3px;
       display: inline-block;
     }
 
     .slider-subtitle-colored {
-      color: #e5dbff;
-      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-size: 0.82rem;
       font-weight: 500;
+      display: block;
+      margin-top: 2px;
     }
 
     /* Wrapper relativo para las flechas y la fila */
@@ -325,12 +329,12 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 40px;
-      height: 40px;
+      width: 38px;
+      height: 38px;
       background: #ffffff;
-      border: none;
+      border: 1px solid var(--border-color);
       border-radius: 50%;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
       cursor: pointer;
       z-index: 10;
       display: flex;
@@ -343,7 +347,7 @@
     }
 
     .slider-arrow:hover {
-      background: var(--top-dark-bar);
+      background: var(--fix-purple-start);
       color: #ffffff;
       transform: translateY(-50%) scale(1.08);
     }
@@ -356,25 +360,25 @@
       right: -14px;
     }
 
-    /* Tarjetas de Producto en Fondo Blanco */
+    /* Tarjetas de Producto */
     .card {
       min-width: 220px;
       max-width: 220px;
       background: #ffffff;
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid var(--border-color);
       border-radius: 8px;
       padding: 14px;
       display: flex;
       flex-direction: column;
       position: relative;
       flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
       transition: box-shadow 0.2s, transform 0.2s;
     }
 
     .card:hover {
-      box-shadow: 0 8px 22px rgba(0,0,0,0.18);
-      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(106, 0, 244, 0.12);
+      transform: translateY(-3px);
     }
 
     .badge-promo {
@@ -818,7 +822,7 @@
     </section>
 
     <!-- ==============================================
-         LÍNEA 1: PRODUCTOS DESTACADOS (FONDO MORADO FIXIONARY)
+         LÍNEA 1: PRODUCTOS DESTACADOS (FONDO MORADO TRANSLÚCIDO)
          ============================================== -->
     <section id="destacados" class="slider-section-colored">
       <div class="slider-header-colored">
@@ -940,7 +944,7 @@
     </section>
 
     <!-- ==============================================
-         LÍNEA 2: LOS MÁS COMPRADOS (FONDO MORADO FIXIONARY SECUNDARIO)
+         LÍNEA 2: LOS MÁS COMPRADOS (FONDO AZUL-MORADO TRANSLÚCIDO)
          ============================================== -->
     <section id="mas-comprados" class="slider-section-colored secondary-theme">
       <div class="slider-header-colored">
