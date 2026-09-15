@@ -517,6 +517,7 @@
       font-size: 0.95rem;
       font-weight: 800;
       margin-bottom: 16px;
+      letter-spacing: -0.2px;
     }
 
     .footer-col p {
@@ -526,16 +527,46 @@
       margin-bottom: 8px;
     }
 
-    .footer-col strong { color: #ffffff; }
-    .footer-col a.phone-link { color: #00d4ff; text-decoration: none; font-weight: 700; }
-    
-    .footer-links { list-style: none; }
-    .footer-links li { margin-bottom: 9px; }
-    .footer-links a { color: #94a3b8; text-decoration: none; font-size: 0.83rem; transition: color 0.2s; }
-    .footer-links a:hover { color: #ffffff; }
+    .footer-col strong {
+      color: #ffffff;
+    }
 
-    .newsletter-box { margin-bottom: 18px; }
-    .newsletter-form { display: flex; gap: 6px; margin-top: 10px; }
+    .footer-col a.phone-link {
+      color: #00d4ff;
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.2s;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 9px;
+    }
+
+    .footer-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.83rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+    }
+
+    .newsletter-box {
+      margin-bottom: 18px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
     .newsletter-form input {
       flex: 1;
       padding: 8px 12px;
@@ -546,6 +577,11 @@
       font-size: 0.82rem;
       outline: none;
     }
+
+    .newsletter-form input::placeholder {
+      color: #64748b;
+    }
+
     .newsletter-form button {
       background: var(--fix-purple-start);
       color: #ffffff;
@@ -555,9 +591,20 @@
       font-weight: 700;
       font-size: 0.82rem;
       cursor: pointer;
+      transition: background 0.2s;
     }
 
-    .social-links { display: flex; gap: 12px; align-items: center; margin-top: 10px; }
+    .newsletter-form button:hover {
+      background: var(--btn-blue);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-top: 10px;
+    }
+
     .social-btn {
       display: flex;
       align-items: center;
@@ -570,8 +617,17 @@
       border-radius: 6px;
       transition: background 0.2s, transform 0.15s;
     }
-    .social-btn:hover { background: rgba(255, 255, 255, 0.18); transform: translateY(-1px); }
-    .social-btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+    .social-btn:hover {
+      background: rgba(255, 255, 255, 0.18);
+      transform: translateY(-1px);
+    }
+
+    .social-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
 
     .footer-bottom {
       max-width: 1200px;
@@ -592,7 +648,10 @@
       z-index: 998;
       display: none;
     }
-    .menu-overlay.active { display: block; }
+
+    .menu-overlay.active {
+      display: block;
+    }
 
     .sidebar-drawer {
       position: fixed;
@@ -608,13 +667,17 @@
       flex-direction: column;
       overflow-y: auto;
     }
-    .sidebar-drawer.active { left: 0; }
+
+    .sidebar-drawer.active {
+      left: 0;
+    }
 
     .drawer-header {
       padding: 20px;
       border-bottom: 1px solid var(--border-color);
       position: relative;
     }
+
     .close-btn {
       position: absolute;
       top: 16px;
@@ -625,6 +688,7 @@
       cursor: pointer;
       color: var(--text-muted);
     }
+
     .drawer-user h4 { font-size: 1rem; margin-bottom: 2px; }
     .drawer-user p { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 14px; }
 
@@ -650,10 +714,22 @@
       justify-content: space-between;
       align-items: center;
     }
-    .drawer-section-title span { color: var(--btn-blue); font-size: 0.75rem; font-weight: 600; cursor: pointer; }
 
-    .category-list { list-style: none; }
-    .category-item { border-bottom: 1px solid #f1f3f5; }
+    .drawer-section-title span {
+      color: var(--btn-blue);
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .category-list {
+      list-style: none;
+    }
+
+    .category-item {
+      border-bottom: 1px solid #f1f3f5;
+    }
+
     .category-btn {
       width: 100%;
       text-align: left;
@@ -668,9 +744,22 @@
       align-items: center;
       cursor: pointer;
     }
-    .category-btn:hover { background-color: #f8fafc; color: var(--fix-purple-start); }
-    .category-btn .arrow { font-size: 0.8rem; color: #94a3b8; transition: transform 0.2s; }
-    .category-item.open .arrow { transform: rotate(90deg); color: var(--fix-purple-start); }
+
+    .category-btn:hover {
+      background-color: #f8fafc;
+      color: var(--fix-purple-start);
+    }
+
+    .category-btn .arrow {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      transition: transform 0.2s;
+    }
+
+    .category-item.open .arrow {
+      transform: rotate(90deg);
+      color: var(--fix-purple-start);
+    }
 
     .subcategory-list {
       display: none;
@@ -678,7 +767,11 @@
       background-color: #fafbfc;
       padding: 6px 0 10px 24px;
     }
-    .category-item.open .subcategory-list { display: block; }
+
+    .category-item.open .subcategory-list {
+      display: block;
+    }
+
     .subcategory-list li a {
       display: block;
       padding: 6px 16px;
@@ -686,13 +779,10 @@
       color: #475569;
       text-decoration: none;
     }
-    .subcategory-list li a:hover { color: var(--fix-purple-start); font-weight: 600; }
 
-    @media (max-width: 900px) {
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 600px) {
-      .footer-grid { grid-template-columns: 1fr; }
+    .subcategory-list li a:hover {
+      color: var(--fix-purple-start);
+      font-weight: 600;
     }
   </style>
 </head>
@@ -709,7 +799,7 @@
         <h4>¡Hola!</h4>
         <p>Ingresa a tu cuenta para cotizar y comprar</p>
       </div>
-      <a href="#" class="btn-drawer-login">Inicia sesión</a>
+      <a href="login.html" class="btn-drawer-login">Inicia sesión</a>
     </div>
 
     <div class="drawer-section-title">
@@ -718,27 +808,30 @@
     </div>
 
     <ul class="category-list">
-      <!-- Computadores (ENLAZADO A COMPUTADORES.HTML) -->
+
+      <!-- Computadores (ENLACES A COMPUTADORES.HTML) -->
       <li class="category-item">
         <button class="category-btn" onclick="toggleCategory(this)">
-          Computadores <span class="arrow">›</span>
+          Computadores
+          <span class="arrow">›</span>
         </button>
         <ul class="subcategory-list">
-          <li><a href="computadores.html">Lenovo</a></li>
-          <li><a href="computadores.html">Dell</a></li>
-          <li><a href="computadores.html">Asus</a></li>
-          <li><a href="computadores.html">Mac</a></li>
-          <li><a href="computadores.html">HP</a></li>
+          <li><a href="./computadores.html">Lenovo</a></li>
+          <li><a href="./computadores.html">Dell</a></li>
+          <li><a href="./computadores.html">Asus</a></li>
+          <li><a href="./computadores.html">Mac</a></li>
+          <li><a href="./computadores.html">HP</a></li>
         </ul>
       </li>
 
       <!-- Accesorios y Periféricos -->
       <li class="category-item">
         <button class="category-btn" onclick="toggleCategory(this)">
-          Accesorios y Periféricos <span class="arrow">›</span>
+          Accesorios y Periféricos
+          <span class="arrow">›</span>
         </button>
         <ul class="subcategory-list">
-          <li><a href="mouses-teclados.html">Mouses y Teclados</a></li>
+          <li><a href="./mouses-teclados.html">Mouses y Teclados</a></li>
           <li><a href="#">Accesorios Computadores</a></li>
           <li><a href="#">Accesorios Celulares</a></li>
           <li><a href="#">Accesorios Cámara</a></li>
@@ -751,76 +844,84 @@
       <!-- Energía -->
       <li class="category-item">
         <button class="category-btn" onclick="toggleCategory(this)">
-          Energía <span class="arrow">›</span>
+          Energía
+          <span class="arrow">›</span>
         </button>
         <ul class="subcategory-list">
-          <li><a href="#">Power Banks</a></li>
-          <li><a href="#">Baterías</a></li>
-          <li><a href="#">Cargadores computador</a></li>
+          <li><a href="./energia.html">Power Banks</a></li>
+          <li><a href="./energia.html">Baterías</a></li>
+          <li><a href="./energia.html">Cargadores computador</a></li>
         </ul>
       </li>
 
       <!-- Almacenamiento y Discos Duros -->
       <li class="category-item">
         <button class="category-btn" onclick="toggleCategory(this)">
-          Almacenamiento y Discos Duros <span class="arrow">›</span>
+          Almacenamiento y Discos Duros
+          <span class="arrow">›</span>
         </button>
         <ul class="subcategory-list">
-          <li><a href="#">Discos Internos SSD</a></li>
-          <li><a href="#">Discos Internos HDD</a></li>
-          <li><a href="#">Discos Externos HDD</a></li>
-          <li><a href="#">Memorias Flash</a></li>
-          <li><a href="#">Pendrives</a></li>
-          <li><a href="#">Enclosure (Cofres)</a></li>
+          <li><a href="./almacenamiento.html">Discos Internos SSD</a></li>
+          <li><a href="./almacenamiento.html">Discos Internos HDD</a></li>
+          <li><a href="./almacenamiento.html">Discos Externos HDD</a></li>
+          <li><a href="./almacenamiento.html">Memorias Flash</a></li>
+          <li><a href="./almacenamiento.html">Pendrives</a></li>
+          <li><a href="./almacenamiento.html">Enclosure (Cofres)</a></li>
         </ul>
       </li>
 
       <!-- Impresoras -->
       <li class="category-item">
         <button class="category-btn" onclick="toggleCategory(this)">
-          Impresoras <span class="arrow">›</span>
+          Impresoras
+          <span class="arrow">›</span>
         </button>
         <ul class="subcategory-list">
-          <li><a href="#">Suministros</a></li>
+          <li><a href="./impresoras.html">Suministros</a></li>
         </ul>
       </li>
 
       <!-- Audio -->
       <li class="category-item">
         <button class="category-btn" onclick="toggleCategory(this)">
-          Audio <span class="arrow">›</span>
+          Audio
+          <span class="arrow">›</span>
         </button>
         <ul class="subcategory-list">
-          <li><a href="#">Audífonos</a></li>
-          <li><a href="#">Parlantes</a></li>
-          <li><a href="#">Accesorios de Audio</a></li>
+          <li><a href="./audio.html">Audífonos</a></li>
+          <li><a href="./audio.html">Parlantes</a></li>
+          <li><a href="./audio.html">Accesorios de Audio</a></li>
         </ul>
       </li>
 
       <!-- Servicio Técnico -->
       <li class="category-item">
         <button class="category-btn" onclick="toggleCategory(this)">
-          Servicio Técnico <span class="arrow">›</span>
+          Servicio Técnico
+          <span class="arrow">›</span>
         </button>
         <ul class="subcategory-list">
-          <li><a href="#">Celulares</a></li>
-          <li><a href="#">Computadores</a></li>
-          <li><a href="#">Impresoras</a></li>
+          <li><a href="./servicio-celulares.html">Celulares</a></li>
+          <li><a href="./servicio-computadores.html">Computadores</a></li>
+          <li><a href="./servicio-impresoras.html">Impresoras</a></li>
         </ul>
       </li>
+
     </ul>
   </aside>
 
   <!-- BARRA PRINCIPAL (HEADER) -->
   <header>
-    <a href="index.html" class="brand-logo">
+    <a href="./index.html" class="brand-logo">
       <div class="brand-icon">F</div>
       <span>Fixionary</span>
     </a>
 
     <button class="btn-categories-toggle" onclick="toggleMenu()" aria-label="Abrir categorías">
       <div class="hamburger-icon">
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
       <span>Categorías</span>
     </button>
@@ -831,13 +932,20 @@
     </div>
 
     <div class="header-actions">
-      <a href="#" class="header-btn">
-        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+      <a href="./login.html" class="header-btn">
+        <svg viewBox="0 0 24 24">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
         <span>Ingresa</span>
       </a>
 
-      <a href="#" class="header-btn cart-btn-wrapper">
-        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+      <a href="./carrito.html" class="header-btn cart-btn-wrapper">
+        <svg viewBox="0 0 24 24">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
         <span>Mis compras</span>
         <span class="cart-badge">0</span>
       </a>
@@ -857,11 +965,14 @@
     <!-- 1. CARRUSEL: OFERTAS -->
     <section id="ofertas" class="slider-section-colored">
       <div class="slider-header-colored">
-        <div><h3 class="slider-title-colored">Ofertas</h3></div>
+        <div>
+          <h3 class="slider-title-colored">Ofertas</h3>
+        </div>
       </div>
 
       <div class="slider-wrapper">
-        <button class="slider-arrow prev" onclick="scrollSlider('track-ofertas', -240)">‹</button>
+        <button class="slider-arrow prev" onclick="scrollSlider('track-ofertas', -240)" aria-label="Anterior">‹</button>
+        
         <div class="product-track" id="track-ofertas">
           
           <div class="card">
@@ -874,7 +985,7 @@
               <span class="stock-tag">● +50 Unid.</span>
             </div>
             <span class="item-category">Energía</span>
-            <h4 class="item-name"><a href="#" style="color: inherit; text-decoration: none;">Power Bank 20.000 mAh Carga Rápida USB-C 22.5W</a></h4>
+            <h4 class="item-name">Power Bank 20.000 mAh Carga Rápida USB-C 22.5W</h4>
             <div class="price-box">
               <span class="price-normal">$29.990</span>
               <div class="price-cash">$19.990</div>
@@ -960,22 +1071,24 @@
           </div>
 
         </div>
-        <button class="slider-arrow next" onclick="scrollSlider('track-ofertas', 240)">›</button>
+
+        <button class="slider-arrow next" onclick="scrollSlider('track-ofertas', 240)" aria-label="Siguiente">›</button>
       </div>
     </section>
 
-    <!-- 2. CARRUSEL: COMPUTACIÓN (CON LINK A COMPUTADORES.HTML EN EL TÍTULO) -->
+    <!-- 2. CARRUSEL: COMPUTACIÓN (CONECTADO A COMPUTADORES.HTML) -->
     <section id="computacion" class="slider-section-colored">
       <div class="slider-header-colored">
         <div>
           <h3 class="slider-title-colored">
-            <a href="computadores.html" style="color: inherit; text-decoration: none;">Computación</a>
+            <a href="./computadores.html" style="color: inherit; text-decoration: none;">Computación</a>
           </h3>
         </div>
       </div>
 
       <div class="slider-wrapper">
-        <button class="slider-arrow prev" onclick="scrollSlider('track-computacion', -240)">‹</button>
+        <button class="slider-arrow prev" onclick="scrollSlider('track-computacion', -240)" aria-label="Anterior">‹</button>
+        
         <div class="product-track" id="track-computacion">
           
           <div class="card">
@@ -988,7 +1101,7 @@
               <span class="stock-tag">● 6 en bodega</span>
             </div>
             <span class="item-category">Asus</span>
-            <h4 class="item-name"><a href="computadores.html" style="color: inherit; text-decoration: none;">Notebook Asus VivoBook 15" Intel Core i5 16GB SSD 512GB</a></h4>
+            <h4 class="item-name"><a href="./computadores.html" style="color: inherit; text-decoration: none;">Notebook Asus VivoBook 15" Intel Core i5 16GB SSD 512GB</a></h4>
             <div class="price-box">
               <span class="price-normal">$589.990</span>
               <div class="price-cash">$499.990</div>
@@ -1007,7 +1120,7 @@
               <span class="stock-tag">● 4 en bodega</span>
             </div>
             <span class="item-category">Dell</span>
-            <h4 class="item-name"><a href="computadores.html" style="color: inherit; text-decoration: none;">Notebook Dell Inspiron 14" FHD Core i7 16GB 1TB SSD</a></h4>
+            <h4 class="item-name"><a href="./computadores.html" style="color: inherit; text-decoration: none;">Notebook Dell Inspiron 14" FHD Core i7 16GB 1TB SSD</a></h4>
             <div class="price-box">
               <span class="price-normal">$799.990</span>
               <div class="price-cash">$654.990</div>
@@ -1026,7 +1139,7 @@
               <span class="stock-tag">● 3 en bodega</span>
             </div>
             <span class="item-category">Mac</span>
-            <h4 class="item-name"><a href="computadores.html" style="color: inherit; text-decoration: none;">Apple MacBook Air 13" Chip M2 8-Core 256GB SSD Gris</a></h4>
+            <h4 class="item-name"><a href="./computadores.html" style="color: inherit; text-decoration: none;">Apple MacBook Air 13" Chip M2 8-Core 256GB SSD Gris</a></h4>
             <div class="price-box">
               <span class="price-normal">$1.099.990</span>
               <div class="price-cash">$969.990</div>
@@ -1045,7 +1158,7 @@
               <span class="stock-tag">● 8 en bodega</span>
             </div>
             <span class="item-category">Lenovo</span>
-            <h4 class="item-name"><a href="computadores.html" style="color: inherit; text-decoration: none;">Notebook Lenovo IdeaPad Slim 3 15.6" Ryzen 7 16GB</a></h4>
+            <h4 class="item-name"><a href="./computadores.html" style="color: inherit; text-decoration: none;">Notebook Lenovo IdeaPad Slim 3 15.6" Ryzen 7 16GB</a></h4>
             <div class="price-box">
               <span class="price-normal">$629.990</span>
               <div class="price-cash">$489.990</div>
@@ -1064,7 +1177,7 @@
               <span class="stock-tag">● 5 en bodega</span>
             </div>
             <span class="item-category">HP</span>
-            <h4 class="item-name"><a href="computadores.html" style="color: inherit; text-decoration: none;">Notebook HP 15.6" Intel Core i5 8GB 512GB SSD Plata</a></h4>
+            <h4 class="item-name"><a href="./computadores.html" style="color: inherit; text-decoration: none;">Notebook HP 15.6" Intel Core i5 8GB 512GB SSD Plata</a></h4>
             <div class="price-box">
               <span class="price-normal">$469.990</span>
               <div class="price-cash">$419.990</div>
@@ -1074,35 +1187,39 @@
           </div>
 
         </div>
-        <button class="slider-arrow next" onclick="scrollSlider('track-computacion', 240)">›</button>
+
+        <button class="slider-arrow next" onclick="scrollSlider('track-computacion', 240)" aria-label="Siguiente">›</button>
       </div>
     </section>
 
     <!-- 3. CARRUSEL: SERVICIO TÉCNICO -->
     <section id="servicio-tecnico" class="slider-section-colored">
       <div class="slider-header-colored">
-        <div><h3 class="slider-title-colored">Servicio técnico</h3></div>
+        <div>
+          <h3 class="slider-title-colored">Servicio técnico</h3>
+        </div>
       </div>
 
       <div class="slider-wrapper">
-        <button class="slider-arrow prev" onclick="scrollSlider('track-servicios', -280)">‹</button>
+        <button class="slider-arrow prev" onclick="scrollSlider('track-servicios', -280)" aria-label="Anterior">‹</button>
+        
         <div class="product-track" id="track-servicios">
           
-          <a href="#" class="card-service">
+          <a href="./servicio-celulares.html" class="card-service">
             <div class="service-img-box">
               <img src="https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?w=500&q=80" alt="Celulares">
             </div>
             <div class="service-title">Celulares</div>
           </a>
 
-          <a href="#" class="card-service">
+          <a href="./servicio-computadores.html" class="card-service">
             <div class="service-img-box">
               <img src="https://images.unsplash.com/photo-1588702547919-26089e690ecc?w=500&q=80" alt="Computadores">
             </div>
             <div class="service-title">Computadores</div>
           </a>
 
-          <a href="#" class="card-service">
+          <a href="./servicio-impresoras.html" class="card-service">
             <div class="service-img-box">
               <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=500&q=80" alt="Impresoras">
             </div>
@@ -1110,7 +1227,8 @@
           </a>
 
         </div>
-        <button class="slider-arrow next" onclick="scrollSlider('track-servicios', 280)">›</button>
+
+        <button class="slider-arrow next" onclick="scrollSlider('track-servicios', 280)" aria-label="Siguiente">›</button>
       </div>
     </section>
 
@@ -1119,12 +1237,14 @@
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-grid">
+      
       <div class="footer-col">
         <h4>Fixionary</h4>
         <p><strong>Ubicación:</strong><br>Av. José Pedro Alessandri 98, Ñuñoa, Santiago</p>
-        <p><strong>Consultas:</strong><br><a href="#" class="phone-link">+56 9 9844 9400</a></p>
+        <p><strong>Consultas:</strong><br><a href="tel:+56998449400" class="phone-link">+56 9 9844 9400</a></p>
         <p><strong>Horario:</strong><br>Lunes a Viernes: 10:00 a 19:00 hrs.<br>Sábado: 10:00 a 15:00 hrs.</p>
       </div>
+
       <div class="footer-col">
         <h4>Sobre Nosotros</h4>
         <ul class="footer-links">
@@ -1134,15 +1254,17 @@
           <li><a href="#">Privacidad y Seguridad</a></li>
         </ul>
       </div>
+
       <div class="footer-col">
         <h4>Servicios</h4>
         <ul class="footer-links">
-          <li><a href="#">Servicio Técnico de Computadores</a></li>
-          <li><a href="#">Servicio Técnico de Celulares</a></li>
-          <li><a href="#">Servicio Técnico de Impresoras</a></li>
-          <li><a href="computadores.html">Venta de Computadores</a></li>
+          <li><a href="./servicio-computadores.html">Servicio Técnico de Computadores</a></li>
+          <li><a href="./servicio-celulares.html">Servicio Técnico de Celulares</a></li>
+          <li><a href="./servicio-impresoras.html">Servicio Técnico de Impresoras</a></li>
+          <li><a href="./computadores.html">Venta de Computadores</a></li>
         </ul>
       </div>
+
       <div class="footer-col">
         <h4>Obtén ofertas y promociones exclusivas</h4>
         <div class="newsletter-box">
@@ -1152,19 +1274,23 @@
             <button type="submit">Suscríbete</button>
           </form>
         </div>
+
         <h4>Síguenos</h4>
         <div class="social-links">
-          <a href="#" class="social-btn">
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="social-btn">
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             <span>Instagram</span>
           </a>
-          <a href="#" class="social-btn">
+
+          <a href="https://tiktok.com" target="_blank" rel="noopener" class="social-btn">
             <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.97-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 2.89 3.49 2.73 1.25-.05 2.4-1.04 2.6-2.29.07-.6.06-1.21.06-1.81V.02h-.83z"/></svg>
             <span>TikTok</span>
           </a>
         </div>
       </div>
+
     </div>
+
     <div class="footer-bottom">
       <p>© 2026 Fixionary SpA. Todos los derechos reservados.</p>
     </div>
@@ -1177,14 +1303,17 @@
       drawer.classList.toggle('active');
       overlay.classList.toggle('active');
     }
+
     function toggleCategory(btn) {
       const item = btn.parentElement;
       item.classList.toggle('open');
     }
+
     function scrollSlider(trackId, amount) {
       const track = document.getElementById(trackId);
       track.scrollBy({ left: amount, behavior: 'smooth' });
     }
   </script>
+
 </body>
 </html>
