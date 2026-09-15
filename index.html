@@ -701,7 +701,7 @@
   <!-- Overlay para cerrar el menú lateral -->
   <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
 
-  <!-- MENU LATERAL CON CATEGORÍAS (SIN LINKS ACTIVOS PARA EVITAR CAMBIOS ACCIDENTALES) -->
+  <!-- MENU LATERAL CON CATEGORÍAS -->
   <aside class="sidebar-drawer" id="sidebarDrawer">
     <div class="drawer-header">
       <button class="close-btn" onclick="toggleMenu()">✕</button>
@@ -718,17 +718,17 @@
     </div>
 
     <ul class="category-list">
-      <!-- Computadores -->
+      <!-- Computadores (ENLAZADO A COMPUTADORES.HTML) -->
       <li class="category-item">
         <button class="category-btn" onclick="toggleCategory(this)">
           Computadores <span class="arrow">›</span>
         </button>
         <ul class="subcategory-list">
-          <li><a href="#">Lenovo</a></li>
-          <li><a href="#">Dell</a></li>
-          <li><a href="#">Asus</a></li>
-          <li><a href="#">Mac</a></li>
-          <li><a href="#">HP</a></li>
+          <li><a href="computadores.html">Lenovo</a></li>
+          <li><a href="computadores.html">Dell</a></li>
+          <li><a href="computadores.html">Asus</a></li>
+          <li><a href="computadores.html">Mac</a></li>
+          <li><a href="computadores.html">HP</a></li>
         </ul>
       </li>
 
@@ -738,7 +738,7 @@
           Accesorios y Periféricos <span class="arrow">›</span>
         </button>
         <ul class="subcategory-list">
-          <li><a href="#">Mouses y Teclados</a></li>
+          <li><a href="mouses-teclados.html">Mouses y Teclados</a></li>
           <li><a href="#">Accesorios Computadores</a></li>
           <li><a href="#">Accesorios Celulares</a></li>
           <li><a href="#">Accesorios Cámara</a></li>
@@ -813,7 +813,7 @@
 
   <!-- BARRA PRINCIPAL (HEADER) -->
   <header>
-    <a href="#" class="brand-logo">
+    <a href="index.html" class="brand-logo">
       <div class="brand-icon">F</div>
       <span>Fixionary</span>
     </a>
@@ -964,10 +964,14 @@
       </div>
     </section>
 
-    <!-- 2. CARRUSEL: COMPUTACIÓN -->
+    <!-- 2. CARRUSEL: COMPUTACIÓN (CON LINK A COMPUTADORES.HTML EN EL TÍTULO) -->
     <section id="computacion" class="slider-section-colored">
       <div class="slider-header-colored">
-        <div><h3 class="slider-title-colored">Computación</h3></div>
+        <div>
+          <h3 class="slider-title-colored">
+            <a href="computadores.html" style="color: inherit; text-decoration: none;">Computación</a>
+          </h3>
+        </div>
       </div>
 
       <div class="slider-wrapper">
@@ -984,7 +988,7 @@
               <span class="stock-tag">● 6 en bodega</span>
             </div>
             <span class="item-category">Asus</span>
-            <h4 class="item-name">Notebook Asus VivoBook 15" Intel Core i5 16GB SSD 512GB</h4>
+            <h4 class="item-name"><a href="computadores.html" style="color: inherit; text-decoration: none;">Notebook Asus VivoBook 15" Intel Core i5 16GB SSD 512GB</a></h4>
             <div class="price-box">
               <span class="price-normal">$589.990</span>
               <div class="price-cash">$499.990</div>
@@ -1003,7 +1007,7 @@
               <span class="stock-tag">● 4 en bodega</span>
             </div>
             <span class="item-category">Dell</span>
-            <h4 class="item-name">Notebook Dell Inspiron 14" FHD Core i7 16GB 1TB SSD</h4>
+            <h4 class="item-name"><a href="computadores.html" style="color: inherit; text-decoration: none;">Notebook Dell Inspiron 14" FHD Core i7 16GB 1TB SSD</a></h4>
             <div class="price-box">
               <span class="price-normal">$799.990</span>
               <div class="price-cash">$654.990</div>
@@ -1022,7 +1026,7 @@
               <span class="stock-tag">● 3 en bodega</span>
             </div>
             <span class="item-category">Mac</span>
-            <h4 class="item-name">Apple MacBook Air 13" Chip M2 8-Core 256GB SSD Gris</h4>
+            <h4 class="item-name"><a href="computadores.html" style="color: inherit; text-decoration: none;">Apple MacBook Air 13" Chip M2 8-Core 256GB SSD Gris</a></h4>
             <div class="price-box">
               <span class="price-normal">$1.099.990</span>
               <div class="price-cash">$969.990</div>
@@ -1041,7 +1045,7 @@
               <span class="stock-tag">● 8 en bodega</span>
             </div>
             <span class="item-category">Lenovo</span>
-            <h4 class="item-name">Notebook Lenovo IdeaPad Slim 3 15.6" Ryzen 7 16GB</h4>
+            <h4 class="item-name"><a href="computadores.html" style="color: inherit; text-decoration: none;">Notebook Lenovo IdeaPad Slim 3 15.6" Ryzen 7 16GB</a></h4>
             <div class="price-box">
               <span class="price-normal">$629.990</span>
               <div class="price-cash">$489.990</div>
@@ -1060,7 +1064,7 @@
               <span class="stock-tag">● 5 en bodega</span>
             </div>
             <span class="item-category">HP</span>
-            <h4 class="item-name">Notebook HP 15.6" Intel Core i5 8GB 512GB SSD Plata</h4>
+            <h4 class="item-name"><a href="computadores.html" style="color: inherit; text-decoration: none;">Notebook HP 15.6" Intel Core i5 8GB 512GB SSD Plata</a></h4>
             <div class="price-box">
               <span class="price-normal">$469.990</span>
               <div class="price-cash">$419.990</div>
@@ -1136,7 +1140,7 @@
           <li><a href="#">Servicio Técnico de Computadores</a></li>
           <li><a href="#">Servicio Técnico de Celulares</a></li>
           <li><a href="#">Servicio Técnico de Impresoras</a></li>
-          <li><a href="#">Venta de Computadores</a></li>
+          <li><a href="computadores.html">Venta de Computadores</a></li>
         </ul>
       </div>
       <div class="footer-col">
