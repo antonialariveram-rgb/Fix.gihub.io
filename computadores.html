@@ -125,7 +125,7 @@
     }
     .header-btn svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; }
 
-    /* MIGA DE PAN ESTILO PC FACTORY */
+    /* MIGA DE PAN */
     .breadcrumb-bar {
       background: #ffffff;
       border-bottom: 1px solid var(--border-color);
@@ -136,20 +136,45 @@
     .breadcrumb-bar a { color: var(--fix-purple-start); text-decoration: none; font-weight: 600; }
     .breadcrumb-bar span { margin: 0 8px; }
 
-    /* CONTENEDOR PRINCIPAL A PANTALLA COMPLETA (SIN TABLA IZQUIERDA) */
+    /* PESTAÑAS RÁPIDAS DE MARCAS (Estilo PC Factory) */
+    .brand-tabs-bar {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      margin-bottom: 20px;
+      padding-bottom: 4px;
+    }
+    .brand-tab {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .brand-tab:hover, .brand-tab.active {
+      background: var(--fix-purple-start);
+      color: #ffffff;
+      border-color: var(--fix-purple-start);
+    }
+
+    /* CONTENEDOR */
     .container {
       max-width: 1240px;
       margin: 24px auto;
       padding: 0 16px;
     }
 
-    /* ENCABEZADO DE CATEGORÍA */
     .category-top-banner {
       background: #ffffff;
       border: 1px solid var(--border-color);
       border-radius: 8px;
-      padding: 20px 24px;
-      margin-bottom: 24px;
+      padding: 18px 24px;
+      margin-bottom: 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -157,7 +182,7 @@
       gap: 12px;
     }
     .category-top-banner h1 {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 800;
       color: var(--text-dark);
       display: flex;
@@ -167,16 +192,17 @@
     .category-top-banner h1::before {
       content: "";
       width: 5px;
-      height: 22px;
+      height: 20px;
       background: var(--fix-purple-start);
       border-radius: 3px;
     }
-    .category-top-banner span {
+    .category-count {
       font-size: 0.85rem;
       color: var(--text-muted);
+      font-weight: 600;
     }
 
-    /* GRILLA LIMPIA DE PRODUCTOS (4 POR FILA EN PANTALLA GRANDE) */
+    /* GRILLA */
     .products-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -371,11 +397,11 @@
           Computadores <span class="arrow">›</span>
         </button>
         <ul class="subcategory-list" style="display: block;">
-          <li><a href="computadores.html" style="color: var(--fix-purple-start); font-weight: 700;">Lenovo</a></li>
-          <li><a href="computadores.html">Dell</a></li>
-          <li><a href="computadores.html">Asus</a></li>
-          <li><a href="computadores.html">Mac</a></li>
-          <li><a href="computadores.html">HP</a></li>
+          <li><a href="computadores.html?marca=lenovo">Lenovo</a></li>
+          <li><a href="computadores.html?marca=dell">Dell</a></li>
+          <li><a href="computadores.html?marca=asus">Asus</a></li>
+          <li><a href="computadores.html?marca=mac">Mac</a></li>
+          <li><a href="computadores.html?marca=hp">HP</a></li>
         </ul>
       </li>
       <li class="category-item">
@@ -478,34 +504,47 @@
     </div>
   </header>
 
-  <!-- BREADCRUMB ESTILO PC FACTORY -->
+  <!-- MIGA DE PAN DINÁMICA -->
   <div class="breadcrumb-bar">
     <a href="index.html">Inicio</a>
     <span>›</span>
-    <strong>Computadores</strong>
+    <a href="computadores.html">Computadores</a>
+    <span id="crumbDivider" style="display:none;">›</span>
+    <strong id="crumbBrand"></strong>
   </div>
 
-  <!-- CONTENIDO LIMPIO A PANTALLA COMPLETA -->
+  <!-- CONTENIDO -->
   <div class="container">
     
-    <div class="category-top-banner">
-      <div>
-        <h1>Computadores</h1>
-        <span>Modelos disponibles con entrega inmediata y garantía oficial</span>
-      </div>
-      <span>Mostrando 6 productos</span>
+    <!-- BOTONES DE MARCA RÁPIDOS -->
+    <div class="brand-tabs-bar">
+      <a href="computadores.html" class="brand-tab" data-brand="todos">Todos los computadores</a>
+      <a href="computadores.html?marca=lenovo" class="brand-tab" data-brand="lenovo">Lenovo</a>
+      <a href="computadores.html?marca=dell" class="brand-tab" data-brand="dell">Dell</a>
+      <a href="computadores.html?marca=asus" class="brand-tab" data-brand="asus">Asus</a>
+      <a href="computadores.html?marca=mac" class="brand-tab" data-brand="mac">Mac (Apple)</a>
+      <a href="computadores.html?marca=hp" class="brand-tab" data-brand="hp">HP</a>
     </div>
 
-    <div class="products-grid">
+    <div class="category-top-banner">
+      <div>
+        <h1 id="pageTitle">Computadores</h1>
+        <span id="pageSubtitle">Equipos garantizados con entrega inmediata</span>
+      </div>
+      <span class="category-count" id="productCount"></span>
+    </div>
 
-      <!-- 1. Lenovo -->
-      <div class="card">
+    <!-- GRILLA CON COMPUTADORES POR MARCA -->
+    <div class="products-grid" id="productsGrid">
+
+      <!-- ================= LENOVO ================= -->
+      <div class="card" data-brand="lenovo">
         <span class="badge-promo">-22%</span>
         <div class="product-img-box">
-          <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=350&q=80" alt="Lenovo IdeaPad">
+          <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=350&q=80" alt="Lenovo IdeaPad Slim 3">
         </div>
         <div class="sku-stock">
-          <span>SKU: CMP-LN04</span>
+          <span>SKU: CMP-LN01</span>
           <span class="stock-tag">● 8 en bodega</span>
         </div>
         <span class="item-brand">Lenovo</span>
@@ -518,14 +557,52 @@
         <button class="btn-action">Agregar al carro</button>
       </div>
 
-      <!-- 2. Dell -->
-      <div class="card">
-        <span class="badge-promo">-18%</span>
+      <div class="card" data-brand="lenovo">
+        <span class="badge-promo">-15%</span>
         <div class="product-img-box">
-          <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=350&q=80" alt="Dell Inspiron">
+          <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=350&q=80" alt="Lenovo ThinkPad">
         </div>
         <div class="sku-stock">
-          <span>SKU: CMP-DL02</span>
+          <span>SKU: CMP-LN02</span>
+          <span class="stock-tag">● 5 en bodega</span>
+        </div>
+        <span class="item-brand">Lenovo</span>
+        <h4 class="item-name">Notebook Lenovo ThinkPad E14 Intel Core i5 16GB / 512GB SSD Pro</h4>
+        <div class="price-box">
+          <span class="price-normal">$789.990</span>
+          <div class="price-cash">$669.990</div>
+          <span class="price-cash-sub">Efectivo / Transferencia</span>
+        </div>
+        <button class="btn-action">Agregar al carro</button>
+      </div>
+
+      <div class="card" data-brand="lenovo">
+        <span class="badge-promo">-18%</span>
+        <div class="product-img-box">
+          <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=350&q=80" alt="Lenovo Legion">
+        </div>
+        <div class="sku-stock">
+          <span>SKU: CMP-LN03</span>
+          <span class="stock-tag">● 3 en bodega</span>
+        </div>
+        <span class="item-brand">Lenovo</span>
+        <h4 class="item-name">Notebook Gamer Lenovo LOQ 15" Intel Core i5 RTX 4050 16GB</h4>
+        <div class="price-box">
+          <span class="price-normal">$999.990</span>
+          <div class="price-cash">$819.990</div>
+          <span class="price-cash-sub">Efectivo / Transferencia</span>
+        </div>
+        <button class="btn-action">Agregar al carro</button>
+      </div>
+
+      <!-- ================= DELL ================= -->
+      <div class="card" data-brand="dell">
+        <span class="badge-promo">-18%</span>
+        <div class="product-img-box">
+          <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=350&q=80" alt="Dell Inspiron 14">
+        </div>
+        <div class="sku-stock">
+          <span>SKU: CMP-DL01</span>
           <span class="stock-tag">● 4 en bodega</span>
         </div>
         <span class="item-brand">Dell</span>
@@ -538,11 +615,49 @@
         <button class="btn-action">Agregar al carro</button>
       </div>
 
-      <!-- 3. Asus -->
-      <div class="card">
+      <div class="card" data-brand="dell">
+        <span class="badge-promo">-12%</span>
+        <div class="product-img-box">
+          <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=350&q=80" alt="Dell Vostro">
+        </div>
+        <div class="sku-stock">
+          <span>SKU: CMP-DL02</span>
+          <span class="stock-tag">● 6 en bodega</span>
+        </div>
+        <span class="item-brand">Dell</span>
+        <h4 class="item-name">Notebook Dell Vostro 3520 15.6" Intel Core i5 8GB / 512GB SSD</h4>
+        <div class="price-box">
+          <span class="price-normal">$529.990</span>
+          <div class="price-cash">$465.990</div>
+          <span class="price-cash-sub">Efectivo / Transferencia</span>
+        </div>
+        <button class="btn-action">Agregar al carro</button>
+      </div>
+
+      <div class="card" data-brand="dell">
+        <span class="badge-promo">-10%</span>
+        <div class="product-img-box">
+          <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=350&q=80" alt="Dell XPS 13">
+        </div>
+        <div class="sku-stock">
+          <span>SKU: CMP-DL03</span>
+          <span class="stock-tag">● 2 en bodega</span>
+        </div>
+        <span class="item-brand">Dell</span>
+        <h4 class="item-name">Ultrabook Dell XPS 13 Intel Evo Core i7 16GB / 512GB SSD InfinityEdge</h4>
+        <div class="price-box">
+          <span class="price-normal">$1.299.990</span>
+          <div class="price-cash">$1.169.990</div>
+          <span class="price-cash-sub">Efectivo / Transferencia</span>
+        </div>
+        <button class="btn-action">Agregar al carro</button>
+      </div>
+
+      <!-- ================= ASUS ================= -->
+      <div class="card" data-brand="asus">
         <span class="badge-promo">-15%</span>
         <div class="product-img-box">
-          <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=350&q=80" alt="Asus VivoBook">
+          <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=350&q=80" alt="Asus VivoBook 15">
         </div>
         <div class="sku-stock">
           <span>SKU: CMP-AS01</span>
@@ -558,14 +673,52 @@
         <button class="btn-action">Agregar al carro</button>
       </div>
 
-      <!-- 4. Mac (Apple) -->
-      <div class="card">
-        <span class="badge-promo">-12%</span>
+      <div class="card" data-brand="asus">
+        <span class="badge-promo">-20%</span>
         <div class="product-img-box">
-          <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=350&q=80" alt="MacBook Air">
+          <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=350&q=80" alt="Asus TUF Gaming">
         </div>
         <div class="sku-stock">
-          <span>SKU: CMP-MC03</span>
+          <span>SKU: CMP-AS02</span>
+          <span class="stock-tag">● 4 en bodega</span>
+        </div>
+        <span class="item-brand">Asus</span>
+        <h4 class="item-name">Notebook Asus TUF Gaming A15 Ryzen 7 RTX 4060 16GB / 1TB</h4>
+        <div class="price-box">
+          <span class="price-normal">$1.149.990</span>
+          <div class="price-cash">$919.990</div>
+          <span class="price-cash-sub">Efectivo / Transferencia</span>
+        </div>
+        <button class="btn-action">Agregar al carro</button>
+      </div>
+
+      <div class="card" data-brand="asus">
+        <span class="badge-promo">-10%</span>
+        <div class="product-img-box">
+          <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=350&q=80" alt="Asus Zenbook">
+        </div>
+        <div class="sku-stock">
+          <span>SKU: CMP-AS03</span>
+          <span class="stock-tag">● 3 en bodega</span>
+        </div>
+        <span class="item-brand">Asus</span>
+        <h4 class="item-name">Ultrabook Asus Zenbook 14 OLED Intel Core Ultra 7 16GB</h4>
+        <div class="price-box">
+          <span class="price-normal">$1.099.990</span>
+          <div class="price-cash">$989.990</div>
+          <span class="price-cash-sub">Efectivo / Transferencia</span>
+        </div>
+        <button class="btn-action">Agregar al carro</button>
+      </div>
+
+      <!-- ================= MAC ================= -->
+      <div class="card" data-brand="mac">
+        <span class="badge-promo">-12%</span>
+        <div class="product-img-box">
+          <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=350&q=80" alt="MacBook Air M2">
+        </div>
+        <div class="sku-stock">
+          <span>SKU: CMP-MC01</span>
           <span class="stock-tag">● 3 en bodega</span>
         </div>
         <span class="item-brand">Mac (Apple)</span>
@@ -578,14 +731,52 @@
         <button class="btn-action">Agregar al carro</button>
       </div>
 
-      <!-- 5. HP -->
-      <div class="card">
+      <div class="card" data-brand="mac">
+        <span class="badge-promo">-10%</span>
+        <div class="product-img-box">
+          <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=350&q=80" alt="MacBook Pro M3">
+        </div>
+        <div class="sku-stock">
+          <span>SKU: CMP-MC02</span>
+          <span class="stock-tag">● 2 en bodega</span>
+        </div>
+        <span class="item-brand">Mac (Apple)</span>
+        <h4 class="item-name">Apple MacBook Pro 14" Chip M3 8-Core 512GB SSD Plata</h4>
+        <div class="price-box">
+          <span class="price-normal">$1.699.990</span>
+          <div class="price-cash">$1.529.990</div>
+          <span class="price-cash-sub">Efectivo / Transferencia</span>
+        </div>
+        <button class="btn-action">Agregar al carro</button>
+      </div>
+
+      <div class="card" data-brand="mac">
+        <span class="badge-promo">-8%</span>
+        <div class="product-img-box">
+          <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=350&q=80" alt="iMac 24">
+        </div>
+        <div class="sku-stock">
+          <span>SKU: CMP-MC03</span>
+          <span class="stock-tag">● 2 en bodega</span>
+        </div>
+        <span class="item-brand">Mac (Apple)</span>
+        <h4 class="item-name">Apple iMac 24" 4.5K Retina Chip M3 8GB / 256GB SSD Azul</h4>
+        <div class="price-box">
+          <span class="price-normal">$1.399.990</span>
+          <div class="price-cash">$1.289.990</div>
+          <span class="price-cash-sub">Efectivo / Transferencia</span>
+        </div>
+        <button class="btn-action">Agregar al carro</button>
+      </div>
+
+      <!-- ================= HP ================= -->
+      <div class="card" data-brand="hp">
         <span class="badge-promo">-10%</span>
         <div class="product-img-box">
           <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=350&q=80" alt="HP 15.6">
         </div>
         <div class="sku-stock">
-          <span>SKU: CMP-HP05</span>
+          <span>SKU: CMP-HP01</span>
           <span class="stock-tag">● 5 en bodega</span>
         </div>
         <span class="item-brand">HP</span>
@@ -598,21 +789,39 @@
         <button class="btn-action">Agregar al carro</button>
       </div>
 
-      <!-- 6. Torre PC Pro -->
-      <div class="card">
-        <span class="badge-promo">-25%</span>
+      <div class="card" data-brand="hp">
+        <span class="badge-promo">-15%</span>
         <div class="product-img-box">
-          <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=350&q=80" alt="PC Torre">
+          <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=350&q=80" alt="HP Pavilion">
         </div>
         <div class="sku-stock">
-          <span>SKU: CMP-WRK06</span>
-          <span class="stock-tag">● 2 en bodega</span>
+          <span>SKU: CMP-HP02</span>
+          <span class="stock-tag">● 4 en bodega</span>
         </div>
-        <span class="item-brand">Fixionary Pro</span>
-        <h4 class="item-name">Computador Torre Corporativa Intel Core i7 32GB RAM / 1TB NVMe</h4>
+        <span class="item-brand">HP</span>
+        <h4 class="item-name">Notebook HP Pavilion 14" Intel Core i7 16GB / 512GB SSD Touch</h4>
         <div class="price-box">
-          <span class="price-normal">$899.990</span>
-          <div class="price-cash">$699.990</div>
+          <span class="price-normal">$729.990</span>
+          <div class="price-cash">$619.990</div>
+          <span class="price-cash-sub">Efectivo / Transferencia</span>
+        </div>
+        <button class="btn-action">Agregar al carro</button>
+      </div>
+
+      <div class="card" data-brand="hp">
+        <span class="badge-promo">-20%</span>
+        <div class="product-img-box">
+          <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=350&q=80" alt="HP Victus">
+        </div>
+        <div class="sku-stock">
+          <span>SKU: CMP-HP03</span>
+          <span class="stock-tag">● 3 en bodega</span>
+        </div>
+        <span class="item-brand">HP</span>
+        <h4 class="item-name">Notebook Gamer HP Victus 15" Ryzen 5 RTX 3050 16GB / 512GB</h4>
+        <div class="price-box">
+          <span class="price-normal">$829.990</span>
+          <div class="price-cash">$663.990</div>
           <span class="price-cash-sub">Efectivo / Transferencia</span>
         </div>
         <button class="btn-action">Agregar al carro</button>
@@ -650,7 +859,7 @@
       </div>
       <div class="footer-col">
         <h4>Consultas y Ventas</h4>
-        <p>¿Necesitas cotizar equipos para tu empresa o estudio? Escríbenos directamente o visítanos en nuestra tienda central en Ñuñoa.</p>
+        <p>¿Necesitas asesoría técnica para renovar equipos de tu empresa o estudio? Escríbenos directamente o visítanos en Ñuñoa.</p>
       </div>
     </div>
     <div class="footer-bottom">
@@ -658,6 +867,7 @@
     </div>
   </footer>
 
+  <!-- SCRIPT DE FILTRO INTELIGENTE POR MARCA -->
   <script>
     function toggleMenu() {
       const drawer = document.getElementById('sidebarDrawer');
@@ -669,6 +879,61 @@
       const item = btn.parentElement;
       item.classList.toggle('open');
     }
+
+    // Filtrar automáticamente según la marca elegida en la URL (?marca=lenovo, etc.)
+    function aplicarFiltroMarca() {
+      const params = new URLSearchParams(window.location.search);
+      const marcaParam = (params.get('marca') || 'todos').toLowerCase();
+
+      const titulos = {
+        'lenovo': 'Computadores Lenovo',
+        'dell': 'Computadores Dell',
+        'asus': 'Computadores Asus',
+        'mac': 'Computadores Mac (Apple)',
+        'hp': 'Computadores HP',
+        'todos': 'Computadores'
+      };
+
+      const tituloTexto = titulos[marcaParam] || 'Computadores';
+      document.getElementById('pageTitle').textContent = tituloTexto;
+
+      // Actualizar miga de pan
+      const crumbDivider = document.getElementById('crumbDivider');
+      const crumbBrand = document.getElementById('crumbBrand');
+      if (marcaParam !== 'todos') {
+        crumbDivider.style.display = 'inline';
+        crumbBrand.textContent = titulos[marcaParam].replace('Computadores ', '');
+      } else {
+        crumbDivider.style.display = 'none';
+        crumbBrand.textContent = '';
+      }
+
+      // Marcar pestaña activa
+      document.querySelectorAll('.brand-tab').forEach(tab => {
+        if (tab.getAttribute('data-brand') === marcaParam) {
+          tab.classList.add('active');
+        } else {
+          tab.classList.remove('active');
+        }
+      });
+
+      // Filtrar tarjetas
+      const cards = document.querySelectorAll('.card');
+      let visibles = 0;
+      cards.forEach(card => {
+        const brand = card.getAttribute('data-brand');
+        if (marcaParam === 'todos' || brand === marcaParam) {
+          card.style.display = 'flex';
+          visibles++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      document.getElementById('productCount').textContent = `Mostrando ${visibles} ${visibles === 1 ? 'producto' : 'productos'}`;
+    }
+
+    document.addEventListener('DOMContentLoaded', aplicarFiltroMarca);
   </script>
 
 </body>
