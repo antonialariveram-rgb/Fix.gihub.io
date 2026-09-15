@@ -13,7 +13,6 @@
       --fix-gradient: linear-gradient(135deg, #7b00ff 0%, #4c00e6 50%, #0d00a4 100%);
       
       --top-dark-bar: #140033;
-      --sub-dark-bar: #0c0022;
       --btn-blue: #0066ff;
       --btn-blue-hover: #004edb;
       --accent-red: #e63946;
@@ -39,42 +38,18 @@
       line-height: 1.5;
     }
 
-    /* BARRA SUPERIOR */
+    /* BARRA SUPERIOR (HEADER):
+       Fixionary -> [☰ Categorías] -> Búsqueda -> [👤 Ingresa] -> [🛒 Mis compras] */
     header {
       background: var(--top-dark-bar);
       color: #ffffff;
-      padding: 10px 20px;
+      padding: 10px 24px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 16px;
+      gap: 18px;
       position: sticky;
       top: 0;
       z-index: 90;
-    }
-
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .menu-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      gap: 4.5px;
-      padding: 6px;
-    }
-
-    .menu-btn span {
-      display: block;
-      width: 22px;
-      height: 2.5px;
-      background: #ffffff;
-      border-radius: 2px;
     }
 
     .brand-logo {
@@ -83,93 +58,142 @@
       gap: 8px;
       text-decoration: none;
       color: #ffffff;
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       font-weight: 800;
       letter-spacing: -0.4px;
+      flex-shrink: 0;
     }
 
     .brand-icon {
       background: #ffffff;
       color: var(--fix-purple-start);
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       border-radius: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 900;
-      font-size: 1.15rem;
+      font-size: 1.2rem;
+    }
+
+    .btn-categories-toggle {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 6px;
+      padding: 7px 12px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .btn-categories-toggle:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      gap: 3.5px;
+    }
+
+    .hamburger-icon span {
+      display: block;
+      width: 17px;
+      height: 2px;
+      background: #ffffff;
+      border-radius: 2px;
     }
 
     .search-box {
       flex: 1;
-      max-width: 520px;
       display: flex;
+      min-width: 240px;
     }
 
     .search-box input {
       width: 100%;
-      padding: 8px 12px;
+      padding: 9px 14px;
       border: none;
-      border-radius: 4px 0 0 4px;
+      border-radius: 6px 0 0 6px;
       font-size: 0.85rem;
       outline: none;
     }
 
     .search-box button {
       background: var(--btn-blue);
-      color: #fff;
+      color: #ffffff;
       border: none;
       padding: 0 16px;
       font-size: 0.85rem;
       font-weight: 600;
-      border-radius: 0 4px 4px 0;
+      border-radius: 0 6px 6px 0;
       cursor: pointer;
+      transition: background 0.2s;
     }
 
     .search-box button:hover {
       background: var(--btn-blue-hover);
     }
 
-    .top-links {
+    .header-actions {
       display: flex;
-      gap: 20px;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .header-btn {
+      color: #ffffff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+
+    .header-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .header-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .cart-btn-wrapper {
+      position: relative;
+      display: flex;
       align-items: center;
     }
 
-    .top-links a {
+    .cart-badge {
+      background: #16a34a;
       color: #ffffff;
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 600;
+      font-size: 0.65rem;
+      font-weight: 800;
+      border-radius: 10px;
+      padding: 1px 5px;
+      margin-left: 2px;
     }
 
-    .top-links a:hover {
-      color: #cbd5e1;
-    }
-
-    /* SUBBARRA HORIZONTAL */
-    nav.sub-nav {
-      background: var(--sub-dark-bar);
-      padding: 8px 24px;
-      display: flex;
-      gap: 22px;
-      overflow-x: auto;
-    }
-
-    nav.sub-nav a {
-      color: #cbd5e1;
-      text-decoration: none;
-      font-size: 0.8rem;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    nav.sub-nav a:hover {
-      color: #ffffff;
-    }
-
-    /* HERO BANNER */
+    /* HERO BANNER CON DEGRADADO FIXIONARY */
     .hero-banner {
       background: var(--fix-gradient);
       color: #ffffff;
@@ -189,7 +213,7 @@
     }
 
     .hero-inner p {
-      font-size: 1rem;
+      font-size: 1.05rem;
       color: #e5dbff;
       margin-bottom: 24px;
     }
@@ -213,46 +237,11 @@
 
     .container {
       max-width: 1200px;
-      margin: 24px auto;
+      margin: 28px auto;
       padding: 0 16px;
     }
 
-    /* SECCION EMPRESA */
-    .company-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 22px 26px;
-      margin-bottom: 28px;
-    }
-
-    .company-card h2 {
-      font-size: 1.15rem;
-      color: var(--fix-purple-start);
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .company-card h2::before {
-      content: "";
-      width: 4px;
-      height: 16px;
-      background: var(--fix-purple-start);
-      border-radius: 2px;
-      display: inline-block;
-    }
-
-    .company-card p {
-      color: var(--text-muted);
-      font-size: 0.88rem;
-      line-height: 1.6;
-    }
-
-    /* ========================================================
-       CARRUSELES: EXACTAMENTE EL MISMO COLOR Y FONDO
-       ======================================================== */
+    /* CARRUSELES CON FONDO MORADO TRANSLÚCIDO */
     .slider-section-colored {
       background: rgba(106, 0, 244, 0.07);
       border: 1px solid rgba(106, 0, 244, 0.16);
@@ -285,14 +274,6 @@
       background: var(--fix-purple-start);
       border-radius: 3px;
       display: inline-block;
-    }
-
-    .slider-subtitle-colored {
-      color: var(--text-muted);
-      font-size: 0.82rem;
-      font-weight: 500;
-      display: block;
-      margin-top: 2px;
     }
 
     .slider-wrapper {
@@ -342,15 +323,10 @@
       transform: translateY(-50%) scale(1.08);
     }
 
-    .slider-arrow.prev {
-      left: -14px;
-    }
+    .slider-arrow.prev { left: -14px; }
+    .slider-arrow.next { right: -14px; }
 
-    .slider-arrow.next {
-      right: -14px;
-    }
-
-    /* Tarjetas de Producto */
+    /* Tarjetas de Producto Estándar */
     .card {
       min-width: 220px;
       max-width: 220px;
@@ -474,6 +450,68 @@
       background-color: var(--top-dark-bar);
     }
 
+    /* ========================================================
+       TARJETAS EXCLUSIVAS DE SERVICIO TÉCNICO
+       (Solo foto y título que es enlace, sin nada abajo)
+       ======================================================== */
+    .card-service {
+      min-width: 260px;
+      max-width: 260px;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      text-decoration: none;
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .card-service:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(106, 0, 244, 0.16);
+      border-color: var(--fix-purple-start);
+    }
+
+    .card-service .service-img-box {
+      width: 100%;
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fafafa;
+      border-radius: 8px;
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+
+    .card-service .service-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .card-service:hover .service-img-box img {
+      transform: scale(1.05);
+    }
+
+    .service-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      transition: color 0.2s;
+      padding: 4px 0 6px;
+    }
+
+    .card-service:hover .service-title {
+      color: var(--fix-purple-start);
+    }
+
     /* DRAWER LATERAL */
     .menu-overlay {
       position: fixed;
@@ -493,8 +531,8 @@
     .sidebar-drawer {
       position: fixed;
       top: 0;
-      left: -360px;
-      width: 340px;
+      left: -380px;
+      width: 350px;
       height: 100%;
       background: #ffffff;
       z-index: 999;
@@ -526,20 +564,8 @@
       color: var(--text-muted);
     }
 
-    .drawer-user {
-      margin-bottom: 16px;
-    }
-
-    .drawer-user h4 {
-      font-size: 1rem;
-      color: var(--text-dark);
-      margin-bottom: 2px;
-    }
-
-    .drawer-user p {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
+    .drawer-user h4 { font-size: 1rem; margin-bottom: 2px; }
+    .drawer-user p { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 14px; }
 
     .btn-drawer-login {
       display: block;
@@ -640,7 +666,7 @@
   <!-- Overlay para cerrar el menú lateral -->
   <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
 
-  <!-- MENU LATERAL DESPLEGABLE CON CATEGORÍAS -->
+  <!-- MENU LATERAL CON LAS 7 CATEGORÍAS -->
   <aside class="sidebar-drawer" id="sidebarDrawer">
     <div class="drawer-header">
       <button class="close-btn" onclick="toggleMenu()">✕</button>
@@ -657,10 +683,11 @@
     </div>
 
     <ul class="category-list">
+
       <!-- 1. Computadores -->
       <li class="category-item">
         <button class="category-btn" onclick="toggleCategory(this)">
-          Computadores
+          1. Computadores
           <span class="arrow">›</span>
         </button>
         <ul class="subcategory-list">
@@ -672,57 +699,45 @@
         </ul>
       </li>
 
-      <!-- 2. Accesorios y periféricos -->
+      <!-- 2. Accesorios y Periféricos -->
       <li class="category-item">
         <button class="category-btn" onclick="toggleCategory(this)">
-          Accesorios y periféricos
+          2. Accesorios y Periféricos
           <span class="arrow">›</span>
         </button>
         <ul class="subcategory-list">
-          <li><a href="#">Mouses y Teclados</a></li>
-          <li><a href="#">Accesorios computadores</a></li>
-          <li><a href="#">Accesorios celulares</a></li>
-          <li><a href="#">Accesorios cámaras</a></li>
-          <li><a href="#">Adaptadores y conversores</a></li>
-          <li><a href="#">Cables y adaptadores</a></li>
-          <li><a href="#">Mantención y limpieza</a></li>
-          <li><a href="#">Accesorios de monitores</a></li>
+          <li><a href="mouses-teclados.html">Mouses y Teclados</a></li>
+          <li><a href="#">Accesorios Computadores</a></li>
+          <li><a href="#">Accesorios Celulares</a></li>
+          <li><a href="#">Accesorios Cámara</a></li>
+          <li><a href="#">Accesorios Monitores</a></li>
+          <li><a href="#">Cables y Adaptadores</a></li>
+          <li><a href="#">Mantención y Limpieza</a></li>
         </ul>
       </li>
 
       <!-- 3. Energía -->
       <li class="category-item">
         <button class="category-btn" onclick="toggleCategory(this)">
-          Energía
+          3. Energía
           <span class="arrow">›</span>
         </button>
         <ul class="subcategory-list">
-          <li><a href="#">Power Bank</a></li>
+          <li><a href="#">Power Banks</a></li>
           <li><a href="#">Baterías</a></li>
-          <li><a href="#">Cargadores Notebooks</a></li>
+          <li><a href="#">Cargadores computador</a></li>
         </ul>
       </li>
 
-      <!-- 4. Monitores -->
+      <!-- 4. Almacenamiento y Discos Duros -->
       <li class="category-item">
         <button class="category-btn" onclick="toggleCategory(this)">
-          Monitores
+          4. Almacenamiento y Discos Duros
           <span class="arrow">›</span>
         </button>
         <ul class="subcategory-list">
-          <li><a href="#">Accesorios monitores</a></li>
-        </ul>
-      </li>
-
-      <!-- 5. Almacenamiento y Discos Duros -->
-      <li class="category-item">
-        <button class="category-btn" onclick="toggleCategory(this)">
-          Almacenamiento y Discos Duros
-          <span class="arrow">›</span>
-        </button>
-        <ul class="subcategory-list">
-          <li><a href="#">Discos internos SSD</a></li>
-          <li><a href="#">Discos internos HDD</a></li>
+          <li><a href="#">Discos Internos SSD</a></li>
+          <li><a href="#">Discos Internos HDD</a></li>
           <li><a href="#">Discos Externos HDD</a></li>
           <li><a href="#">Memorias Flash</a></li>
           <li><a href="#">Pendrives</a></li>
@@ -730,10 +745,10 @@
         </ul>
       </li>
 
-      <!-- 6. Impresoras -->
+      <!-- 5. Impresoras -->
       <li class="category-item">
         <button class="category-btn" onclick="toggleCategory(this)">
-          Impresoras
+          5. Impresoras
           <span class="arrow">›</span>
         </button>
         <ul class="subcategory-list">
@@ -741,58 +756,82 @@
         </ul>
       </li>
 
-      <!-- 7. Audio -->
+      <!-- 6. Audio -->
       <li class="category-item">
         <button class="category-btn" onclick="toggleCategory(this)">
-          Audio
+          6. Audio
           <span class="arrow">›</span>
         </button>
         <ul class="subcategory-list">
           <li><a href="#">Audífonos</a></li>
           <li><a href="#">Parlantes</a></li>
-          <li><a href="#">Accesorios de audio</a></li>
+          <li><a href="#">Accesorios de Audio</a></li>
         </ul>
       </li>
+
+      <!-- 7. Servicio Técnico -->
+      <li class="category-item">
+        <button class="category-btn" onclick="toggleCategory(this)">
+          7. Servicio Técnico
+          <span class="arrow">›</span>
+        </button>
+        <ul class="subcategory-list">
+          <li><a href="servicio-celulares.html">Celulares</a></li>
+          <li><a href="servicio-computadores.html">Computadores</a></li>
+          <li><a href="servicio-impresoras.html">Impresoras</a></li>
+        </ul>
+      </li>
+
     </ul>
   </aside>
 
-  <!-- BARRA PRINCIPAL -->
+  <!-- BARRA PRINCIPAL (HEADER): DE IZQUIERDA A DERECHA -->
   <header>
-    <div class="header-left">
-      <button class="menu-btn" onclick="toggleMenu()" aria-label="Abrir categorías">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+    <!-- Logo Fixionary -->
+    <a href="index.html" class="brand-logo">
+      <div class="brand-icon">F</div>
+      <span>Fixionary</span>
+    </a>
 
-      <a href="#" class="brand-logo">
-        <div class="brand-icon">F</div>
-        <span>Fixionary</span>
-      </a>
-    </div>
+    <!-- Botón 3 líneas + Categorías -->
+    <button class="btn-categories-toggle" onclick="toggleMenu()" aria-label="Abrir categorías">
+      <div class="hamburger-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <span>Categorías</span>
+    </button>
     
+    <!-- Barra de Búsqueda -->
     <div class="search-box">
       <input type="text" placeholder="Busca aquí la tecnología para ti...">
       <button>Buscar</button>
     </div>
 
-    <div class="top-links">
-      <a href="#empresa">Empresa</a>
-      <a href="#destacados">Modelos</a>
-      <a href="#contacto">Contacto</a>
+    <!-- Ingresa y Mis compras -->
+    <div class="header-actions">
+      <a href="#" class="header-btn">
+        <svg viewBox="0 0 24 24">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <span>Ingresa</span>
+      </a>
+
+      <a href="#" class="header-btn cart-btn-wrapper">
+        <svg viewBox="0 0 24 24">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span>Mis compras</span>
+        <span class="cart-badge">0</span>
+      </a>
     </div>
   </header>
 
-  <!-- Subbarra horizontal -->
-  <nav class="sub-nav">
-    <a href="#destacados">Destacados</a>
-    <a href="#mas-comprados">Más Comprados</a>
-    <a href="#destacados">Desarrollo Web & Software</a>
-    <a href="#destacados">Equipos Corporativos</a>
-    <a href="#destacados">Soporte Continuo</a>
-  </nav>
-
-  <!-- Hero Banner -->
+  <!-- HERO BANNER CON DEGRADADO FIXIONARY -->
   <section class="hero-banner">
     <div class="hero-inner">
       <h1>¡Innovamos junto a ti!</h1>
@@ -803,153 +842,22 @@
 
   <div class="container">
 
-    <!-- Sección Institucional -->
-    <section id="empresa" class="company-card">
-      <h2>Sobre Fixionary</h2>
-      <p>
-        Nos especializamos en brindar soluciones de calidad, ofreciendo soporte técnico, desarrollo de software y consultoría adaptada a las necesidades de cada cliente.
-      </p>
-    </section>
-
     <!-- ==============================================
-         LÍNEA 1: PRODUCTOS DESTACADOS
+         1. CARRUSEL: OFERTAS
          ============================================== -->
-    <section id="destacados" class="slider-section-colored">
+    <section id="ofertas" class="slider-section-colored">
       <div class="slider-header-colored">
         <div>
-          <h3 class="slider-title-colored">Los más destacados</h3>
-          <span class="slider-subtitle-colored">Soluciones y equipos recomendados para tu empresa</span>
+          <h3 class="slider-title-colored">Ofertas</h3>
         </div>
       </div>
 
       <div class="slider-wrapper">
-        <button class="slider-arrow prev" onclick="scrollSlider('track-destacados', -240)" aria-label="Anterior">‹</button>
+        <button class="slider-arrow prev" onclick="scrollSlider('track-ofertas', -240)" aria-label="Anterior">‹</button>
         
-        <div class="product-track" id="track-destacados">
+        <div class="product-track" id="track-ofertas">
           
-          <!-- Item 1 -->
-          <div class="card">
-            <span class="badge-promo">-20%</span>
-            <div class="product-img-box">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=350&q=80" alt="Plataforma Web">
-            </div>
-            <div class="sku-stock">
-              <span>SKU: FIX-MOD01</span>
-              <span class="stock-tag">● Disponible</span>
-            </div>
-            <span class="item-category">Desarrollo Web</span>
-            <h4 class="item-name">Plataforma Web Corporativa con Panel de Control</h4>
-            <div class="price-box">
-              <span class="price-normal">$850.000</span>
-              <div class="price-cash">$680.000</div>
-              <span class="price-cash-sub">Pago contado / transferencia</span>
-            </div>
-            <button class="btn-action">Cotizar modelo</button>
-          </div>
-
-          <!-- Item 2 -->
-          <div class="card">
-            <span class="badge-promo">-15%</span>
-            <div class="product-img-box">
-              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=350&q=80" alt="App Movil">
-            </div>
-            <div class="sku-stock">
-              <span>SKU: FIX-MOD02</span>
-              <span class="stock-tag">● Disponible</span>
-            </div>
-            <span class="item-category">Aplicaciones</span>
-            <h4 class="item-name">App Móvil para Clientes Multiplataforma (iOS & Android)</h4>
-            <div class="price-box">
-              <span class="price-normal">$1.200.000</span>
-              <div class="price-cash">$990.000</div>
-              <span class="price-cash-sub">Pago contado / transferencia</span>
-            </div>
-            <button class="btn-action">Cotizar modelo</button>
-          </div>
-
-          <!-- Item 3 -->
-          <div class="card">
-            <span class="badge-promo">-25%</span>
-            <div class="product-img-box">
-              <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=350&q=80" alt="Workstation">
-            </div>
-            <div class="sku-stock">
-              <span>SKU: FIX-EQ401</span>
-              <span class="stock-tag">● 4 en bodega</span>
-            </div>
-            <span class="item-category">Equipamiento TI</span>
-            <h4 class="item-name">Estación de Trabajo Corporativa i7 16GB / 1TB SSD</h4>
-            <div class="price-box">
-              <span class="price-normal">$799.990</span>
-              <div class="price-cash">$599.990</div>
-              <span class="price-cash-sub">Efectivo / Transferencia</span>
-            </div>
-            <button class="btn-action">Agregar al pedido</button>
-          </div>
-
-          <!-- Item 4 -->
-          <div class="card">
-            <span class="badge-promo">-18%</span>
-            <div class="product-img-box">
-              <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=350&q=80" alt="Monitor">
-            </div>
-            <div class="sku-stock">
-              <span>SKU: FIX-MON01</span>
-              <span class="stock-tag">● Stock alto</span>
-            </div>
-            <span class="item-category">Monitores</span>
-            <h4 class="item-name">Monitor Profesional 27" IPS QHD Color Accurate</h4>
-            <div class="price-box">
-              <span class="price-normal">$289.990</span>
-              <div class="price-cash">$239.990</div>
-              <span class="price-cash-sub">Efectivo / Transferencia</span>
-            </div>
-            <button class="btn-action">Agregar al pedido</button>
-          </div>
-
-          <!-- Item 5 -->
-          <div class="card">
-            <span class="badge-promo">-30%</span>
-            <div class="product-img-box">
-              <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=350&q=80" alt="Soporte">
-            </div>
-            <div class="sku-stock">
-              <span>SKU: FIX-SRV10</span>
-              <span class="stock-tag">● Planes activos</span>
-            </div>
-            <span class="item-category">Soporte Técnico</span>
-            <h4 class="item-name">Plan Mensual de Mantenimiento y Continuidad TI</h4>
-            <div class="price-box">
-              <span class="price-normal">$90.000/mes</span>
-              <div class="price-cash">$75.000/mes</div>
-              <span class="price-cash-sub">Facturación mensual</span>
-            </div>
-            <button class="btn-action">Contratar plan</button>
-          </div>
-
-        </div>
-
-        <button class="slider-arrow next" onclick="scrollSlider('track-destacados', 240)" aria-label="Siguiente">›</button>
-      </div>
-    </section>
-
-    <!-- ==============================================
-         LÍNEA 2: LOS MÁS COMPRADOS (MISMO FONDO Y CLASE)
-         ============================================== -->
-    <section id="mas-comprados" class="slider-section-colored">
-      <div class="slider-header-colored">
-        <div>
-          <h3 class="slider-title-colored">Los más comprados</h3>
-          <span class="slider-subtitle-colored">Componentes, energía y periféricos con mayor demanda</span>
-        </div>
-      </div>
-
-      <div class="slider-wrapper">
-        <button class="slider-arrow prev" onclick="scrollSlider('track-comprados', -240)" aria-label="Anterior">‹</button>
-        
-        <div class="product-track" id="track-comprados">
-          
-          <!-- Item 1 -->
+          <!-- Oferta 1 -->
           <div class="card">
             <span class="badge-promo">-33%</span>
             <div class="product-img-box">
@@ -960,7 +868,9 @@
               <span class="stock-tag">● +50 Unid.</span>
             </div>
             <span class="item-category">Energía</span>
-            <h4 class="item-name">Power Bank 20.000 mAh Carga Rápida USB-C 22.5W</h4>
+            <h4 class="item-name">
+              <a href="producto-bateria.html" style="color: inherit; text-decoration: none;">Power Bank 20.000 mAh Carga Rápida USB-C 22.5W</a>
+            </h4>
             <div class="price-box">
               <span class="price-normal">$29.990</span>
               <div class="price-cash">$19.990</div>
@@ -969,7 +879,7 @@
             <button class="btn-action">Agregar al pedido</button>
           </div>
 
-          <!-- Item 2 -->
+          <!-- Oferta 2 -->
           <div class="card">
             <span class="badge-promo">-40%</span>
             <div class="product-img-box">
@@ -989,27 +899,7 @@
             <button class="btn-action">Agregar al pedido</button>
           </div>
 
-          <!-- Item 3 -->
-          <div class="card">
-            <span class="badge-promo">-15%</span>
-            <div class="product-img-box">
-              <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=350&q=80" alt="Mouse">
-            </div>
-            <div class="sku-stock">
-              <span>SKU: FIX-PER02</span>
-              <span class="stock-tag">● 25 Unid.</span>
-            </div>
-            <span class="item-category">Periféricos</span>
-            <h4 class="item-name">Mouse Ergonómico Inalámbrico Silencioso Multi-Device</h4>
-            <div class="price-box">
-              <span class="price-normal">$24.990</span>
-              <div class="price-cash">$18.990</div>
-              <span class="price-cash-sub">Efectivo / Transferencia</span>
-            </div>
-            <button class="btn-action">Agregar al pedido</button>
-          </div>
-
-          <!-- Item 4 -->
+          <!-- Oferta 3 -->
           <div class="card">
             <span class="badge-promo">-25%</span>
             <div class="product-img-box">
@@ -1020,7 +910,7 @@
               <span class="stock-tag">● +30 Unid.</span>
             </div>
             <span class="item-category">Audio</span>
-            <h4 class="item-name">Audífonos Bluetooth con Cancelación de Ruido Activa</h4>
+            <h4 class="item-name">Audífonos Bluetooth Cancelación Activa de Ruido</h4>
             <div class="price-box">
               <span class="price-normal">$69.990</span>
               <div class="price-cash">$49.990</div>
@@ -1029,7 +919,7 @@
             <button class="btn-action">Agregar al pedido</button>
           </div>
 
-          <!-- Item 5 -->
+          <!-- Oferta 4 -->
           <div class="card">
             <span class="badge-promo">-50%</span>
             <div class="product-img-box">
@@ -1049,9 +939,196 @@
             <button class="btn-action">Agregar al pedido</button>
           </div>
 
+          <!-- Oferta 5 -->
+          <div class="card">
+            <span class="badge-promo">-20%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=350&q=80" alt="Mouse">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: FIX-PER02</span>
+              <span class="stock-tag">● 25 Unid.</span>
+            </div>
+            <span class="item-category">Periféricos</span>
+            <h4 class="item-name">Mouse Ergonómico Inalámbrico Silencioso Multi-Device</h4>
+            <div class="price-box">
+              <span class="price-normal">$24.990</span>
+              <div class="price-cash">$18.990</div>
+              <span class="price-cash-sub">Efectivo / Transferencia</span>
+            </div>
+            <button class="btn-action">Agregar al pedido</button>
+          </div>
+
         </div>
 
-        <button class="slider-arrow next" onclick="scrollSlider('track-comprados', 240)" aria-label="Siguiente">›</button>
+        <button class="slider-arrow next" onclick="scrollSlider('track-ofertas', 240)" aria-label="Siguiente">›</button>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         2. CARRUSEL: COMPUTACIÓN
+         ============================================== -->
+    <section id="computacion" class="slider-section-colored">
+      <div class="slider-header-colored">
+        <div>
+          <h3 class="slider-title-colored">Computación</h3>
+        </div>
+      </div>
+
+      <div class="slider-wrapper">
+        <button class="slider-arrow prev" onclick="scrollSlider('track-computacion', -240)" aria-label="Anterior">‹</button>
+        
+        <div class="product-track" id="track-computacion">
+          
+          <!-- Item Comp 1 -->
+          <div class="card">
+            <span class="badge-promo">-15%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=350&q=80" alt="Notebook Asus">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: CMP-AS01</span>
+              <span class="stock-tag">● 6 en bodega</span>
+            </div>
+            <span class="item-category">Asus</span>
+            <h4 class="item-name">Notebook Asus VivoBook 15" Intel Core i5 16GB SSD 512GB</h4>
+            <div class="price-box">
+              <span class="price-normal">$589.990</span>
+              <div class="price-cash">$499.990</div>
+              <span class="price-cash-sub">Efectivo / Transferencia</span>
+            </div>
+            <button class="btn-action">Agregar al pedido</button>
+          </div>
+
+          <!-- Item Comp 2 -->
+          <div class="card">
+            <span class="badge-promo">-18%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=350&q=80" alt="Notebook Dell">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: CMP-DL02</span>
+              <span class="stock-tag">● 4 en bodega</span>
+            </div>
+            <span class="item-category">Dell</span>
+            <h4 class="item-name">Notebook Dell Inspiron 14" FHD Core i7 16GB 1TB SSD</h4>
+            <div class="price-box">
+              <span class="price-normal">$799.990</span>
+              <div class="price-cash">$654.990</div>
+              <span class="price-cash-sub">Efectivo / Transferencia</span>
+            </div>
+            <button class="btn-action">Agregar al pedido</button>
+          </div>
+
+          <!-- Item Comp 3 -->
+          <div class="card">
+            <span class="badge-promo">-12%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=350&q=80" alt="MacBook Pro">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: CMP-MC03</span>
+              <span class="stock-tag">● 3 en bodega</span>
+            </div>
+            <span class="item-category">Mac</span>
+            <h4 class="item-name">Apple MacBook Air 13" Chip M2 8-Core 256GB SSD Gris</h4>
+            <div class="price-box">
+              <span class="price-normal">$1.099.990</span>
+              <div class="price-cash">$969.990</div>
+              <span class="price-cash-sub">Efectivo / Transferencia</span>
+            </div>
+            <button class="btn-action">Agregar al pedido</button>
+          </div>
+
+          <!-- Item Comp 4 -->
+          <div class="card">
+            <span class="badge-promo">-22%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=350&q=80" alt="Notebook Lenovo">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: CMP-LN04</span>
+              <span class="stock-tag">● 8 en bodega</span>
+            </div>
+            <span class="item-category">Lenovo</span>
+            <h4 class="item-name">Notebook Lenovo IdeaPad Slim 3 15.6" Ryzen 7 16GB</h4>
+            <div class="price-box">
+              <span class="price-normal">$629.990</span>
+              <div class="price-cash">$489.990</div>
+              <span class="price-cash-sub">Efectivo / Transferencia</span>
+            </div>
+            <button class="btn-action">Agregar al pedido</button>
+          </div>
+
+          <!-- Item Comp 5 -->
+          <div class="card">
+            <span class="badge-promo">-10%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=350&q=80" alt="Notebook HP">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: CMP-HP05</span>
+              <span class="stock-tag">● 5 en bodega</span>
+            </div>
+            <span class="item-category">HP</span>
+            <h4 class="item-name">Notebook HP 15.6" Intel Core i5 8GB 512GB SSD Plata</h4>
+            <div class="price-box">
+              <span class="price-normal">$469.990</span>
+              <div class="price-cash">$419.990</div>
+              <span class="price-cash-sub">Efectivo / Transferencia</span>
+            </div>
+            <button class="btn-action">Agregar al pedido</button>
+          </div>
+
+        </div>
+
+        <button class="slider-arrow next" onclick="scrollSlider('track-computacion', 240)" aria-label="Siguiente">›</button>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         3. CARRUSEL: SERVICIO TÉCNICO
+         (Celulares, Computadores, Impresoras - Solo foto y título con enlace)
+         ============================================== -->
+    <section id="servicio-tecnico" class="slider-section-colored">
+      <div class="slider-header-colored">
+        <div>
+          <h3 class="slider-title-colored">Servicio técnico</h3>
+        </div>
+      </div>
+
+      <div class="slider-wrapper">
+        <button class="slider-arrow prev" onclick="scrollSlider('track-servicios', -280)" aria-label="Anterior">‹</button>
+        
+        <div class="product-track" id="track-servicios">
+          
+          <!-- Servicio 1: Celulares -->
+          <a href="servicio-celulares.html" class="card-service">
+            <div class="service-img-box">
+              <img src="https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?w=500&q=80" alt="Servicio Técnico Celulares">
+            </div>
+            <div class="service-title">Celulares</div>
+          </a>
+
+          <!-- Servicio 2: Computadores -->
+          <a href="servicio-computadores.html" class="card-service">
+            <div class="service-img-box">
+              <img src="https://images.unsplash.com/photo-1588702547919-26089e690ecc?w=500&q=80" alt="Servicio Técnico Computadores">
+            </div>
+            <div class="service-title">Computadores</div>
+          </a>
+
+          <!-- Servicio 3: Impresoras -->
+          <a href="servicio-impresoras.html" class="card-service">
+            <div class="service-img-box">
+              <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=500&q=80" alt="Servicio Técnico Impresoras">
+            </div>
+            <div class="service-title">Impresoras</div>
+          </a>
+
+        </div>
+
+        <button class="slider-arrow next" onclick="scrollSlider('track-servicios', 280)" aria-label="Siguiente">›</button>
       </div>
     </section>
 
