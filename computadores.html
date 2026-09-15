@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fixionary | Soluciones y Tecnología</title>
+  <title>Computadores | Fixionary</title>
   <style>
     :root {
-      /* Colores Fixionary */
       --fix-purple-start: #6a00f4;
       --fix-purple-mid: #5100d8;
       --fix-blue-end: #09009f;
@@ -25,11 +24,7 @@
       --text-muted: #6b7280;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
@@ -39,7 +34,7 @@
       line-height: 1.5;
     }
 
-    /* BARRA SUPERIOR (HEADER) */
+    /* HEADER */
     header {
       background: var(--top-dark-bar);
       color: #ffffff;
@@ -90,12 +85,11 @@
       font-size: 0.85rem;
       font-weight: 700;
       flex-shrink: 0;
-      transition: background 0.2s, border-color 0.2s;
+      transition: background 0.2s;
     }
 
     .btn-categories-toggle:hover {
       background: rgba(255, 255, 255, 0.16);
-      border-color: rgba(255, 255, 255, 0.3);
     }
 
     .hamburger-icon {
@@ -136,11 +130,6 @@
       font-weight: 600;
       border-radius: 0 6px 6px 0;
       cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .search-box button:hover {
-      background: var(--btn-blue-hover);
     }
 
     .header-actions {
@@ -160,11 +149,6 @@
       font-weight: 600;
       padding: 6px 10px;
       border-radius: 6px;
-      transition: background 0.2s;
-    }
-
-    .header-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
     }
 
     .header-btn svg {
@@ -173,147 +157,129 @@
       stroke: currentColor;
       fill: none;
       stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
     }
 
-    .cart-btn-wrapper {
-      position: relative;
-      display: flex;
-      align-items: center;
+    /* BREADCRUMB */
+    .breadcrumb-bar {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-color);
+      padding: 10px 24px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
     }
 
-    .cart-badge {
-      background: #16a34a;
-      color: #ffffff;
-      font-size: 0.65rem;
-      font-weight: 800;
-      border-radius: 10px;
-      padding: 1px 5px;
-      margin-left: 2px;
+    .breadcrumb-bar a {
+      color: var(--fix-purple-start);
+      text-decoration: none;
+      font-weight: 600;
     }
 
-    /* HERO BANNER */
-    .hero-banner {
-      background: var(--fix-gradient);
-      color: #ffffff;
-      padding: 48px 24px;
-      text-align: center;
+    .breadcrumb-bar span {
+      margin: 0 6px;
     }
 
-    .hero-inner {
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .hero-inner h1 {
-      font-size: 2.3rem;
-      font-weight: 800;
-      margin-bottom: 10px;
-      letter-spacing: -0.5px;
-    }
-
-    .hero-inner p {
-      font-size: 1.05rem;
-      color: #e5dbff;
-      line-height: 1.45;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 28px auto;
+    /* LAYOUT: FILTROS + CATÁLOGO */
+    .shop-layout {
+      max-width: 1240px;
+      margin: 20px auto;
       padding: 0 16px;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 20px;
     }
 
-    /* CARRUSELES MORADO TRANSLÚCIDO */
-    .slider-section-colored {
-      background: rgba(106, 0, 244, 0.07);
-      border: 1px solid rgba(106, 0, 244, 0.16);
-      border-radius: 12px;
-      padding: 20px 22px 24px;
-      margin-bottom: 32px;
-      position: relative;
-    }
-
-    .slider-header-colored {
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .slider-title-colored {
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--text-dark);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .slider-title-colored::before {
-      content: "";
-      width: 5px;
-      height: 18px;
-      background: var(--fix-purple-start);
-      border-radius: 3px;
-      display: inline-block;
-    }
-
-    .slider-wrapper {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
-
-    .product-track {
-      display: flex;
-      gap: 16px;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      padding: 6px 4px 10px;
-      width: 100%;
-      scrollbar-width: none;
-    }
-
-    .product-track::-webkit-scrollbar {
-      display: none;
-    }
-
-    .slider-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 38px;
-      height: 38px;
+    /* SIDEBAR DE FILTROS */
+    .filters-sidebar {
       background: #ffffff;
       border: 1px solid var(--border-color);
-      border-radius: 50%;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
-      cursor: pointer;
-      z-index: 10;
+      border-radius: 8px;
+      padding: 18px;
+      height: fit-content;
+    }
+
+    .filters-sidebar h3 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 14px;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 8px;
+    }
+
+    .filter-group {
+      margin-bottom: 18px;
+      border-bottom: 1px solid #f1f3f5;
+      padding-bottom: 14px;
+    }
+
+    .filter-group:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .filter-group h4 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .filter-options label {
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: #4b5563;
+      margin-bottom: 6px;
+      cursor: pointer;
+    }
+
+    .filter-options input[type="checkbox"] {
+      accent-color: var(--fix-purple-start);
+    }
+
+    /* CABECERA DE LA GRILLA */
+    .catalog-main-header {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .catalog-main-header h1 {
       font-size: 1.25rem;
       font-weight: 800;
-      color: var(--fix-purple-start);
-      transition: background 0.2s, transform 0.15s, color 0.2s;
+      color: var(--text-dark);
     }
 
-    .slider-arrow:hover {
-      background: var(--fix-purple-start);
-      color: #ffffff;
-      transform: translateY(-50%) scale(1.08);
+    .catalog-main-header span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
     }
 
-    .slider-arrow.prev { left: -14px; }
-    .slider-arrow.next { right: -14px; }
+    .sort-select {
+      padding: 6px 10px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: var(--text-dark);
+      outline: none;
+      background: #ffffff;
+    }
 
-    /* Tarjetas de Producto */
+    /* GRILLA */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+      gap: 14px;
+    }
+
     .card {
-      min-width: 220px;
-      max-width: 220px;
       background: #ffffff;
       border: 1px solid var(--border-color);
       border-radius: 8px;
@@ -321,8 +287,6 @@
       display: flex;
       flex-direction: column;
       position: relative;
-      flex-shrink: 0;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
       transition: box-shadow 0.2s, transform 0.2s;
     }
 
@@ -373,7 +337,7 @@
       font-weight: 700;
     }
 
-    .item-category {
+    .item-brand {
       font-size: 0.7rem;
       text-transform: uppercase;
       font-weight: 700;
@@ -434,64 +398,114 @@
       background-color: var(--top-dark-bar);
     }
 
-    /* TARJETAS DE SERVICIO TÉCNICO */
-    .card-service {
-      min-width: 260px;
-      max-width: 260px;
-      background: #ffffff;
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      text-decoration: none;
-      flex-shrink: 0;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-    }
-
-    .card-service:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 24px rgba(106, 0, 244, 0.16);
-      border-color: var(--fix-purple-start);
-    }
-
-    .card-service .service-img-box {
-      width: 100%;
-      height: 160px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #fafafa;
-      border-radius: 8px;
-      margin-bottom: 14px;
-      overflow: hidden;
-    }
-
-    .card-service .service-img-box img {
+    /* DRAWER LATERAL */
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 998;
+      display: none;
     }
 
-    .card-service:hover .service-img-box img {
-      transform: scale(1.05);
+    .menu-overlay.active { display: block; }
+
+    .sidebar-drawer {
+      position: fixed;
+      top: 0;
+      left: -380px;
+      width: 350px;
+      height: 100%;
+      background: #ffffff;
+      z-index: 999;
+      box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+      transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
     }
 
-    .service-title {
-      font-size: 1.05rem;
+    .sidebar-drawer.active { left: 0; }
+
+    .drawer-header {
+      padding: 20px;
+      border-bottom: 1px solid var(--border-color);
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .drawer-user h4 { font-size: 1rem; margin-bottom: 2px; }
+    .drawer-user p { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 14px; }
+
+    .btn-drawer-login {
+      display: block;
+      width: 100%;
+      background: var(--btn-blue);
+      color: #ffffff;
+      text-align: center;
+      padding: 10px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .drawer-section-title {
+      padding: 14px 20px 8px;
+      font-size: 0.82rem;
       font-weight: 800;
       color: var(--text-dark);
-      transition: color 0.2s;
-      padding: 4px 0 6px;
     }
 
-    .card-service:hover .service-title {
-      color: var(--fix-purple-start);
+    .category-list { list-style: none; }
+    .category-item { border-bottom: 1px solid #f1f3f5; }
+
+    .category-btn {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 12px 20px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: #334155;
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
     }
+
+    .category-btn:hover { background-color: #f8fafc; color: var(--fix-purple-start); }
+    .category-btn .arrow { font-size: 0.8rem; color: #94a3b8; transition: transform 0.2s; }
+    .category-item.open .arrow { transform: rotate(90deg); color: var(--fix-purple-start); }
+
+    .subcategory-list {
+      display: none;
+      list-style: none;
+      background-color: #fafbfc;
+      padding: 6px 0 10px 24px;
+    }
+
+    .category-item.open .subcategory-list { display: block; }
+    .subcategory-list li a {
+      display: block;
+      padding: 6px 16px;
+      font-size: 0.78rem;
+      color: #475569;
+      text-decoration: none;
+    }
+    .subcategory-list li a:hover { color: var(--fix-purple-start); font-weight: 600; }
 
     /* FOOTER */
     .site-footer {
@@ -528,50 +542,10 @@
 
     .footer-col strong { color: #ffffff; }
     .footer-col a.phone-link { color: #00d4ff; text-decoration: none; font-weight: 700; }
-    
     .footer-links { list-style: none; }
     .footer-links li { margin-bottom: 9px; }
-    .footer-links a { color: #94a3b8; text-decoration: none; font-size: 0.83rem; transition: color 0.2s; }
+    .footer-links a { color: #94a3b8; text-decoration: none; font-size: 0.83rem; }
     .footer-links a:hover { color: #ffffff; }
-
-    .newsletter-box { margin-bottom: 18px; }
-    .newsletter-form { display: flex; gap: 6px; margin-top: 10px; }
-    .newsletter-form input {
-      flex: 1;
-      padding: 8px 12px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.06);
-      color: #ffffff;
-      font-size: 0.82rem;
-      outline: none;
-    }
-    .newsletter-form button {
-      background: var(--fix-purple-start);
-      color: #ffffff;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 6px;
-      font-weight: 700;
-      font-size: 0.82rem;
-      cursor: pointer;
-    }
-
-    .social-links { display: flex; gap: 12px; align-items: center; margin-top: 10px; }
-    .social-btn {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 0.82rem;
-      background: rgba(255, 255, 255, 0.08);
-      padding: 6px 12px;
-      border-radius: 6px;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .social-btn:hover { background: rgba(255, 255, 255, 0.18); transform: translateY(-1px); }
-    .social-btn svg { width: 18px; height: 18px; fill: currentColor; }
 
     .footer-bottom {
       max-width: 1200px;
@@ -581,127 +555,17 @@
       color: #64748b;
     }
 
-    /* DRAWER LATERAL */
-    .menu-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 998;
-      display: none;
-    }
-    .menu-overlay.active { display: block; }
-
-    .sidebar-drawer {
-      position: fixed;
-      top: 0;
-      left: -380px;
-      width: 350px;
-      height: 100%;
-      background: #ffffff;
-      z-index: 999;
-      box-shadow: 4px 0 20px rgba(0,0,0,0.15);
-      transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      display: flex;
-      flex-direction: column;
-      overflow-y: auto;
-    }
-    .sidebar-drawer.active { left: 0; }
-
-    .drawer-header {
-      padding: 20px;
-      border-bottom: 1px solid var(--border-color);
-      position: relative;
-    }
-    .close-btn {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      background: none;
-      border: none;
-      font-size: 1.3rem;
-      cursor: pointer;
-      color: var(--text-muted);
-    }
-    .drawer-user h4 { font-size: 1rem; margin-bottom: 2px; }
-    .drawer-user p { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 14px; }
-
-    .btn-drawer-login {
-      display: block;
-      width: 100%;
-      background: var(--btn-blue);
-      color: #ffffff;
-      text-align: center;
-      padding: 10px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.85rem;
-    }
-
-    .drawer-section-title {
-      padding: 14px 20px 8px;
-      font-size: 0.82rem;
-      font-weight: 800;
-      color: var(--text-dark);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .drawer-section-title span { color: var(--btn-blue); font-size: 0.75rem; font-weight: 600; cursor: pointer; }
-
-    .category-list { list-style: none; }
-    .category-item { border-bottom: 1px solid #f1f3f5; }
-    .category-btn {
-      width: 100%;
-      text-align: left;
-      background: none;
-      border: none;
-      padding: 12px 20px;
-      font-size: 0.86rem;
-      font-weight: 600;
-      color: #334155;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-    }
-    .category-btn:hover { background-color: #f8fafc; color: var(--fix-purple-start); }
-    .category-btn .arrow { font-size: 0.8rem; color: #94a3b8; transition: transform 0.2s; }
-    .category-item.open .arrow { transform: rotate(90deg); color: var(--fix-purple-start); }
-
-    .subcategory-list {
-      display: none;
-      list-style: none;
-      background-color: #fafbfc;
-      padding: 6px 0 10px 24px;
-    }
-    .category-item.open .subcategory-list { display: block; }
-    .subcategory-list li a {
-      display: block;
-      padding: 6px 16px;
-      font-size: 0.78rem;
-      color: #475569;
-      text-decoration: none;
-    }
-    .subcategory-list li a:hover { color: var(--fix-purple-start); font-weight: 600; }
-
-    @media (max-width: 900px) {
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 600px) {
-      .footer-grid { grid-template-columns: 1fr; }
+    @media (max-width: 850px) {
+      .shop-layout { grid-template-columns: 1fr; }
+      .filters-sidebar { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Overlay para cerrar el menú lateral -->
   <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
 
-  <!-- MENU LATERAL CON CATEGORÍAS (SIN LINKS ACTIVOS PARA EVITAR CAMBIOS ACCIDENTALES) -->
+  <!-- MENU LATERAL -->
   <aside class="sidebar-drawer" id="sidebarDrawer">
     <div class="drawer-header">
       <button class="close-btn" onclick="toggleMenu()">✕</button>
@@ -709,36 +573,30 @@
         <h4>¡Hola!</h4>
         <p>Ingresa a tu cuenta para cotizar y comprar</p>
       </div>
-      <a href="#" class="btn-drawer-login">Inicia sesión</a>
+      <a href="login.html" class="btn-drawer-login">Inicia sesión</a>
     </div>
 
-    <div class="drawer-section-title">
-      Categorías
-      <span>Ver todas</span>
-    </div>
+    <div class="drawer-section-title">Categorías</div>
 
     <ul class="category-list">
-      <!-- Computadores -->
-      <li class="category-item">
+      <li class="category-item open">
         <button class="category-btn" onclick="toggleCategory(this)">
           Computadores <span class="arrow">›</span>
         </button>
-        <ul class="subcategory-list">
-          <li><a href="#">Lenovo</a></li>
-          <li><a href="#">Dell</a></li>
-          <li><a href="#">Asus</a></li>
-          <li><a href="#">Mac</a></li>
-          <li><a href="#">HP</a></li>
+        <ul class="subcategory-list" style="display: block;">
+          <li><a href="./computadores.html" style="color: var(--fix-purple-start); font-weight: 700;">Lenovo</a></li>
+          <li><a href="./computadores.html">Dell</a></li>
+          <li><a href="./computadores.html">Asus</a></li>
+          <li><a href="./computadores.html">Mac</a></li>
+          <li><a href="./computadores.html">HP</a></li>
         </ul>
       </li>
-
-      <!-- Accesorios y Periféricos -->
       <li class="category-item">
         <button class="category-btn" onclick="toggleCategory(this)">
           Accesorios y Periféricos <span class="arrow">›</span>
         </button>
         <ul class="subcategory-list">
-          <li><a href="#">Mouses y Teclados</a></li>
+          <li><a href="./mouses-teclados.html">Mouses y Teclados</a></li>
           <li><a href="#">Accesorios Computadores</a></li>
           <li><a href="#">Accesorios Celulares</a></li>
           <li><a href="#">Accesorios Cámara</a></li>
@@ -747,73 +605,63 @@
           <li><a href="#">Mantención y Limpieza</a></li>
         </ul>
       </li>
-
-      <!-- Energía -->
       <li class="category-item">
         <button class="category-btn" onclick="toggleCategory(this)">
           Energía <span class="arrow">›</span>
         </button>
         <ul class="subcategory-list">
-          <li><a href="#">Power Banks</a></li>
-          <li><a href="#">Baterías</a></li>
-          <li><a href="#">Cargadores computador</a></li>
+          <li><a href="./energia.html">Power Banks</a></li>
+          <li><a href="./energia.html">Baterías</a></li>
+          <li><a href="./energia.html">Cargadores computador</a></li>
         </ul>
       </li>
-
-      <!-- Almacenamiento y Discos Duros -->
       <li class="category-item">
         <button class="category-btn" onclick="toggleCategory(this)">
           Almacenamiento y Discos Duros <span class="arrow">›</span>
         </button>
         <ul class="subcategory-list">
-          <li><a href="#">Discos Internos SSD</a></li>
-          <li><a href="#">Discos Internos HDD</a></li>
-          <li><a href="#">Discos Externos HDD</a></li>
-          <li><a href="#">Memorias Flash</a></li>
-          <li><a href="#">Pendrives</a></li>
-          <li><a href="#">Enclosure (Cofres)</a></li>
+          <li><a href="./almacenamiento.html">Discos Internos SSD</a></li>
+          <li><a href="./almacenamiento.html">Discos Internos HDD</a></li>
+          <li><a href="./almacenamiento.html">Discos Externos HDD</a></li>
+          <li><a href="./almacenamiento.html">Memorias Flash</a></li>
+          <li><a href="./almacenamiento.html">Pendrives</a></li>
+          <li><a href="./almacenamiento.html">Enclosure (Cofres)</a></li>
         </ul>
       </li>
-
-      <!-- Impresoras -->
       <li class="category-item">
         <button class="category-btn" onclick="toggleCategory(this)">
           Impresoras <span class="arrow">›</span>
         </button>
         <ul class="subcategory-list">
-          <li><a href="#">Suministros</a></li>
+          <li><a href="./impresoras.html">Suministros</a></li>
         </ul>
       </li>
-
-      <!-- Audio -->
       <li class="category-item">
         <button class="category-btn" onclick="toggleCategory(this)">
           Audio <span class="arrow">›</span>
         </button>
         <ul class="subcategory-list">
-          <li><a href="#">Audífonos</a></li>
-          <li><a href="#">Parlantes</a></li>
-          <li><a href="#">Accesorios de Audio</a></li>
+          <li><a href="./audio.html">Audífonos</a></li>
+          <li><a href="./audio.html">Parlantes</a></li>
+          <li><a href="./audio.html">Accesorios de Audio</a></li>
         </ul>
       </li>
-
-      <!-- Servicio Técnico -->
       <li class="category-item">
         <button class="category-btn" onclick="toggleCategory(this)">
           Servicio Técnico <span class="arrow">›</span>
         </button>
         <ul class="subcategory-list">
-          <li><a href="#">Celulares</a></li>
-          <li><a href="#">Computadores</a></li>
-          <li><a href="#">Impresoras</a></li>
+          <li><a href="./servicio-celulares.html">Celulares</a></li>
+          <li><a href="./servicio-computadores.html">Computadores</a></li>
+          <li><a href="./servicio-impresoras.html">Impresoras</a></li>
         </ul>
       </li>
     </ul>
   </aside>
 
-  <!-- BARRA PRINCIPAL (HEADER) -->
+  <!-- HEADER -->
   <header>
-    <a href="#" class="brand-logo">
+    <a href="./index.html" class="brand-logo">
       <div class="brand-icon">F</div>
       <span>Fixionary</span>
     </a>
@@ -831,284 +679,203 @@
     </div>
 
     <div class="header-actions">
-      <a href="#" class="header-btn">
+      <a href="./login.html" class="header-btn">
         <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
         <span>Ingresa</span>
       </a>
 
-      <a href="#" class="header-btn cart-btn-wrapper">
+      <a href="./carrito.html" class="header-btn">
         <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
         <span>Mis compras</span>
-        <span class="cart-badge">0</span>
       </a>
     </div>
   </header>
 
-  <!-- HERO BANNER -->
-  <section class="hero-banner">
-    <div class="hero-inner">
-      <h1>¡Innovamos junto a ti!</h1>
-      <p>Transformamos ideas en soluciones reales para tu empresa</p>
-    </div>
-  </section>
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb-bar">
+    <a href="./index.html">Inicio</a>
+    <span>›</span>
+    <strong>Computadores</strong>
+  </div>
 
-  <div class="container">
+  <!-- TIENDA -->
+  <div class="shop-layout">
 
-    <!-- 1. CARRUSEL: OFERTAS -->
-    <section id="ofertas" class="slider-section-colored">
-      <div class="slider-header-colored">
-        <div><h3 class="slider-title-colored">Ofertas</h3></div>
-      </div>
+    <!-- FILTROS A LA IZQUIERDA -->
+    <aside class="filters-sidebar">
+      <h3>Filtros</h3>
 
-      <div class="slider-wrapper">
-        <button class="slider-arrow prev" onclick="scrollSlider('track-ofertas', -240)">‹</button>
-        <div class="product-track" id="track-ofertas">
-          
-          <div class="card">
-            <span class="badge-promo">-33%</span>
-            <div class="product-img-box">
-              <img src="https://images.unsplash.com/photo-1609592424368-f9b8b2612a83?w=350&q=80" alt="Power Bank">
-            </div>
-            <div class="sku-stock">
-              <span>SKU: FIX-ENG01</span>
-              <span class="stock-tag">● +50 Unid.</span>
-            </div>
-            <span class="item-category">Energía</span>
-            <h4 class="item-name"><a href="#" style="color: inherit; text-decoration: none;">Power Bank 20.000 mAh Carga Rápida USB-C 22.5W</a></h4>
-            <div class="price-box">
-              <span class="price-normal">$29.990</span>
-              <div class="price-cash">$19.990</div>
-              <span class="price-cash-sub">Efectivo / Transferencia</span>
-            </div>
-            <button class="btn-action">Agregar al pedido</button>
-          </div>
-
-          <div class="card">
-            <span class="badge-promo">-40%</span>
-            <div class="product-img-box">
-              <img src="https://images.unsplash.com/photo-1588508065123-287b28e013da?w=350&q=80" alt="SSD">
-            </div>
-            <div class="sku-stock">
-              <span>SKU: FIX-SSD01</span>
-              <span class="stock-tag">● +100 Unid.</span>
-            </div>
-            <span class="item-category">Almacenamiento</span>
-            <h4 class="item-name">Disco Interno SSD NVMe M.2 1TB Gen4 Ultra Speed</h4>
-            <div class="price-box">
-              <span class="price-normal">$89.990</span>
-              <div class="price-cash">$54.990</div>
-              <span class="price-cash-sub">Efectivo / Transferencia</span>
-            </div>
-            <button class="btn-action">Agregar al pedido</button>
-          </div>
-
-          <div class="card">
-            <span class="badge-promo">-25%</span>
-            <div class="product-img-box">
-              <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=350&q=80" alt="Audífonos">
-            </div>
-            <div class="sku-stock">
-              <span>SKU: FIX-AUD05</span>
-              <span class="stock-tag">● +30 Unid.</span>
-            </div>
-            <span class="item-category">Audio</span>
-            <h4 class="item-name">Audífonos Bluetooth Cancelación Activa de Ruido</h4>
-            <div class="price-box">
-              <span class="price-normal">$69.990</span>
-              <div class="price-cash">$49.990</div>
-              <span class="price-cash-sub">Efectivo / Transferencia</span>
-            </div>
-            <button class="btn-action">Agregar al pedido</button>
-          </div>
-
-          <div class="card">
-            <span class="badge-promo">-50%</span>
-            <div class="product-img-box">
-              <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=350&q=80" alt="Cables">
-            </div>
-            <div class="sku-stock">
-              <span>SKU: FIX-CAB01</span>
-              <span class="stock-tag">● +100 Unid.</span>
-            </div>
-            <span class="item-category">Accesorios</span>
-            <h4 class="item-name">Cable Trenzado Reforzado USB-C a USB-C 100W 2m</h4>
-            <div class="price-box">
-              <span class="price-normal">$12.990</span>
-              <div class="price-cash">$6.490</div>
-              <span class="price-cash-sub">Efectivo / Transferencia</span>
-            </div>
-            <button class="btn-action">Agregar al pedido</button>
-          </div>
-
-          <div class="card">
-            <span class="badge-promo">-20%</span>
-            <div class="product-img-box">
-              <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=350&q=80" alt="Mouse">
-            </div>
-            <div class="sku-stock">
-              <span>SKU: FIX-PER02</span>
-              <span class="stock-tag">● 25 Unid.</span>
-            </div>
-            <span class="item-category">Periféricos</span>
-            <h4 class="item-name">Mouse Ergonómico Inalámbrico Silencioso Multi-Device</h4>
-            <div class="price-box">
-              <span class="price-normal">$24.990</span>
-              <div class="price-cash">$18.990</div>
-              <span class="price-cash-sub">Efectivo / Transferencia</span>
-            </div>
-            <button class="btn-action">Agregar al pedido</button>
-          </div>
-
+      <div class="filter-group">
+        <h4>Marca</h4>
+        <div class="filter-options">
+          <label><input type="checkbox" checked> Lenovo (6)</label>
+          <label><input type="checkbox" checked> Dell (4)</label>
+          <label><input type="checkbox" checked> Asus (5)</label>
+          <label><input type="checkbox" checked> Mac (Apple) (3)</label>
+          <label><input type="checkbox" checked> HP (5)</label>
         </div>
-        <button class="slider-arrow next" onclick="scrollSlider('track-ofertas', 240)">›</button>
-      </div>
-    </section>
-
-    <!-- 2. CARRUSEL: COMPUTACIÓN -->
-    <section id="computacion" class="slider-section-colored">
-      <div class="slider-header-colored">
-        <div><h3 class="slider-title-colored">Computación</h3></div>
       </div>
 
-      <div class="slider-wrapper">
-        <button class="slider-arrow prev" onclick="scrollSlider('track-computacion', -240)">‹</button>
-        <div class="product-track" id="track-computacion">
-          
-          <div class="card">
-            <span class="badge-promo">-15%</span>
-            <div class="product-img-box">
-              <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=350&q=80" alt="Notebook Asus">
-            </div>
-            <div class="sku-stock">
-              <span>SKU: CMP-AS01</span>
-              <span class="stock-tag">● 6 en bodega</span>
-            </div>
-            <span class="item-category">Asus</span>
-            <h4 class="item-name">Notebook Asus VivoBook 15" Intel Core i5 16GB SSD 512GB</h4>
-            <div class="price-box">
-              <span class="price-normal">$589.990</span>
-              <div class="price-cash">$499.990</div>
-              <span class="price-cash-sub">Efectivo / Transferencia</span>
-            </div>
-            <button class="btn-action">Agregar al pedido</button>
-          </div>
-
-          <div class="card">
-            <span class="badge-promo">-18%</span>
-            <div class="product-img-box">
-              <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=350&q=80" alt="Notebook Dell">
-            </div>
-            <div class="sku-stock">
-              <span>SKU: CMP-DL02</span>
-              <span class="stock-tag">● 4 en bodega</span>
-            </div>
-            <span class="item-category">Dell</span>
-            <h4 class="item-name">Notebook Dell Inspiron 14" FHD Core i7 16GB 1TB SSD</h4>
-            <div class="price-box">
-              <span class="price-normal">$799.990</span>
-              <div class="price-cash">$654.990</div>
-              <span class="price-cash-sub">Efectivo / Transferencia</span>
-            </div>
-            <button class="btn-action">Agregar al pedido</button>
-          </div>
-
-          <div class="card">
-            <span class="badge-promo">-12%</span>
-            <div class="product-img-box">
-              <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=350&q=80" alt="MacBook Pro">
-            </div>
-            <div class="sku-stock">
-              <span>SKU: CMP-MC03</span>
-              <span class="stock-tag">● 3 en bodega</span>
-            </div>
-            <span class="item-category">Mac</span>
-            <h4 class="item-name">Apple MacBook Air 13" Chip M2 8-Core 256GB SSD Gris</h4>
-            <div class="price-box">
-              <span class="price-normal">$1.099.990</span>
-              <div class="price-cash">$969.990</div>
-              <span class="price-cash-sub">Efectivo / Transferencia</span>
-            </div>
-            <button class="btn-action">Agregar al pedido</button>
-          </div>
-
-          <div class="card">
-            <span class="badge-promo">-22%</span>
-            <div class="product-img-box">
-              <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=350&q=80" alt="Notebook Lenovo">
-            </div>
-            <div class="sku-stock">
-              <span>SKU: CMP-LN04</span>
-              <span class="stock-tag">● 8 en bodega</span>
-            </div>
-            <span class="item-category">Lenovo</span>
-            <h4 class="item-name">Notebook Lenovo IdeaPad Slim 3 15.6" Ryzen 7 16GB</h4>
-            <div class="price-box">
-              <span class="price-normal">$629.990</span>
-              <div class="price-cash">$489.990</div>
-              <span class="price-cash-sub">Efectivo / Transferencia</span>
-            </div>
-            <button class="btn-action">Agregar al pedido</button>
-          </div>
-
-          <div class="card">
-            <span class="badge-promo">-10%</span>
-            <div class="product-img-box">
-              <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=350&q=80" alt="Notebook HP">
-            </div>
-            <div class="sku-stock">
-              <span>SKU: CMP-HP05</span>
-              <span class="stock-tag">● 5 en bodega</span>
-            </div>
-            <span class="item-category">HP</span>
-            <h4 class="item-name">Notebook HP 15.6" Intel Core i5 8GB 512GB SSD Plata</h4>
-            <div class="price-box">
-              <span class="price-normal">$469.990</span>
-              <div class="price-cash">$419.990</div>
-              <span class="price-cash-sub">Efectivo / Transferencia</span>
-            </div>
-            <button class="btn-action">Agregar al pedido</button>
-          </div>
-
+      <div class="filter-group">
+        <h4>Tipo de Equipo</h4>
+        <div class="filter-options">
+          <label><input type="checkbox"> Notebooks / Laptops</label>
+          <label><input type="checkbox"> PC de Escritorio</label>
+          <label><input type="checkbox"> All in One</label>
         </div>
-        <button class="slider-arrow next" onclick="scrollSlider('track-computacion', 240)">›</button>
-      </div>
-    </section>
-
-    <!-- 3. CARRUSEL: SERVICIO TÉCNICO -->
-    <section id="servicio-tecnico" class="slider-section-colored">
-      <div class="slider-header-colored">
-        <div><h3 class="slider-title-colored">Servicio técnico</h3></div>
       </div>
 
-      <div class="slider-wrapper">
-        <button class="slider-arrow prev" onclick="scrollSlider('track-servicios', -280)">‹</button>
-        <div class="product-track" id="track-servicios">
-          
-          <a href="#" class="card-service">
-            <div class="service-img-box">
-              <img src="https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?w=500&q=80" alt="Celulares">
-            </div>
-            <div class="service-title">Celulares</div>
-          </a>
-
-          <a href="#" class="card-service">
-            <div class="service-img-box">
-              <img src="https://images.unsplash.com/photo-1588702547919-26089e690ecc?w=500&q=80" alt="Computadores">
-            </div>
-            <div class="service-title">Computadores</div>
-          </a>
-
-          <a href="#" class="card-service">
-            <div class="service-img-box">
-              <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=500&q=80" alt="Impresoras">
-            </div>
-            <div class="service-title">Impresoras</div>
-          </a>
-
+      <div class="filter-group">
+        <h4>Rango de Precio</h4>
+        <div class="filter-options">
+          <label><input type="checkbox"> Hasta $400.000</label>
+          <label><input type="checkbox"> $400.000 a $700.000</label>
+          <label><input type="checkbox"> $700.000 a $1.000.000</label>
+          <label><input type="checkbox"> Más de $1.000.000</label>
         </div>
-        <button class="slider-arrow next" onclick="scrollSlider('track-servicios', 280)">›</button>
       </div>
-    </section>
+    </aside>
+
+    <!-- GRILLA DE PRODUCTOS -->
+    <main>
+      <div class="catalog-main-header">
+        <div>
+          <h1>Computadores</h1>
+          <span>Mostrando equipos disponibles con entrega inmediata y garantía</span>
+        </div>
+        <div>
+          <select class="sort-select">
+            <option>Ordenar por: Destacados</option>
+            <option>Menor precio</option>
+            <option>Mayor precio</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="products-grid">
+
+        <!-- 1. Asus -->
+        <div class="card">
+          <span class="badge-promo">-15%</span>
+          <div class="product-img-box">
+            <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=350&q=80" alt="Asus VivoBook">
+          </div>
+          <div class="sku-stock">
+            <span>SKU: CMP-AS01</span>
+            <span class="stock-tag">● 6 en bodega</span>
+          </div>
+          <span class="item-brand">Asus</span>
+          <h4 class="item-name">Notebook Asus VivoBook 15" Intel Core i5 16GB SSD 512GB</h4>
+          <div class="price-box">
+            <span class="price-normal">$589.990</span>
+            <div class="price-cash">$499.990</div>
+            <span class="price-cash-sub">Efectivo / Transferencia</span>
+          </div>
+          <button class="btn-action">Agregar al pedido</button>
+        </div>
+
+        <!-- 2. Dell -->
+        <div class="card">
+          <span class="badge-promo">-18%</span>
+          <div class="product-img-box">
+            <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=350&q=80" alt="Dell Inspiron">
+          </div>
+          <div class="sku-stock">
+            <span>SKU: CMP-DL02</span>
+            <span class="stock-tag">● 4 en bodega</span>
+          </div>
+          <span class="item-brand">Dell</span>
+          <h4 class="item-name">Notebook Dell Inspiron 14" FHD Core i7 16GB 1TB SSD</h4>
+          <div class="price-box">
+            <span class="price-normal">$799.990</span>
+            <div class="price-cash">$654.990</div>
+            <span class="price-cash-sub">Efectivo / Transferencia</span>
+          </div>
+          <button class="btn-action">Agregar al pedido</button>
+        </div>
+
+        <!-- 3. Mac -->
+        <div class="card">
+          <span class="badge-promo">-12%</span>
+          <div class="product-img-box">
+            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=350&q=80" alt="MacBook Air">
+          </div>
+          <div class="sku-stock">
+            <span>SKU: CMP-MC03</span>
+            <span class="stock-tag">● 3 en bodega</span>
+          </div>
+          <span class="item-brand">Mac</span>
+          <h4 class="item-name">Apple MacBook Air 13" Chip M2 8-Core 256GB SSD Gris</h4>
+          <div class="price-box">
+            <span class="price-normal">$1.099.990</span>
+            <div class="price-cash">$969.990</div>
+            <span class="price-cash-sub">Efectivo / Transferencia</span>
+          </div>
+          <button class="btn-action">Agregar al pedido</button>
+        </div>
+
+        <!-- 4. Lenovo -->
+        <div class="card">
+          <span class="badge-promo">-22%</span>
+          <div class="product-img-box">
+            <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=350&q=80" alt="Lenovo IdeaPad">
+          </div>
+          <div class="sku-stock">
+            <span>SKU: CMP-LN04</span>
+            <span class="stock-tag">● 8 en bodega</span>
+          </div>
+          <span class="item-brand">Lenovo</span>
+          <h4 class="item-name">Notebook Lenovo IdeaPad Slim 3 15.6" Ryzen 7 16GB</h4>
+          <div class="price-box">
+            <span class="price-normal">$629.990</span>
+            <div class="price-cash">$489.990</div>
+            <span class="price-cash-sub">Efectivo / Transferencia</span>
+          </div>
+          <button class="btn-action">Agregar al pedido</button>
+        </div>
+
+        <!-- 5. HP -->
+        <div class="card">
+          <span class="badge-promo">-10%</span>
+          <div class="product-img-box">
+            <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=350&q=80" alt="HP 15.6">
+          </div>
+          <div class="sku-stock">
+            <span>SKU: CMP-HP05</span>
+            <span class="stock-tag">● 5 en bodega</span>
+          </div>
+          <span class="item-brand">HP</span>
+          <h4 class="item-name">Notebook HP 15.6" Intel Core i5 8GB 512GB SSD Plata</h4>
+          <div class="price-box">
+            <span class="price-normal">$469.990</span>
+            <div class="price-cash">$419.990</div>
+            <span class="price-cash-sub">Efectivo / Transferencia</span>
+          </div>
+          <button class="btn-action">Agregar al pedido</button>
+        </div>
+
+        <!-- 6. Workstation -->
+        <div class="card">
+          <span class="badge-promo">-25%</span>
+          <div class="product-img-box">
+            <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=350&q=80" alt="PC Torre">
+          </div>
+          <div class="sku-stock">
+            <span>SKU: CMP-WRK06</span>
+            <span class="stock-tag">● 2 en bodega</span>
+          </div>
+          <span class="item-brand">Fixionary Pro</span>
+          <h4 class="item-name">Computador Torre Corporativa i7 32GB RAM / 1TB NVMe</h4>
+          <div class="price-box">
+            <span class="price-normal">$899.990</span>
+            <div class="price-cash">$699.990</div>
+            <span class="price-cash-sub">Efectivo / Transferencia</span>
+          </div>
+          <button class="btn-action">Agregar al pedido</button>
+        </div>
+
+      </div>
+    </main>
 
   </div>
 
@@ -1118,9 +885,10 @@
       <div class="footer-col">
         <h4>Fixionary</h4>
         <p><strong>Ubicación:</strong><br>Av. José Pedro Alessandri 98, Ñuñoa, Santiago</p>
-        <p><strong>Consultas:</strong><br><a href="#" class="phone-link">+56 9 9844 9400</a></p>
+        <p><strong>Consultas:</strong><br><a href="tel:+56998449400" class="phone-link">+56 9 9844 9400</a></p>
         <p><strong>Horario:</strong><br>Lunes a Viernes: 10:00 a 19:00 hrs.<br>Sábado: 10:00 a 15:00 hrs.</p>
       </div>
+
       <div class="footer-col">
         <h4>Sobre Nosotros</h4>
         <ul class="footer-links">
@@ -1130,35 +898,20 @@
           <li><a href="#">Privacidad y Seguridad</a></li>
         </ul>
       </div>
+
       <div class="footer-col">
         <h4>Servicios</h4>
         <ul class="footer-links">
-          <li><a href="#">Servicio Técnico de Computadores</a></li>
-          <li><a href="#">Servicio Técnico de Celulares</a></li>
-          <li><a href="#">Servicio Técnico de Impresoras</a></li>
-          <li><a href="#">Venta de Computadores</a></li>
+          <li><a href="./servicio-computadores.html">Servicio Técnico de Computadores</a></li>
+          <li><a href="./servicio-celulares.html">Servicio Técnico de Celulares</a></li>
+          <li><a href="./servicio-impresoras.html">Servicio Técnico de Impresoras</a></li>
+          <li><a href="./computadores.html">Venta de Computadores</a></li>
         </ul>
       </div>
+
       <div class="footer-col">
-        <h4>Obtén ofertas y promociones exclusivas</h4>
-        <div class="newsletter-box">
-          <p>Suscríbete para enterarte antes de nuevos lanzamientos y descuentos especiales.</p>
-          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte a Fixionary!');">
-            <input type="email" placeholder="Ingresa tu correo..." required>
-            <button type="submit">Suscríbete</button>
-          </form>
-        </div>
-        <h4>Síguenos</h4>
-        <div class="social-links">
-          <a href="#" class="social-btn">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            <span>Instagram</span>
-          </a>
-          <a href="#" class="social-btn">
-            <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.97-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 2.89 3.49 2.73 1.25-.05 2.4-1.04 2.6-2.29.07-.6.06-1.21.06-1.81V.02h-.83z"/></svg>
-            <span>TikTok</span>
-          </a>
-        </div>
+        <h4>Consultas y Ventas</h4>
+        <p>¿Necesitas asesoría técnica para renovar equipos de tu empresa o estudio? Escríbenos directamente o visítanos en Ñuñoa.</p>
       </div>
     </div>
     <div class="footer-bottom">
@@ -1173,14 +926,12 @@
       drawer.classList.toggle('active');
       overlay.classList.toggle('active');
     }
+
     function toggleCategory(btn) {
       const item = btn.parentElement;
       item.classList.toggle('open');
     }
-    function scrollSlider(trackId, amount) {
-      const track = document.getElementById(trackId);
-      track.scrollBy({ left: amount, behavior: 'smooth' });
-    }
   </script>
+
 </body>
 </html>
