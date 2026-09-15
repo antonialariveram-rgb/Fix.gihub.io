@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fixionary | Soluciones y Tecnología</title>
+  <style>
+    :root {
+      /* Colores Fixionary */
+      --fix-purple-start: #6a00f4;
+      --fix-purple-mid: #5100d8;
+      --fix-blue-end: #09009f;
+      --fix-gradient: linear-gradient(135deg, #7b00ff 0%, #4c00e6 50%, #0d00a4 100%);
+      
+      --top-dark-bar: #140033;
+      --btn-blue: #0066ff;
+      --btn-blue-hover: #004edb;
+      --accent-red: #e63946;
+      
+      --bg-page: #f5f6fa;
+      --card-bg: #ffffff;
+      --border-color: #e5e7eb;
+      --text-dark: #111827;
+      --text-muted: #6b7280;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-dark);
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+
+    /* ========================================================
+       BARRA SUPERIOR (HEADER): EXACTO DE IZQUIERDA A DERECHA
+       Fixionary -> [☰ Categorías] -> Búsqueda -> [👤 Ingresa] -> [🛒 Mis compras]
+       ======================================================== */
+    header {
+      background: var(--top-dark-bar);
+      color: #ffffff;
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      position: sticky;
+      top: 0;
+      z-index: 90;
+    }
+
+    /* 1. Logo Fixionary */
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      flex-shrink: 0;
+    }
+
+    .brand-icon {
+      background: #ffffff;
+      color: var(--fix-purple-start);
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.2rem;
+    }
+
+    /* 2. Botón Tres Líneas + "Categorías" */
+    .btn-categories-toggle {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 6px;
+      padding: 7px 12px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .btn-categories-toggle:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      gap: 3.5px;
+    }
+
+    .hamburger-icon span {
+      display: block;
+      width: 17px;
+      height: 2px;
+      background: #ffffff;
+      border-radius: 2px;
+    }
+
+    /* 3. Barra de Búsqueda */
+    .search-box {
+      flex: 1;
+      display: flex;
+      min-width: 240px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 9px 14px;
+      border: none;
+      border-radius: 6px 0 0 6px;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .search-box button {
+      background: var(--btn-blue);
+      color: #ffffff;
+      border: none;
+      padding: 0 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 0 6px 6px 0;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .search-box button:hover {
+      background: var(--btn-blue-hover);
+    }
+
+    /* 4 y 5. Acciones derechas (Ingresa y Mis compras) */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .header-btn {
+      color: #ffffff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+
+    .header-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .header-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Carrito con badge */
+    .cart-btn-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .cart-badge {
+      background: #16a34a; /* verde estilo PC Factory */
+      color: #ffffff;
+      font-size: 0.65rem;
+      font-weight: 800;
+      border-radius: 10px;
+      padding: 1px 5px;
+      margin-left: 2px;
+    }
+
+    /* ========================================================
+       HERO BANNER
+       ======================================================== */
+    .hero-banner {
+      background: var(--fix-gradient);
+      color: #ffffff;
+      padding: 55px 24px;
+      text-align: center;
+    }
+
+    .hero-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .hero-inner h1 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .hero-inner p {
+      font-size: 1rem;
+      color: #e5dbff;
+      margin-bottom: 24px;
+    }
+
+    .btn-hero {
+      display: inline-block;
+      background: var(--btn-blue);
+      color: #ffffff;
+      padding: 10px 28px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-hero:hover {
+      background: var(--btn-blue-hover);
+      transform: translateY(-1px);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+
+    /* SECCION EMPRESA */
+    .company-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 22px 26px;
+      margin-bottom: 28px;
+    }
+
+    .company-card h2 {
+      font-size: 1.15rem;
+      color: var(--fix-purple-start);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .company-card h2::before {
+      content: "";
+      width: 4px;
+      height: 16px;
+      background: var(--fix-purple-start);
+      border-radius: 2px;
+      display: inline-block;
+    }
+
+    .company-card p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    /* ========================================================
+       CARRUSELES: MORADO TRANSLÚCIDO IDÉNTICO
+       ======================================================== */
+    .slider-section-colored {
+      background: rgba(106, 0, 244, 0.07);
+      border: 1px solid rgba(106, 0, 244, 0.16);
+      border-radius: 12px;
+      padding: 20px 22px 24px;
+      margin-bottom: 32px;
+      position: relative;
+    }
+
+    .slider-header-colored {
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .slider-title-colored {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .slider-title-colored::before {
+      content: "";
+      width: 5px;
+      height: 18px;
+      background: var(--fix-purple-start);
+      border-radius: 3px;
+      display: inline-block;
+    }
+
+    .slider-subtitle-colored {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 500;
+      display: block;
+      margin-top: 2px;
+    }
+
+    .slider-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .product-track {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 6px 4px 10px;
+      width: 100%;
+      scrollbar-width: none;
+    }
+
+    .product-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .slider-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 38px;
+      height: 38px;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 50%;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--fix-purple-start);
+      transition: background 0.2s, transform 0.15s, color 0.2s;
+    }
+
+    .slider-arrow:hover {
+      background: var(--fix-purple-start);
+      color: #ffffff;
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .slider-arrow.prev { left: -14px; }
+    .slider-arrow.next { right: -14px; }
+
+    /* Tarjetas de Producto */
+    .card {
+      min-width: 220px;
+      max-width: 220px;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 20px rgba(106, 0, 244, 0.12);
+      transform: translateY(-3px);
+    }
+
+    .badge-promo {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: var(--accent-red);
+      color: #ffffff;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    .product-img-box {
+      width: 100%;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fafafa;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .product-img-box img {
+      max-width: 85%;
+      max-height: 85%;
+      object-fit: contain;
+    }
+
+    .sku-stock {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .stock-tag {
+      color: #16a34a;
+      font-weight: 700;
+    }
+
+    .item-category {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--fix-purple-start);
+      margin-bottom: 4px;
+    }
+
+    .item-name {
+      font-size: 0.83rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      line-height: 1.35;
+      margin-bottom: 10px;
+      min-height: 36px;
+    }
+
+    .price-box {
+      margin-top: auto;
+      border-top: 1px solid var(--border-color);
+      padding-top: 8px;
+    }
+
+    .price-normal {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .price-cash {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--top-dark-bar);
+      line-height: 1.1;
+    }
+
+    .price-cash-sub {
+      font-size: 0.67rem;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 2px;
+    }
+
+    .btn-action {
+      width: 100%;
+      margin-top: 10px;
+      background-color: var(--fix-purple-start);
+      color: #ffffff;
+      border: none;
+      padding: 7px 10px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn-action:hover {
+      background-color: var(--top-dark-bar);
+    }
+
+    /* ========================================================
+       MENU LATERAL DESPLEGABLE (DRAWER) CON LAS 6 CATEGORÍAS
+       ======================================================== */
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 998;
+      display: none;
+    }
+
+    .menu-overlay.active {
+      display: block;
+    }
+
+    .sidebar-drawer {
+      position: fixed;
+      top: 0;
+      left: -380px;
+      width: 350px;
+      height: 100%;
+      background: #ffffff;
+      z-index: 999;
+      box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+      transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .sidebar-drawer.active {
+      left: 0;
+    }
+
+    .drawer-header {
+      padding: 20px;
+      border-bottom: 1px solid var(--border-color);
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .drawer-user h4 { font-size: 1rem; margin-bottom: 2px; }
+    .drawer-user p { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 14px; }
+
+    .btn-drawer-login {
+      display: block;
+      width: 100%;
+      background: var(--btn-blue);
+      color: #ffffff;
+      text-align: center;
+      padding: 10px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .drawer-section-title {
+      padding: 14px 20px 8px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .drawer-section-title span {
+      color: var(--btn-blue);
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .category-list {
+      list-style: none;
+    }
+
+    .category-item {
+      border-bottom: 1px solid #f1f3f5;
+    }
+
+    .category-btn {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 12px 20px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: #334155;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .category-btn:hover {
+      background-color: #f8fafc;
+      color: var(--fix-purple-start);
+    }
+
+    .category-btn .arrow {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      transition: transform 0.2s;
+    }
+
+    .category-item.open .arrow {
+      transform: rotate(90deg);
+      color: var(--fix-purple-start);
+    }
+
+    .subcategory-list {
+      display: none;
+      list-style: none;
+      background-color: #fafbfc;
+      padding: 6px 0 10px 24px;
+    }
+
+    .category-item.open .subcategory-list {
+      display: block;
+    }
+
+    .subcategory-list li a {
+      display: block;
+      padding: 6px 16px;
+      font-size: 0.78rem;
+      color: #475569;
+      text-decoration: none;
+    }
+
+    .subcategory-list li a:hover {
+      color: var(--fix-purple-start);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Overlay para cerrar el menú lateral -->
+  <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+
+  <!-- MENU LATERAL CON LAS 6 CATEGORÍAS Y SUS SUBCATEGORÍAS -->
+  <aside class="sidebar-drawer" id="sidebarDrawer">
+    <div class="drawer-header">
+      <button class="close-btn" onclick="toggleMenu()">✕</button>
+      <div class="drawer-user">
+        <h4>¡Hola!</h4>
+        <p>Ingresa a tu cuenta para cotizar y comprar</p>
+      </div>
+      <a href="#" class="btn-drawer-login">Inicia sesión</a>
+    </div>
+
+    <div class="drawer-section-title">
+      Categorías
+      <span>Ver todas</span>
+    </div>
+
+    <ul class="category-list">
+
+      <!-- 1. Computadores -->
+      <li class="category-item">
+        <button class="category-btn" onclick="toggleCategory(this)">
+          1. Computadores
+          <span class="arrow">›</span>
+        </button>
+        <ul class="subcategory-list">
+          <li><a href="#">Lenovo</a></li>
+          <li><a href="#">Dell</a></li>
+          <li><a href="#">Asus</a></li>
+          <li><a href="#">Mac</a></li>
+          <li><a href="#">HP</a></li>
+        </ul>
+      </li>
+
+      <!-- 2. Accesorios y Periféricos -->
+      <li class="category-item">
+        <button class="category-btn" onclick="toggleCategory(this)">
+          2. Accesorios y Periféricos
+          <span class="arrow">›</span>
+        </button>
+        <ul class="subcategory-list">
+          <li><a href="mouses-teclados.html">Mouses y Teclados</a></li>
+          <li><a href="#">Accesorios Computadores</a></li>
+          <li><a href="#">Accesorios Celulares</a></li>
+          <li><a href="#">Accesorios Cámara</a></li>
+          <li><a href="#">Accesorios Monitores</a></li>
+          <li><a href="#">Cables y Adaptadores</a></li>
+          <li><a href="#">Mantención y Limpieza</a></li>
+        </ul>
+      </li>
+
+      <!-- 3. Energía -->
+      <li class="category-item">
+        <button class="category-btn" onclick="toggleCategory(this)">
+          3. Energía
+          <span class="arrow">›</span>
+        </button>
+        <ul class="subcategory-list">
+          <li><a href="#">Power Banks</a></li>
+          <li><a href="#">Baterías</a></li>
+          <li><a href="#">Cargadores computador</a></li>
+        </ul>
+      </li>
+
+      <!-- 4. Almacenamiento y Discos Duros -->
+      <li class="category-item">
+        <button class="category-btn" onclick="toggleCategory(this)">
+          4. Almacenamiento y Discos Duros
+          <span class="arrow">›</span>
+        </button>
+        <ul class="subcategory-list">
+          <li><a href="#">Discos Internos SSD</a></li>
+          <li><a href="#">Discos Internos HDD</a></li>
+          <li><a href="#">Discos Externos HDD</a></li>
+          <li><a href="#">Memorias Flash</a></li>
+          <li><a href="#">Pendrives</a></li>
+          <li><a href="#">Enclosure (Cofres)</a></li>
+        </ul>
+      </li>
+
+      <!-- 5. Impresoras -->
+      <li class="category-item">
+        <button class="category-btn" onclick="toggleCategory(this)">
+          5. Impresoras
+          <span class="arrow">›</span>
+        </button>
+        <ul class="subcategory-list">
+          <li><a href="#">Suministros</a></li>
+        </ul>
+      </li>
+
+      <!-- 6. Audio -->
+      <li class="category-item">
+        <button class="category-btn" onclick="toggleCategory(this)">
+          6. Audio
+          <span class="arrow">›</span>
+        </button>
+        <ul class="subcategory-list">
+          <li><a href="#">Audífonos</a></li>
+          <li><a href="#">Parlantes</a></li>
+          <li><a href="#">Accesorios de Audio</a></li>
+        </ul>
+      </li>
+
+    </ul>
+  </aside>
+
+  <!-- ========================================================
+       BARRA PRINCIPAL (HEADER): DE IZQUIERDA A DERECHA
+       Fixionary | [☰ Categorías] | [Búsqueda] | [Ingresa] | [Mis compras]
+       ======================================================== -->
+  <header>
+    <!-- Logo Fixionary -->
+    <a href="index.html" class="brand-logo">
+      <div class="brand-icon">F</div>
+      <span>Fixionary</span>
+    </a>
+
+    <!-- Botón 3 líneas + Categorías -->
+    <button class="btn-categories-toggle" onclick="toggleMenu()" aria-label="Abrir categorías">
+      <div class="hamburger-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <span>Categorías</span>
+    </button>
+    
+    <!-- Barra de Búsqueda -->
+    <div class="search-box">
+      <input type="text" placeholder="Busca aquí la tecnología para ti...">
+      <button>Buscar</button>
+    </div>
+
+    <!-- Ingresa y Mis compras a la derecha -->
+    <div class="header-actions">
+      <!-- Ingresa con ícono de usuario -->
+      <a href="#" class="header-btn">
+        <svg viewBox="0 0 24 24">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <span>Ingresa</span>
+      </a>
+
+      <!-- Mis compras con carrito simple estilo PcFactory -->
+      <a href="#" class="header-btn cart-btn-wrapper">
+        <svg viewBox="0 0 24 24">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span>Mis compras</span>
+        <span class="cart-badge">0</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero-banner">
+    <div class="hero-inner">
+      <h1>¡Innovamos junto a ti!</h1>
+      <p>Transformamos ideas en soluciones reales para tu empresa</p>
+      <a href="#contacto" class="btn-hero">Contactanos!</a>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- Sección Institucional -->
+    <section id="empresa" class="company-card">
+      <h2>Sobre Fixionary</h2>
+      <p>
+        Nos especializamos en brindar soluciones de calidad, ofreciendo soporte técnico, desarrollo de software y consultoría adaptada a las necesidades de cada cliente.
+      </p>
+    </section>
+
+    <!-- ==============================================
+         LÍNEA 1: PRODUCTOS DESTACADOS
+         ============================================== -->
+    <section id="destacados" class="slider-section-colored">
+      <div class="slider-header-colored">
+        <div>
+          <h3 class="slider-title-colored">Los más destacados</h3>
+          <span class="slider-subtitle-colored">Soluciones y equipos recomendados para tu empresa</span>
+        </div>
+      </div>
+
+      <div class="slider-wrapper">
+        <button class="slider-arrow prev" onclick="scrollSlider('track-destacados', -240)" aria-label="Anterior">‹</button>
+        
+        <div class="product-track" id="track-destacados">
+          
+          <!-- Item 1 -->
+          <div class="card">
+            <span class="badge-promo">-20%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=350&q=80" alt="Plataforma Web">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: FIX-MOD01</span>
+              <span class="stock-tag">● Disponible</span>
+            </div>
+            <span class="item-category">Desarrollo Web</span>
+            <h4 class="item-name">Plataforma Web Corporativa con Panel de Control</h4>
+            <div class="price-box">
+              <span class="price-normal">$850.000</span>
+              <div class="price-cash">$680.000</div>
+              <span class="price-cash-sub">Pago contado / transferencia</span>
+            </div>
+            <button class="btn-action">Cotizar modelo</button>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="card">
+            <span class="badge-promo">-15%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=350&q=80" alt="App Movil">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: FIX-MOD02</span>
+              <span class="stock-tag">● Disponible</span>
+            </div>
+            <span class="item-category">Aplicaciones</span>
+            <h4 class="item-name">App Móvil para Clientes Multiplataforma (iOS & Android)</h4>
+            <div class="price-box">
+              <span class="price-normal">$1.200.000</span>
+              <div class="price-cash">$990.000</div>
+              <span class="price-cash-sub">Pago contado / transferencia</span>
+            </div>
+            <button class="btn-action">Cotizar modelo</button>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="card">
+            <span class="badge-promo">-25%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=350&q=80" alt="Workstation">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: FIX-EQ401</span>
+              <span class="stock-tag">● 4 en bodega</span>
+            </div>
+            <span class="item-category">Equipamiento TI</span>
+            <h4 class="item-name">Estación de Trabajo Corporativa i7 16GB / 1TB SSD</h4>
+            <div class="price-box">
+              <span class="price-normal">$799.990</span>
+              <div class="price-cash">$599.990</div>
+              <span class="price-cash-sub">Efectivo / Transferencia</span>
+            </div>
+            <button class="btn-action">Agregar al pedido</button>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="card">
+            <span class="badge-promo">-18%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=350&q=80" alt="Monitor">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: FIX-MON01</span>
+              <span class="stock-tag">● Stock alto</span>
+            </div>
+            <span class="item-category">Monitores</span>
+            <h4 class="item-name">Monitor Profesional 27" IPS QHD Color Accurate</h4>
+            <div class="price-box">
+              <span class="price-normal">$289.990</span>
+              <div class="price-cash">$239.990</div>
+              <span class="price-cash-sub">Efectivo / Transferencia</span>
+            </div>
+            <button class="btn-action">Agregar al pedido</button>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="card">
+            <span class="badge-promo">-30%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=350&q=80" alt="Soporte">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: FIX-SRV10</span>
+              <span class="stock-tag">● Planes activos</span>
+            </div>
+            <span class="item-category">Soporte Técnico</span>
+            <h4 class="item-name">Plan Mensual de Mantenimiento y Continuidad TI</h4>
+            <div class="price-box">
+              <span class="price-normal">$90.000/mes</span>
+              <div class="price-cash">$75.000/mes</div>
+              <span class="price-cash-sub">Facturación mensual</span>
+            </div>
+            <button class="btn-action">Contratar plan</button>
+          </div>
+
+        </div>
+
+        <button class="slider-arrow next" onclick="scrollSlider('track-destacados', 240)" aria-label="Siguiente">›</button>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         LÍNEA 2: LOS MÁS COMPRADOS
+         ============================================== -->
+    <section id="mas-comprados" class="slider-section-colored">
+      <div class="slider-header-colored">
+        <div>
+          <h3 class="slider-title-colored">Los más comprados</h3>
+          <span class="slider-subtitle-colored">Componentes, energía y periféricos con mayor demanda</span>
+        </div>
+      </div>
+
+      <div class="slider-wrapper">
+        <button class="slider-arrow prev" onclick="scrollSlider('track-comprados', -240)" aria-label="Anterior">‹</button>
+        
+        <div class="product-track" id="track-comprados">
+          
+          <!-- Item 1 (Conectado a la ficha de producto) -->
+          <div class="card">
+            <span class="badge-promo">-33%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1609592424368-f9b8b2612a83?w=350&q=80" alt="Power Bank">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: FIX-ENG01</span>
+              <span class="stock-tag">● +50 Unid.</span>
+            </div>
+            <span class="item-category">Energía</span>
+            <h4 class="item-name">
+              <a href="producto-bateria.html" style="color: inherit; text-decoration: none;">Power Bank 20.000 mAh Carga Rápida USB-C 22.5W</a>
+            </h4>
+            <div class="price-box">
+              <span class="price-normal">$29.990</span>
+              <div class="price-cash">$19.990</div>
+              <span class="price-cash-sub">Efectivo / Transferencia</span>
+            </div>
+            <button class="btn-action">Agregar al pedido</button>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="card">
+            <span class="badge-promo">-40%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1588508065123-287b28e013da?w=350&q=80" alt="SSD">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: FIX-SSD01</span>
+              <span class="stock-tag">● +100 Unid.</span>
+            </div>
+            <span class="item-category">Almacenamiento</span>
+            <h4 class="item-name">Disco Interno SSD NVMe M.2 1TB Gen4 Ultra Speed</h4>
+            <div class="price-box">
+              <span class="price-normal">$89.990</span>
+              <div class="price-cash">$54.990</div>
+              <span class="price-cash-sub">Efectivo / Transferencia</span>
+            </div>
+            <button class="btn-action">Agregar al pedido</button>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="card">
+            <span class="badge-promo">-15%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=350&q=80" alt="Mouse">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: FIX-PER02</span>
+              <span class="stock-tag">● 25 Unid.</span>
+            </div>
+            <span class="item-category">Periféricos</span>
+            <h4 class="item-name">Mouse Ergonómico Inalámbrico Silencioso Multi-Device</h4>
+            <div class="price-box">
+              <span class="price-normal">$24.990</span>
+              <div class="price-cash">$18.990</div>
+              <span class="price-cash-sub">Efectivo / Transferencia</span>
+            </div>
+            <button class="btn-action">Agregar al pedido</button>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="card">
+            <span class="badge-promo">-25%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=350&q=80" alt="Audífonos">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: FIX-AUD05</span>
+              <span class="stock-tag">● +30 Unid.</span>
+            </div>
+            <span class="item-category">Audio</span>
+            <h4 class="item-name">Audífonos Bluetooth con Cancelación de Ruido Activa</h4>
+            <div class="price-box">
+              <span class="price-normal">$69.990</span>
+              <div class="price-cash">$49.990</div>
+              <span class="price-cash-sub">Efectivo / Transferencia</span>
+            </div>
+            <button class="btn-action">Agregar al pedido</button>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="card">
+            <span class="badge-promo">-50%</span>
+            <div class="product-img-box">
+              <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=350&q=80" alt="Cables">
+            </div>
+            <div class="sku-stock">
+              <span>SKU: FIX-CAB01</span>
+              <span class="stock-tag">● +100 Unid.</span>
+            </div>
+            <span class="item-category">Accesorios</span>
+            <h4 class="item-name">Cable Trenzado Reforzado USB-C a USB-C 100W 2m</h4>
+            <div class="price-box">
+              <span class="price-normal">$12.990</span>
+              <div class="price-cash">$6.490</div>
+              <span class="price-cash-sub">Efectivo / Transferencia</span>
+            </div>
+            <button class="btn-action">Agregar al pedido</button>
+          </div>
+
+        </div>
+
+        <button class="slider-arrow next" onclick="scrollSlider('track-comprados', 240)" aria-label="Siguiente">›</button>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    function toggleMenu() {
+      const drawer = document.getElementById('sidebarDrawer');
+      const overlay = document.getElementById('menuOverlay');
+      drawer.classList.toggle('active');
+      overlay.classList.toggle('active');
+    }
+
+    function toggleCategory(btn) {
+      const item = btn.parentElement;
+      item.classList.toggle('open');
+    }
+
+    function scrollSlider(trackId, amount) {
+      const track = document.getElementById(trackId);
+      track.scrollBy({ left: amount, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
